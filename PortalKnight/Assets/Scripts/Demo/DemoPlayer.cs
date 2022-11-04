@@ -6,7 +6,7 @@ using Thuleanx.Combat3D;
 using Thuleanx.Utils;
 
 namespace Thuleanx {
-	public class Player : MonoBehaviour {
+	public class DemoPlayer : MonoBehaviour {
 		[ReadOnly] Vector2 Movement;
 		[ReadOnly] Vector3 Velocity;
 		[ReadOnly] Vector3 _lastNonZeroVelocity;
