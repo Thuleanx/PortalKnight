@@ -621,6 +621,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 20efd802-fd53-4602-9a47-ea6cdb2987d5
     m_ActionName: Global/Shoot[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1379698175}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Player, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 99e57696-973a-4a18-bc69-3994370c0b89
+    m_ActionName: Global/Dash[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Global
@@ -656,13 +672,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4945d614487d7044ab4e406bd9d513db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 4
-  AccelerationAlpha: 16
-  DeccelerationAlpha: 12
+  speed: 4
+  accelerationAlpha: 24
+  deccelerationAlpha: 12
+  dashCooldown: 0.5
+  dashSpeed: 20
+  dashDuration: 0.1
+  dashDrag: 18
   inputBufferTime: 0.2
-  Movement: {x: 0, y: 0}
-  AimPosition: {x: 0, y: 0}
+  movement: {x: 0, y: 0}
+  aimPosition: {x: 0, y: 0}
+  lastNonZeroMovement: {x: 0, y: 0}
   Velocity: {x: 0, y: 0, z: 0}
+  Drag: 0
 --- !u!114 &1379698176
 MonoBehaviour:
   m_ObjectHideFlags: 0

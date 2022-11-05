@@ -1,23 +1,44 @@
 using UnityEngine;
-
-using Thuleanx.AI.FSM;
 using System.Collections;
 
+using DG.Tweening;
+
+using Thuleanx.AI.FSM;
+using Thuleanx.Utils;
+
 namespace Thuleanx.PortalKnight {
-	public class PlayerDashState : State<Player> {
-		Vector2 DashDirection;
+	public partial class Player {
+		public class PlayerDashState : State<Player> {
+			Vector3 dashDirection;
+			Vector3 beforeDashVelocity;
 
-		public override void Begin(Player agent) {
-			DashDirection = agent.LastNonZeroMovement;
-			agent.Velocity = DashDirection;
-		}
+			Timer 	onCooldown;
 
-		public override void End(Player agent) {
-			agent.Drag = 0;
-		}
+			public override bool CanEnter() => !onCooldown;
 
-		public override IEnumerator Coroutine(Player agent) {
-			yield return new WaitForSeconds(2);
+			public override void Begin(Player player) {
+				dashDirection = player.InputMovementToWorldDir(player.lastNonZeroMovement);
+				beforeDashVelocity = player.Velocity;
+			}
+
+			public override void End(Player player) {
+				player.Drag = 0;
+				onCooldown = player.dashCooldown;
+			}
+
+			public override IEnumerator Coroutine(Player player) {
+				Tween tween = DOVirtual.Float(player.dashDrag, 0, player.dashDuration, (float x) => {
+					player.Drag = x;
+				});
+				player.Velocity = dashDirection * player.dashSpeed;
+
+				// you can call the FX right here
+				yield return new WaitForSeconds(player.dashDuration);
+
+				tween.Kill();
+
+				stateMachine.SetState((int) Player.State.Neutral);
+			}
 		}
 	}
 }

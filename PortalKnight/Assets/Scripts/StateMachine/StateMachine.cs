@@ -11,13 +11,15 @@ namespace Thuleanx.AI.FSM {
 		Coroutine currentCoroutine;
 
 		int _currentState;
-		public int State { get => _currentState; set {
+		public int State { get => _currentState; private set {
 			if (value != _currentState) {
 				if (currentCoroutine != null) StopCoroutine(currentCoroutine);
 				States[_currentState]?.End(agent);
 				_currentState = value;
 				States[_currentState]?.Begin(agent);
-				currentCoroutine = StartCoroutine(States[_currentState].Coroutine(agent));
+
+				IEnumerator enumerator = States[_currentState].Coroutine(agent);
+				if (enumerator != null) currentCoroutine = StartCoroutine(enumerator);
 			}
 		}}
 
@@ -29,7 +31,16 @@ namespace Thuleanx.AI.FSM {
 			this.defaultState = defaultStateIndex;
 		}
 
-		public void SetState(int index, State<Agent> state) => States[index] = state;
+		public void AssignState(int index, State<Agent> state) {
+			States[index] = state;
+			state.SetStateMachine(this);
+		}
+		public void SetState(int index) => State = index;
+		public bool TrySetState(int index) {
+			bool canSet = States[index] == null || States[index].CanEnter();
+			if (canSet) State = index;
+			return canSet;
+		}
 
 		public void Init() {
 			_currentState = defaultState;

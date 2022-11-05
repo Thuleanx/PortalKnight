@@ -4,30 +4,36 @@ using Thuleanx.AI.FSM;
 using Thuleanx.Utils;
 
 namespace Thuleanx.PortalKnight {
-	public class PlayerNeutralState : State<Player> {
-		public override int Update(Player agent) {
-			Vector3 inputDir = new Vector3(
-				agent.Movement.x, 0, agent.Movement.y
-			).normalized;
+	public partial class Player {
+		public class PlayerNeutralState : State<Player> {
+			bool OnDash() => stateMachine.TrySetState((int) Player.State.Dash);
 
-			Vector3 desiredVelocity = agent.Velocity;
-			if (inputDir.sqrMagnitude >= 0.01f) {
-				Vector3 moveDir = Quaternion.Euler(
-					0, Camera.main.transform.eulerAngles.y, 0f
-				) * inputDir;
-				desiredVelocity = moveDir * agent.Speed;
-			} else desiredVelocity = Vector3.zero;
+			public override void Begin(Player agent) {
+				agent.ActionHandler[(int) ActionType.Dash] = OnDash;
+			}
 
-			// no acceleration
+			public override void End(Player agent) {
+				agent.ActionHandler[(int) ActionType.Dash] = null;
+			}
 
-			// noAcceleration: {
-			// 	agent.Velocity = desiredVelocity;
-			// }
+			public override int Update(Player player) {
+				Vector3 desiredVelocity = player.Velocity;
 
-			agent.Velocity = Mathx.Damp(Vector3.Lerp, agent.Velocity, desiredVelocity, 
-				(agent.Velocity.sqrMagnitude > desiredVelocity.sqrMagnitude) ? agent.DeccelerationAlpha : agent.AccelerationAlpha, Time.deltaTime);
+				if (player.movement.sqrMagnitude >= 0.01f) {
+					desiredVelocity = player.InputMovementToWorldDir(player.movement) * player.speed;
+				} else desiredVelocity = Vector3.zero;
 
-			return -1;
+				// no acceleration
+
+				// noAcceleration: {
+				// 	agent.Velocity = desiredVelocity;
+				// }
+
+				player.Velocity = Mathx.Damp(Vector3.Lerp, player.Velocity, desiredVelocity, 
+					(player.Velocity.sqrMagnitude > desiredVelocity.sqrMagnitude) ? player.deccelerationAlpha : player.accelerationAlpha, Time.deltaTime);
+
+				return -1;
+			}
 		}
 	}
 }

@@ -12,7 +12,8 @@ namespace Thuleanx.PortalKnight {
 		private void Awake() {
 			ConstructMachine(GetComponent<Player>(), Enum.GetNames(typeof(Player.State)).Length, (int) Player.State.Neutral, false);
 
-			SetState((int) Player.State.Neutral, new PlayerNeutralState());
+			AssignState((int) Player.State.Neutral, new Player.PlayerNeutralState());
+			AssignState((int) Player.State.Dash, new Player.PlayerDashState());
 
 			Init();
 		}
