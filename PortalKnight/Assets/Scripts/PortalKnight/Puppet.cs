@@ -9,7 +9,9 @@ namespace Thuleanx.PortalKnight {
 		public Movable 	Movable {get; private set; }
 
 		void Awake() {
-			Status = new Status(){};
+			Status = new Status(){
+				MaxHealth = 10
+			};
 			Movable = GetComponent<Movable>();
 		}
 
@@ -20,6 +22,7 @@ namespace Thuleanx.PortalKnight {
 
 		void ProcessHit(Hit3D hit) {
 			Movable.ApplyKnockback(hit.knockbackAmount * hit.hitDir);
+			Status.Health -= hit.damage;
 		}
 	}
 }
