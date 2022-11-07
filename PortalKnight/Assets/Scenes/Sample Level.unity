@@ -1193,6 +1193,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4254a9c8c1dff734c997e5ee0e8a12ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+  InitialMaxHealth: 10
 --- !u!1 &1732177945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,6 +1550,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4254a9c8c1dff734c997e5ee0e8a12ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+  InitialMaxHealth: 10
 --- !u!114 &1956284777
 MonoBehaviour:
   m_ObjectHideFlags: 0
