@@ -35,35 +35,30 @@ namespace Thuleanx.AI.FSM {
 			States[index] = state;
 			state.SetStateMachine(this);
 		}
+		public bool CanEnter(int index) => States[index] == null || States[index].CanEnter();
 		public void SetState(int index) => State = index;
 		public bool TrySetState(int index) {
-			bool canSet = States[index] == null || States[index].CanEnter();
+			if (index == -1 || index == State) return false;
+			bool canSet = CanEnter(index);
 			if (canSet) State = index;
 			return canSet;
 		}
 
 		public void Init() {
 			_currentState = defaultState;
-			for (int i = 0; i < States.Length; i++) 
-				if (States[i] == null) 
-					Debug.LogWarning("State " + i + " is null");
+			// for (int i = 0; i < States.Length; i++) 
+			// 	if (States[i] == null) 
+			// 		Debug.LogWarning("State " + i + " is null");
 			States[_currentState].Begin(agent);
 		}
 
 		public void RunUpdate() {
-			int nxtState = 0;
-			while (true) {
-				nxtState = States[State].Transition(agent);
-				if (nxtState == -1 || nxtState == State) break;
-				State = nxtState;
-			}
-			int nxt = States[State].Update(agent);
-			if (nxt != -1) State = nxt;
+			while (TrySetState(States[State].Transition(agent)));
+			TrySetState(States[State].Update(agent));
 		}
 
 		public void RunFixUpdate() {
-			int nxt = States[State].FixUpdate(agent);
-			if (nxt != -1) State = nxt;
+			TrySetState(States[State].FixUpdate(agent));
 		}
 
 		void Update() { 

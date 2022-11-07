@@ -2,17 +2,14 @@ using UnityEngine;
 
 namespace Thuleanx.Combat3D {
 	public struct Hit3D {
-		public int damage;
-		public float knockbackAmt;
+		public float damage;
+		public float knockbackAmount;
+		public Vector3 hitDir;
 
-		public Hitbox3D hitbox;
-		public Hurtbox3D hurtbox;
-
-		public Hit3D(int damage, Hitbox3D hitbox, Hurtbox3D hurtbox, float knockback = 0) {
+		public Hit3D(float damage, float knockbackAmount, Vector3 hitDir) {
 			this.damage = damage;
-			this.hitbox = hitbox;
-			this.hurtbox = hurtbox;
-			this.knockbackAmt = knockback;
+			this.knockbackAmount = knockbackAmount;
+			this.hitDir = hitDir;
 		}
 	}
 }

@@ -14,8 +14,12 @@ namespace Thuleanx.Combat3D {
 			private set => Collider.enabled = value;
 		}
 
+		[HideInInspector] public iHitGenerator3D HitGenerator;
+
+		[Range(0,1), Tooltip("Hitbox of the same faction as a hurtbox won't try to hit it")] 
+		public int faction = 0;
+
 		[SerializeField, Min(0f)] float frequency;
-		[SerializeField] float knockback;
 		Dictionary<long, float> hurtboxCooldown = new Dictionary<long, float>();
 
 		[Space]
@@ -25,13 +29,10 @@ namespace Thuleanx.Combat3D {
 			Collider = GetComponent<Collider>();
 		}
 
-		public virtual Hit3D GenerateHit(Collider other) 
-			=> new Hit3D(1,this,other.GetComponent<Hurtbox3D>(),knockback);
-
 		private void OnTriggerStay(Collider other) {
 			Hurtbox3D hurtbox = other.GetComponent<Hurtbox3D>();
-			if (hurtbox && hurtbox.CanTakeHit && TimedOut(hurtbox.ID)) {
-				Hit3D Hit = GenerateHit(other);
+			if (HitGenerator != null && hurtbox && faction != hurtbox.faction && hurtbox.CanTakeHit && TimedOut(hurtbox.ID)) {
+				Hit3D Hit = HitGenerator.GenerateHit(this, hurtbox);
 				hurtbox.ApplyHit(Hit);
 				OnHit?.Invoke(Hit);
 				Refresh(hurtbox.ID);

@@ -15,17 +15,23 @@ namespace Thuleanx.Combat3D {
 		public Collider Collider {get; private set;}
 		Timer _iframe;
 
+		[Range(0,1), Tooltip("Hitbox of the same faction as a hurtbox won't try to hit it")] 
+		public int faction = 0;
 		[Space] public UnityEvent<Hit3D> OnHit;
 
-		private void Awake() {
+		void Awake() {
 			Collider = GetComponent<Collider>();
+		}
+
+		void Update() {
+			if (CanTakeHit ^ Collider.enabled) Collider.enabled ^= true;
 		}
 
 		public void ApplyHit(Hit3D hit) => OnHit.Invoke(hit);
 		public bool CanTakeHit => !_iframe;
 		public void GiveIframe(float duration) => _iframe = duration;
 
-		private void OnDrawGizmos() {
+		void OnDrawGizmosSelected() {
 			if (Collider && CanTakeHit) {
 				Matrix4x4 prev = Gizmos.matrix;
 				Matrix4x4 rotationMatrix = Matrix4x4.TRS(Collider.bounds.center, transform.rotation, Collider.size());

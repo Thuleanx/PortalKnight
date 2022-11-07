@@ -3,8 +3,8 @@ using NaughtyAttributes;
 
 using Thuleanx.Combat3D;
 
-namespace Thuleanx {
-	public class Status : MonoBehaviour {
+namespace Thuleanx.Demo {
+	public class DemoStatus : MonoBehaviour {
 		public int MaxHealth = 10;
 		[SerializeField, ReadOnly, ProgressBar(10)] int health;
 
@@ -23,7 +23,7 @@ namespace Thuleanx {
 		}
 
 		public void ProcessHit(Hit3D hit) {
-			health = (health - hit.damage + MaxHealth + 1) % (MaxHealth + 1);
+			health = (health - 1 + MaxHealth + 1) % (MaxHealth + 1);
 		}
 
 		public void Init() {
