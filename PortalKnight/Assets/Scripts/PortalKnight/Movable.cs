@@ -6,6 +6,7 @@ using Thuleanx.Utils;
 namespace Thuleanx.PortalKnight {
 	public abstract class Movable : MonoBehaviour {
 		[Header("Movement Info Fields")]
+		[SerializeField] protected bool KnockbackImmune = false;
 		[ReadOnly, SerializeField] protected Vector3 Velocity;
 		[ReadOnly, SerializeField] protected Vector3 Knockback;
 		[Range(1,64), SerializeField] protected float KnockbackResistance = 1;
@@ -20,7 +21,7 @@ namespace Thuleanx.PortalKnight {
 
 		protected abstract void Move(Vector3 displacement);
 		public void ApplyKnockback(Vector3 Knockback) {
-			this.Knockback += Knockback;
+			if (!this.KnockbackImmune) this.Knockback += Knockback;
 		}
 	}
 }
