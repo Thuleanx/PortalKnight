@@ -2,16 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Thuleanx {
-	public class App : MonoBehaviour {
-		public static App Instance;
+using Thuleanx.PrettyPatterns;
 
-		private void Awake() {
-			#if UNITY_EDITOR
-				// Application.targetFrameRate = 60;
-				// QualitySettings.vSyncCount = 0;
-			#endif
-			Instance = this;
+namespace Thuleanx {
+	public class App : Singleton<App> {
+		public override void Awake() {
+			base.Awake();
 
 			SceneManager.activeSceneChanged += _activeSceneChange;
 		}
@@ -22,7 +18,6 @@ namespace Thuleanx {
 			if (app == null) {
 				app = UnityEngine.Object.Instantiate(Resources.Load("App")) as GameObject;
 				if (app == null) throw new ApplicationException();
-				Instance = app.GetComponent<App>();
 			}
 			UnityEngine.Object.DontDestroyOnLoad(app);
 		}
