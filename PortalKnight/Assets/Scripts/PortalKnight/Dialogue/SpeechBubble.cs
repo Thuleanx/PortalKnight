@@ -1,7 +1,6 @@
 using UnityEngine;
 using NaughtyAttributes;
 using TMPro;
-using WizOsu.Dialogue;
 
 namespace Thuleanx.PortalKnight.Dialogue  {
 	[ExecuteAlways]
