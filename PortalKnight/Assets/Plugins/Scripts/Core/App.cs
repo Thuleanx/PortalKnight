@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Thuleanx {
 	public class App : MonoBehaviour {
@@ -11,6 +12,8 @@ namespace Thuleanx {
 				// QualitySettings.vSyncCount = 0;
 			#endif
 			Instance = this;
+
+			SceneManager.activeSceneChanged += _activeSceneChange;
 		}
 
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -22,6 +25,10 @@ namespace Thuleanx {
 				Instance = app.GetComponent<App>();
 			}
 			UnityEngine.Object.DontDestroyOnLoad(app);
+		}
+
+		void _activeSceneChange(Scene before, Scene after) {
+			SceneManager.SetActiveScene(after);
 		}
 	}
 }

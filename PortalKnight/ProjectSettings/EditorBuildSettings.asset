@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Tests/scn_sampleLevel.unity
     guid: 92987bd30facf0542ac80befe001f309
   - enabled: 1
-    path: Assets/Scenes/scn_test_hub.unity
+    path: Assets/Scenes/Tests/scn_test_hub.unity
     guid: ef68bd088ad957e4b93a126ab758f5e4
   m_configObjects: {}

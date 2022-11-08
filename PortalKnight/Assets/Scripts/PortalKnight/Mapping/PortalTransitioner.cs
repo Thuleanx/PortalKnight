@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Thuleanx.Utils;
 
 namespace Thuleanx.PortalKnight.Mapping {
@@ -15,7 +16,8 @@ namespace Thuleanx.PortalKnight.Mapping {
 
 		IEnumerator iTransition(SceneReference TargetScene) {
 			yield return null;
-			TargetScene.LoadScene();
+			SceneManager.LoadScene(TargetScene.SceneName);
+			// TargetScene.LoadScene();
 			transitioning = false;
 		}
 	}
