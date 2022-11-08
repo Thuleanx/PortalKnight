@@ -77,9 +77,9 @@ namespace Thuleanx.PortalKnight {
 
 		protected override void Move(Vector3 displacement) {
 			if (displacement.sqrMagnitude > 0) {
-				NavMeshHit hit;
-				if (NavAgent.Raycast(transform.position + displacement, out hit))
-					displacement *= hit.distance / displacement.magnitude;
+				// NavMeshHit hit;
+				// if (NavAgent.Raycast(transform.position + displacement, out hit))
+				// 	displacement *= hit.distance / displacement.magnitude;
 				Controller.Move(displacement);
 			}
 		}
