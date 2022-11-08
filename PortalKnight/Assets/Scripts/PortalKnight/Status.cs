@@ -10,7 +10,6 @@ namespace Thuleanx.PortalKnight {
 		}
 		[ReadOnly] public int MaxHealth;
 
-
 		[SerializeField] 
 		[ProgressBar("health", 10)]
 		int _health;

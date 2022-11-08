@@ -7,8 +7,8 @@ namespace Thuleanx {
 
 		private void Awake() {
 			#if UNITY_EDITOR
-				Application.targetFrameRate = 60;
-				QualitySettings.vSyncCount = 0;
+				// Application.targetFrameRate = 60;
+				// QualitySettings.vSyncCount = 0;
 			#endif
 			Instance = this;
 		}
