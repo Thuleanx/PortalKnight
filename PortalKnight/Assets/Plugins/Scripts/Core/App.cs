@@ -35,33 +35,15 @@ namespace Thuleanx {
 		#endregion
 
 		public void RequestLoad(string sceneName, LoadSceneMode mode = LoadSceneMode.Single) {
-			if (mode == LoadSceneMode.Single) {
-				for (int i = 0; i < SceneManager.sceneCount; i++) {
-					Scene sceneAt = SceneManager.GetSceneAt(i);
-					if (sceneAt.isLoaded)
-						BeforeSceneUnload?.Invoke(sceneAt);
-				}
-			}
+			if (mode == LoadSceneMode.Single) TriggerBeforeUnload();
 			SceneManager.LoadScene(sceneName, mode);
 		}
 		public void RequestLoadAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single) {
-			if (mode == LoadSceneMode.Single) {
-				for (int i = 0; i < SceneManager.sceneCount; i++) {
-					Scene sceneAt = SceneManager.GetSceneAt(i);
-					if (sceneAt.isLoaded)
-						BeforeSceneUnload?.Invoke(sceneAt);
-				}
-			}
+			if (mode == LoadSceneMode.Single) TriggerBeforeUnload();
 			SceneManager.LoadSceneAsync(sceneName);
 		}
 		public IEnumerator DirectLoadAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)  {
-			if (mode == LoadSceneMode.Single) {
-				for (int i = 0; i < SceneManager.sceneCount; i++) {
-					Scene sceneAt = SceneManager.GetSceneAt(i);
-					if (sceneAt.isLoaded)
-						BeforeSceneUnload?.Invoke(sceneAt);
-				}
-			}
+			if (mode == LoadSceneMode.Single) TriggerBeforeUnload();
 			yield return SceneManager.LoadSceneAsync(sceneName) as IEnumerator;
 		}
 		public void RequestUnload(string sceneName, UnloadSceneOptions options = UnloadSceneOptions.None)
@@ -82,6 +64,19 @@ namespace Thuleanx {
 				Debug.Log("Unsuccessful unload: Scene " + sceneName + " is either not loaded or is currently unloading");
 				yield return null;
 			}
+		}
+
+		public void TriggerBeforeUnload() {
+			for (int i = 0; i < SceneManager.sceneCount; i++) {
+				Scene sceneAt = SceneManager.GetSceneAt(i);
+				if (sceneAt.isLoaded)
+					BeforeSceneUnload?.Invoke(sceneAt);
+			}
+		}
+
+		public void RequestReload() {
+			TriggerBeforeUnload();
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 
 	}

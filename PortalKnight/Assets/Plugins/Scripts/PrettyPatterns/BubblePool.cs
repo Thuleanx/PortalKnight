@@ -14,6 +14,8 @@ namespace Thuleanx.PrettyPatterns {
 	public class BubblePool : ScriptableObject {
 		static int DefaultSize = 5;
 
+		bool initialized;
+
 		[Required]
 		public GameObject prefab;
 
@@ -22,17 +24,23 @@ namespace Thuleanx.PrettyPatterns {
 		Dictionary<string, List<Bubble>> borrowedLedger = new Dictionary<string, List<Bubble>>();
 
 		void TryInit() {
-			if (App.instance) App.BeforeSceneUnload.AddListener(BeforeSceneUnload);
+			if (!initialized && App.instance) {
+				App.BeforeSceneUnload.AddListener(BeforeSceneUnload);
+				initialized = true;
+			}
 #if UNITY_EDITOR
 			EditorApplication.quitting += OnApplicationQuits;
 #endif
 		}
 
 		private void OnEnable() {
+			initialized = false;
 			Reset();
 		}
 
-		void BeforeSceneUnload(Scene scene) => CollectsAll(scene);
+		void BeforeSceneUnload(Scene scene) {
+			CollectsAll(scene);
+		}
 		void OnApplicationQuits() => Reset();
 
 		void Reset() {
@@ -67,14 +75,15 @@ namespace Thuleanx.PrettyPatterns {
 		}
 
 		void CollectsAll(Scene scene) {
-			List<Bubble> bubbles = borrowedLedger[scene.name];
-			borrowedLedger.Remove(scene.name);
-			foreach (Bubble bubble in bubbles)
+			List<Bubble> bubbles = new List<Bubble>(borrowedLedger[scene.name]);
+			foreach (Bubble bubble in bubbles) 
 				bubble.Pop();
+			borrowedLedger.Remove(scene.name);
 		}
 
 		void Collect(Bubble bubble) {
-			borrowedLedger[bubble.gameObject.scene.name].Remove(bubble);
+			if (borrowedLedger.ContainsKey(bubble.gameObject.scene.name))
+				borrowedLedger[bubble.gameObject.scene.name].Remove(bubble);
 			DontDestroyOnLoad(bubble.gameObject);
 			bubble.gameObject.SetActive(false);
 			pool.Add(bubble);

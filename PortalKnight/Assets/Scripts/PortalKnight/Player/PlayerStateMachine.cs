@@ -12,6 +12,7 @@ namespace Thuleanx.PortalKnight {
 			AssignState((int) Player.State.Neutral, new Player.PlayerNeutralState());
 			AssignState((int) Player.State.Dash, new Player.PlayerDashState());
 			AssignState((int) Player.State.Attack, new Player.PlayerAttackState());
+			AssignState((int) Player.State.Dead, new Player.PlayerDeadState());
 		}
 	}
 }
