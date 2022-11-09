@@ -37,7 +37,7 @@ namespace Thuleanx.PortalKnight {
 
 				tween.Kill();
 
-				stateMachine.SetState((int) Player.State.Neutral);
+				player.StateMachine.SetState((int) Player.State.Neutral);
 			}
 		}
 	}

@@ -54,7 +54,7 @@ namespace Thuleanx.PortalKnight {
 				onCooldown = player.attackCooldown;
 				dragTween.Kill(); // gotta kill to ensure no side erffects after exiting the state
 
-				stateMachine.SetState((int) Player.State.Neutral);
+				player.StateMachine.SetState((int) Player.State.Neutral);
 			}
 
 			void OnHit(Hit3D hit) {

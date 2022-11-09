@@ -16,7 +16,7 @@ namespace Thuleanx.PortalKnight {
 			}
 
 			public override int Transition(ShadowEnemy monster) {
-				if (InAttackRange(monster) && stateMachine.CanEnter((int) State.Attack)) 
+				if (InAttackRange(monster) && monster.StateMachine.CanEnter((int) State.Attack)) 
 					return (int) State.Attack;
 				return -1;
 			}

@@ -8,6 +8,7 @@ namespace Thuleanx.PortalKnight {
 	public class Puppet : MonoBehaviour {
 		public Status 	Status;
 		public Alive Entity {get; private set; }
+		public bool IsDead => Status.IsDead;
 
 		[Space]
 		public UnityEvent<Puppet> OnDeath;
@@ -26,6 +27,8 @@ namespace Thuleanx.PortalKnight {
 		void OnEnable() {
 			Status.MaxHealth = InitialMaxHealth;
 			Status.Health = Status.MaxHealth;
+			foreach (var hurtbox in GetComponentsInChildren<Hurtbox3D>()) 
+				hurtbox.SetVulnerable();
 		}
 
 		void Start() {
@@ -33,11 +36,17 @@ namespace Thuleanx.PortalKnight {
 				hurtbox.OnHit.AddListener(ProcessHit);
 		}
 
+		void onDeath() {
+			foreach (var hurtbox in GetComponentsInChildren<Hurtbox3D>()) 
+				hurtbox.SetInvicible();
+			OnDeath?.Invoke(this);
+		}
+
 		void ProcessHit(Hit3D hit) {
 			if (!Status.IsDead) {
 				Entity.ApplyKnockback(hit.knockbackAmount * hit.hitDir);
 				Status.Health -= hit.damage;
-				if (Status.Health == 0) 	OnDeath?.Invoke(this);
+				if (Status.Health == 0) 	onDeath();
 				else 						OnHit?.Invoke(this);
 			}
 		}

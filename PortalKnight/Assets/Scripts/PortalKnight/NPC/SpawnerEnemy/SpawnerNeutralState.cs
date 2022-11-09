@@ -8,7 +8,7 @@ namespace Thuleanx.PortalKnight {
 	public partial class SpawnerEnemy {
 		public class SpawnerNeutralState : State<SpawnerEnemy> {
 			public override int Transition(SpawnerEnemy spawner) {
-				if (stateMachine.CanEnter((int) State.Spell)) 
+				if (spawner.StateMachine.CanEnter((int) State.Spell)) 
 					return (int) State.Spell;
 				return -1;
 			}

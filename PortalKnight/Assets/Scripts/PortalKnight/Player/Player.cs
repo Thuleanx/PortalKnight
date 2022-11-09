@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using NaughtyAttributes;
 
 using Thuleanx.AI.FSM;
+using Thuleanx.PrettyPatterns;
 using Thuleanx.Combat3D;
 using Thuleanx.Utils;
 
@@ -57,8 +58,12 @@ namespace Thuleanx.PortalKnight {
 		#endregion
 
 		#region Spell Casting
+		[BoxGroup("Spell"), Range(1, 5), SerializeField] int manaOrbDamage;
+		[BoxGroup("Spell"), Range(0, 10), SerializeField] float manaOrbMouseRange = 3;
 		[BoxGroup("Spell"), Range(1, 5), SerializeField] int maxMana = 2;
 		[BoxGroup("Spell"), Range(0, 1), SerializeField] float manaOnHit;
+		[BoxGroup("Spell"), SerializeField, Required] BubblePool manaOrbPool;
+		[BoxGroup("Spell"), SerializeField, Required] Transform manaOrbFiringSource;
 
 		public float MaxMana => maxMana;
 
@@ -72,8 +77,22 @@ namespace Thuleanx.PortalKnight {
 		[Header("Input Related Fields")]
 		[SerializeField] float inputBufferTime = 0.2f;
 		[ReadOnly, SerializeField] Vector2 movement;
-		[ReadOnly, SerializeField] Vector2 aimPosition;
 		[ReadOnly, SerializeField] Vector2 lastNonZeroMovement;
+		[ReadOnly, SerializeField] Vector2 mousePosSS;
+		Vector3 mousePosWS {
+			get {
+				Camera cam = Camera.main;
+				Vector2 vp = cam.ScreenToViewportPoint(mousePosSS);
+				Ray ray = Camera.main.ViewportPointToRay(vp);
+				Plane plane = new Plane(Vector3.up, transform.position.y);
+				float dist;
+				if (plane.Raycast(ray, out dist)) {
+					Vector3 pos = ray.GetPoint(dist);
+					return pos;
+				}
+				return Camera.main.ScreenToWorldPoint(mousePosSS);
+			} 
+		}
 		#endregion
 
 		#region State Related Fields
@@ -81,7 +100,7 @@ namespace Thuleanx.PortalKnight {
 
 		// Only States should access this
 		[HideInInspector]
-		public Func<bool>[] ActionHandler;
+		public Func<Player, bool>[] ActionHandler;
 		#endregion
 
 		public override void Awake() {
@@ -90,7 +109,7 @@ namespace Thuleanx.PortalKnight {
 			Controller = GetComponent<CharacterController>();
 
 			inputBuffers = new Timer[Enum.GetNames(typeof(ActionType)).Length];
-			ActionHandler = new Func<bool>[Enum.GetNames(typeof(ActionType)).Length];
+			ActionHandler = new Func<Player, bool>[Enum.GetNames(typeof(ActionType)).Length];
 		}
 
 		void OnEnable() {
@@ -102,7 +121,7 @@ namespace Thuleanx.PortalKnight {
 			// Trigger all ActionHandlers, if it is not null and the input is buffered recently
 			for (int i = 0; i < inputBuffers.Length; i++) {
 				if (inputBuffers[i] && ActionHandler[i] != null) {
-					ActionHandler[i].Invoke();
+					ActionHandler[i].Invoke(this);
 					inputBuffers[i].Stop();
 				}
 			}
@@ -121,6 +140,7 @@ namespace Thuleanx.PortalKnight {
 			if (movement.sqrMagnitude > 0)
 				lastNonZeroMovement = movement;
 		}
+		public void OnMousePos(InputAction.CallbackContext ctx) => mousePosSS = ctx.ReadValue<Vector2>();
 
 		// Buffering an input to an action
 		public void OnButton(InputAction.CallbackContext ctx, ActionType action) {

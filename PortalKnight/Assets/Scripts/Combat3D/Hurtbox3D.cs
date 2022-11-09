@@ -13,7 +13,7 @@ namespace Thuleanx.Combat3D {
 		[ReadOnly] public long ID;
 
 		public Collider Collider {get; private set;}
-		Timer _iframe;
+		bool active;
 
 		[Range(0,1), Tooltip("Hitbox of the same faction as a hurtbox won't try to hit it")] 
 		public int faction = 0;
@@ -27,9 +27,13 @@ namespace Thuleanx.Combat3D {
 			if (CanTakeHit ^ Collider.enabled) Collider.enabled ^= true;
 		}
 
+		public void SetInvicible() => active = false;
+		public void SetVulnerable() => active = true;
+		public void SetState(bool canTakeHit) => this.active = canTakeHit;
+
+
 		public void ApplyHit(Hit3D hit) => OnHit.Invoke(hit);
-		public bool CanTakeHit => !_iframe;
-		public void GiveIframe(float duration) => _iframe = duration;
+		public bool CanTakeHit => active;
 
 		void OnDrawGizmosSelected() {
 			if (Collider && CanTakeHit) {

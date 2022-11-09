@@ -10,5 +10,6 @@ namespace Thuleanx.PortalKnight {
 			Puppet.OnDeath.AddListener(OnDeath);
 		}
 		protected abstract void OnDeath(Puppet puppet);
+		public bool IsDead => Puppet.Status.IsDead;
 	}
 }

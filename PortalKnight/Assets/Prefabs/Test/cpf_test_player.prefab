@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1731204700953670259}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1731204699796176294
 BoxCollider:
@@ -96,6 +96,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2334746766397568296}
   - {fileID: 1731204701347888257}
   - {fileID: 1731204699796176295}
   - {fileID: 1731204701272541075}
@@ -192,6 +193,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 99e57696-973a-4a18-bc69-3994370c0b89
     m_ActionName: Global/Dash[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1731204700953670262}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Player, Assembly-CSharp
+        m_MethodName: OnMousePos
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bbbde02c-027b-4eba-9cf8-d4844fcff723
+    m_ActionName: Global/MousePos[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Global
@@ -244,10 +261,16 @@ MonoBehaviour:
   attackDuration: 0.5
   attackDrag: 6
   attackHitbox: {fileID: 1731204699796176313}
+  manaOrbDamage: 1
+  manaOrbMouseRange: 3
+  maxMana: 2
+  manaOnHit: 0.25
+  manaOrbPool: {fileID: 11400000, guid: 9181b321947d40f4dbb49242214c8d1d, type: 2}
+  manaOrbFiringSource: {fileID: 2334746766397568296}
   inputBufferTime: 0.2
   movement: {x: 0, y: 0}
-  aimPosition: {x: 0, y: 0}
   lastNonZeroMovement: {x: 0, y: 0}
+  mousePosSS: {x: 0, y: 0}
 --- !u!114 &1731204700953670025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +304,7 @@ MonoBehaviour:
   OnHit:
     m_PersistentCalls:
       m_Calls: []
-  InitialMaxHealth: 10
+  InitialMaxHealth: 5
 --- !u!1 &1731204701272541072
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +337,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1731204700953670259}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1731204701272541076
 BoxCollider:
@@ -393,7 +416,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1731204700953670259}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1731204701347888258
 MeshFilter:
@@ -445,3 +468,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6201109049713693021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2334746766397568296}
+  m_Layer: 8
+  m_Name: SpellSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2334746766397568296
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6201109049713693021}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1731204700953670259}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

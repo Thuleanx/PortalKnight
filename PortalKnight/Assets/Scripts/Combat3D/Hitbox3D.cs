@@ -39,6 +39,10 @@ namespace Thuleanx.Combat3D {
 			}
 		}
 
+		void OnEnable() {
+			hurtboxCooldown.Clear();
+		}
+
 		public void startCheckingCollision() => Active = true;
 		public void stopCheckingCollision() {
 			Active = false;

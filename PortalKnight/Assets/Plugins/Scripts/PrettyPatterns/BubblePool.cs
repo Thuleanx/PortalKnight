@@ -63,7 +63,11 @@ namespace Thuleanx.PrettyPatterns {
 			bubble.gameObject.SetActive(true);
 			bubble.DisposalRequested = Collect;
 
-			SceneManager.MoveGameObjectToScene(bubble.gameObject, scene);
+			// foreach (var gameObject in scene.GetRootGameObjects())
+			// 	if (gameObject.name == "_Dynamic")
+			// 		bubble.gameObject.transform.SetParent(gameObject.transform);
+			// if (bubble.gameObject.transform.parent == null)
+				SceneManager.MoveGameObjectToScene(bubble.gameObject, scene);
 
 			bubble.scene = scene;
 
