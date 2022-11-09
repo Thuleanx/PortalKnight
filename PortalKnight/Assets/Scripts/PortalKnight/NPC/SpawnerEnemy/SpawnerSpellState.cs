@@ -37,8 +37,7 @@ namespace Thuleanx.PortalKnight {
 				yield return new WaitForSeconds(spawner.spellDuration);
 
 				// spawn
-				GameObject shadowEnemy = spawner.shadowEnemeyPool.Borrow(spawner.gameObject.scene, spawnPos);
-				spawner.enemies.Add(shadowEnemy.GetComponent<ShadowEnemy>());
+				ShadowEnemy enemy = spawner.SpawnEnemy(spawnPos);
 
 				finished = true;
 			}

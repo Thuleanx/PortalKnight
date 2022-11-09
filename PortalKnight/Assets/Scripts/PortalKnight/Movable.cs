@@ -22,5 +22,11 @@ namespace Thuleanx.PortalKnight {
 		public void ApplyKnockback(Vector3 Knockback) {
 			this.Knockback += Knockback;
 		}
+
+		public void ResetMovements() {
+			Velocity = Vector3.zero;
+			Knockback = Vector3.zero;
+			Drag = 0;
+		}
 	}
 }

@@ -4,14 +4,14 @@ using UnityEngine.Events;
 using Thuleanx.Combat3D;
 
 namespace Thuleanx.PortalKnight {
-	[RequireComponent(typeof(Movable))]
+	[RequireComponent(typeof(Alive))]
 	public class Puppet : MonoBehaviour {
 		public Status 	Status;
-		public Movable 	Movable {get; private set; }
+		public Alive Entity {get; private set; }
 
 		[Space]
-		public UnityEvent OnDeath;
-		public UnityEvent OnHit;
+		public UnityEvent<Puppet> OnDeath;
+		public UnityEvent<Puppet> OnHit;
 
 
 		public int InitialMaxHealth;
@@ -20,7 +20,7 @@ namespace Thuleanx.PortalKnight {
 			Status = new Status(){
 				MaxHealth = 10
 			};
-			Movable = GetComponent<Movable>();
+			Entity = GetComponent<Alive>();
 		}
 
 		void OnEnable() {
@@ -35,10 +35,10 @@ namespace Thuleanx.PortalKnight {
 
 		void ProcessHit(Hit3D hit) {
 			if (!Status.IsDead) {
-				Movable.ApplyKnockback(hit.knockbackAmount * hit.hitDir);
+				Entity.ApplyKnockback(hit.knockbackAmount * hit.hitDir);
 				Status.Health -= hit.damage;
-				if (Status.Health == 0) 	OnDeath?.Invoke();
-				else 						OnHit?.Invoke();
+				if (Status.Health == 0) 	OnDeath?.Invoke(this);
+				else 						OnHit?.Invoke(this);
 			}
 		}
 	}

@@ -26,7 +26,7 @@ namespace Thuleanx.PortalKnight {
 	}
 
 	[RequireComponent(typeof(CharacterController))]
-	public partial class Player : Movable {
+	public partial class Player : Alive {
 		#region Components
 		public StateMachine<Player> StateMachine {get; private set;}
 		public CharacterController Controller {get; private set; }
@@ -72,12 +72,18 @@ namespace Thuleanx.PortalKnight {
 		public Func<bool>[] ActionHandler;
 		#endregion
 
-		void Awake() {
+		public override void Awake() {
+			base.Awake();
 			StateMachine = GetComponent<StateMachine<Player>>();
 			Controller = GetComponent<CharacterController>();
 
 			inputBuffers = new Timer[Enum.GetNames(typeof(ActionType)).Length];
 			ActionHandler = new Func<bool>[Enum.GetNames(typeof(ActionType)).Length];
+		}
+
+		void OnEnable() {
+			StateMachine.Construct();
+			StateMachine.Init();
 		}
 
 		protected override void Update() {
@@ -124,5 +130,8 @@ namespace Thuleanx.PortalKnight {
 		}
 
 		protected override void Move(Vector3 displacement) => Controller.Move(displacement);
+		protected override void OnDeath(Puppet puppet) {
+			StateMachine.SetState((int)State.Dead);
+		}
 	}
 }

@@ -4,9 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-// #if UNITY_EDITOR
-// using UnityEditor;
-// #endif
 
 using Thuleanx.PrettyPatterns;
 
@@ -20,21 +17,12 @@ namespace Thuleanx {
 			};
 			AfterSceneLoad = new UnityEvent<Scene, LoadSceneMode>();
 			BeforeSceneUnload = new UnityEvent<Scene>();
-// #if UNITY_EDITOR
-// 			EditorApplication.wantsToQuit += OnWantsToQuit;
-// #endif
 		}
-
-		// bool OnWantsToQuit() {
-		// 	StopAllCoroutines();
-		// 	return true;
-		// }
 
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 		public static void Bootstrap() {
 			GameObject app = FindObjectOfType<App>()?.gameObject;
 			if (app == null) {
-				Debug.Log("HI");
 				app = UnityEngine.Object.Instantiate(Resources.Load("App")) as GameObject;
 				if (app == null) throw new ApplicationException();
 			}

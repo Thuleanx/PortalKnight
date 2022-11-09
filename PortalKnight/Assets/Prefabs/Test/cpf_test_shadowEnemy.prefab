@@ -301,7 +301,7 @@ MonoBehaviour:
   OnHit:
     m_PersistentCalls:
       m_Calls: []
-  InitialMaxHealth: 10
+  InitialMaxHealth: 2
 --- !u!1 &5229646389192037772
 GameObject:
   m_ObjectHideFlags: 0

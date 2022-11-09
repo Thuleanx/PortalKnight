@@ -18,7 +18,7 @@ namespace Thuleanx.PortalKnight {
 		}
 	}
 
-	public partial class SpawnerEnemy : Movable {
+	public partial class SpawnerEnemy : Alive {
 		#region Components
 		public StateMachine<SpawnerEnemy> StateMachine {get; private set; }
 		#endregion
@@ -32,23 +32,37 @@ namespace Thuleanx.PortalKnight {
 		[SerializeField, BoxGroup("Spawning"), Required] BubblePool shadowEnemeyPool;
 		#endregion
 
+		[SerializeField]
 		List<ShadowEnemy> enemies = new List<ShadowEnemy>();
 
-		void Awake() {
+		public override void Awake() {
 			StateMachine = GetComponent<StateMachine<SpawnerEnemy>>();
 		}
 
+		void OnEnable(){
+			StateMachine.Construct();
+			StateMachine.Init();
+		}
+
 		protected override void Update() {
-			// check if alive
-			foreach (var shadow in enemies) 
-				if (!shadow.gameObject) // if disabled
-					enemies.Remove(shadow);
 			StateMachine.RunUpdate();
 			base.Update();
 		}
 
 		void FixedUpdate() {
 			StateMachine.RunFixUpdate();
+		}
+
+		void OnEnemyDeath(Puppet enemyPuppet) {
+			enemies.Remove(enemyPuppet.GetComponent<ShadowEnemy>());
+			enemyPuppet.OnDeath.RemoveListener(OnEnemyDeath);
+		}
+		public ShadowEnemy SpawnEnemy(Vector3 spawnPos) {
+			GameObject shadowEnemyObj = shadowEnemeyPool.Borrow(gameObject.scene, spawnPos);
+			ShadowEnemy shadowEnemy = shadowEnemyObj.GetComponent<ShadowEnemy>();
+			enemies.Add(shadowEnemy);
+			shadowEnemy.GetComponent<Puppet>().OnDeath.AddListener(OnEnemyDeath);
+			return shadowEnemy;
 		}
 
 		protected override void Move(Vector3 displacement) {
@@ -59,5 +73,6 @@ namespace Thuleanx.PortalKnight {
 			Gizmos.color = Color.red;
 			Gizmos.DrawWireSphere(transform.position + offset, range);
 		}
+		protected override void OnDeath(Puppet puppet) => StateMachine.SetState((int) State.Dead);
 	}
 }
