@@ -19,7 +19,7 @@ namespace Thuleanx.PortalKnight {
 	}
 
 	[RequireComponent(typeof(NavMeshAgent))]
-	public partial class ShadowEnemy : Movable {
+	public partial class ShadowEnemy : Alive {
 
 		#region Components
 		public CharacterController Controller {get; private set;}
@@ -27,7 +27,6 @@ namespace Thuleanx.PortalKnight {
 		public StateMachine<ShadowEnemy> StateMachine {get; private set; }
 
 		Player player;
-		List<Hurtbox3D> hurtboxes = new List<Hurtbox3D>();
 		#endregion
 
 		#region Movement
@@ -48,16 +47,21 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Melee Attack"), Required, SerializeField] 	Hitbox3D meleeHitbox;
 		#endregion
 
-		void Awake() {
+		public override void Awake() {
+			base.Awake();
 			NavAgent = GetComponent<NavMeshAgent>();
 			StateMachine = GetComponent<StateMachine<ShadowEnemy>>();
 			Controller = GetComponent<CharacterController>();
 
 			player = FindObjectOfType<Player>();
-			hurtboxes = new List<Hurtbox3D>(GetComponentsInChildren<Hurtbox3D>());
 
 			NavAgent.updatePosition = false;
 			NavAgent.updateRotation = false;
+		}
+
+		void OnEnable() {
+			StateMachine.Construct();
+			StateMachine.Init();
 		}
 
 		protected override void Update() {
@@ -83,6 +87,7 @@ namespace Thuleanx.PortalKnight {
 				Controller.Move(displacement);
 			}
 		}
+		protected override void OnDeath(Puppet puppet) => StateMachine.SetState((int) State.Dead);
 
 	}
 }

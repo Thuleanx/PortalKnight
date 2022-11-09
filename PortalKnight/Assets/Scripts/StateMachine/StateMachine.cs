@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 namespace Thuleanx.AI.FSM {
-	public class StateMachine<Agent> : MonoBehaviour {
+	public abstract class StateMachine<Agent> : MonoBehaviour {
 		bool isAutoUpdate;
 		int defaultState;
 
@@ -18,7 +18,7 @@ namespace Thuleanx.AI.FSM {
 				_currentState = value;
 				States[_currentState]?.Begin(agent);
 
-				IEnumerator enumerator = States[_currentState].Coroutine(agent);
+				IEnumerator enumerator = States[_currentState]?.Coroutine(agent);
 				if (enumerator != null) currentCoroutine = StartCoroutine(enumerator);
 			}
 		}}
@@ -35,7 +35,7 @@ namespace Thuleanx.AI.FSM {
 			States[index] = state;
 			state.SetStateMachine(this);
 		}
-		public bool CanEnter(int index) => States[index] == null || States[index].CanEnter();
+		public bool CanEnter(int index) => States[index] == null || States[index].CanEnter(agent);
 		public void SetState(int index) => State = index;
 		public bool TrySetState(int index) {
 			if (index == -1 || index == State) return false;
@@ -44,6 +44,7 @@ namespace Thuleanx.AI.FSM {
 			return canSet;
 		}
 
+		public abstract void Construct();
 		public void Init() {
 			_currentState = defaultState;
 			// for (int i = 0; i < States.Length; i++) 
