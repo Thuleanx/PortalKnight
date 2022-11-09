@@ -9,8 +9,6 @@ namespace Thuleanx.PortalKnight {
 		public class PlayerDeadState : GenericDeadState<Player> {
 			public override IEnumerator Coroutine(Player player) {
 				yield return new WaitForSeconds(3);
-				player.gameObject.SetActive(false);
-				// reload 
 				App.instance.RequestReload();
 			}
 		}

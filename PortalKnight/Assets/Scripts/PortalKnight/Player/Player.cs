@@ -30,6 +30,7 @@ namespace Thuleanx.PortalKnight {
 		#region Components
 		public StateMachine<Player> StateMachine {get; private set;}
 		public CharacterController Controller {get; private set; }
+		public Status Status => Puppet.Status;
 		#endregion
 
 		#region Movement
