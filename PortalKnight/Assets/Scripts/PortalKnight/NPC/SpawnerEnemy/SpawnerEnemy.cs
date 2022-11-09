@@ -32,10 +32,10 @@ namespace Thuleanx.PortalKnight {
 		[SerializeField, BoxGroup("Spawning"), Required] BubblePool shadowEnemeyPool;
 		#endregion
 
-		[SerializeField]
 		List<ShadowEnemy> enemies = new List<ShadowEnemy>();
 
 		public override void Awake() {
+			base.Awake();
 			StateMachine = GetComponent<StateMachine<SpawnerEnemy>>();
 		}
 
@@ -73,6 +73,8 @@ namespace Thuleanx.PortalKnight {
 			Gizmos.color = Color.red;
 			Gizmos.DrawWireSphere(transform.position + offset, range);
 		}
-		protected override void OnDeath(Puppet puppet) => StateMachine.SetState((int) State.Dead);
+		protected override void OnDeath(Puppet puppet) {
+			StateMachine.SetState((int) State.Dead);
+		}
 	}
 }
