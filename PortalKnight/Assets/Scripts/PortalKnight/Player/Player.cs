@@ -45,7 +45,6 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Dash"), Range(0, 1), Tooltip("Dash duration in seconds"), SerializeField] float dashDuration = 10;
 		[BoxGroup("Dash"), Range(0, 64), SerializeField] float dashDrag;
 		#endregion
-
 		
 		#region Combat
 		[HorizontalLine(color:EColor.Red)]
@@ -55,6 +54,18 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Attack"), Range(0, 5), SerializeField] float attackDuration = 0.5f;
 		[BoxGroup("Attack"), Range(0,64), SerializeField] float attackDrag = 8f;
 		[BoxGroup("Attack"), Required, SerializeField] Hitbox3D attackHitbox;
+		#endregion
+
+		#region Spell Casting
+		[BoxGroup("Spell"), Range(1, 5), SerializeField] int maxMana = 2;
+		[BoxGroup("Spell"), Range(0, 1), SerializeField] float manaOnHit;
+
+		public float MaxMana => maxMana;
+
+		float _mana;
+		public float Mana {get => _mana; private set {
+			_mana = Mathf.Clamp(value, 0, MaxMana);
+		}}
 		#endregion
 
 		# region Input Fields

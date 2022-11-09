@@ -21,6 +21,7 @@ namespace Thuleanx.PortalKnight {
 				attackDirection = player.lastNonZeroMovement;
 				if (attackDirection.sqrMagnitude > 0) attackDirection = attackDirection.normalized;
 				player.attackHitbox.HitGenerator = this;
+				player.attackHitbox.OnHit.AddListener(OnHit);
 			}
 
 			public override void End(Player player) {
@@ -28,6 +29,7 @@ namespace Thuleanx.PortalKnight {
 					player.attackHitbox.HitGenerator = null;
 
 				player.Drag = 0;
+				player.attackHitbox.OnHit.RemoveListener(OnHit);
 				player.attackHitbox.stopCheckingCollision();
 				onCooldown = player.attackCooldown;
 				dragTween.Kill();
@@ -53,6 +55,12 @@ namespace Thuleanx.PortalKnight {
 				dragTween.Kill(); // gotta kill to ensure no side erffects after exiting the state
 
 				stateMachine.SetState((int) Player.State.Neutral);
+			}
+
+			void OnHit(Hit3D hit) {
+				// bad code smell >_<
+				Player player = stateMachine.GetComponent<Player>();
+				player.Mana += player.manaOnHit;
 			}
 
 			public Hit3D GenerateHit(Hitbox3D hitbox, Hurtbox3D hurtbox) {

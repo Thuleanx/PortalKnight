@@ -197,7 +197,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,6 +205,69 @@ TextureImporter:
       bones: []
       spriteID: 9ed5378aafdcf414697d7282c6a540c2
       internalID: -316422499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI_1x_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 4
+        width: 16
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c24ab2aed0786d4480fd97063e27978
+      internalID: 49863366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI_1x_6
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 21
+        width: 24
+        height: 3
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 1, z: 1, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ae28bb318336f4da0c1ea532c1b058
+      internalID: 543447264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI_1x_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b29181112ea80348b527cf8a5af9e3e
+      internalID: -1235585134
       vertices: []
       indices: 
       edges: []
@@ -223,6 +286,9 @@ TextureImporter:
       GUI_1x_2: -304056557
       GUI_1x_0: 979698549
       GUI_1x_1: -1478055457
+      GUI_1x_5: 49863366
+      GUI_1x_7: -1235585134
+      GUI_1x_6: 543447264
       GUI_1x_4: -316422499
       GUI_1x_3: 1269649543
   spritePackingTag: 
