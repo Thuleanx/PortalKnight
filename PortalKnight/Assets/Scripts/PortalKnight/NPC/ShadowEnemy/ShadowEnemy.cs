@@ -27,7 +27,6 @@ namespace Thuleanx.PortalKnight {
 		public StateMachine<ShadowEnemy> StateMachine {get; private set; }
 
 		Player player;
-		List<Hurtbox3D> hurtboxes = new List<Hurtbox3D>();
 		#endregion
 
 		#region Movement
@@ -54,7 +53,6 @@ namespace Thuleanx.PortalKnight {
 			Controller = GetComponent<CharacterController>();
 
 			player = FindObjectOfType<Player>();
-			hurtboxes = new List<Hurtbox3D>(GetComponentsInChildren<Hurtbox3D>());
 
 			NavAgent.updatePosition = false;
 			NavAgent.updateRotation = false;

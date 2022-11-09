@@ -14,7 +14,7 @@ namespace Thuleanx.PortalKnight {
 			Vector3 attackDirection;
 			Tween 	dragTween;
 
-			public override bool CanEnter() => !onCooldown;
+			public override bool CanEnter(Player player) => !onCooldown;
 
 			public override void Begin(Player player) {
 				player.Drag = player.attackDrag;

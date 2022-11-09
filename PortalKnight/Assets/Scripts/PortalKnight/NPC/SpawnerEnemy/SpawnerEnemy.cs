@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using NaughtyAttributes;
 
 using Thuleanx.AI.FSM;
+using Thuleanx.PrettyPatterns;
 using Thuleanx.Combat3D;
 using Thuleanx.Utils;
 
@@ -18,5 +19,45 @@ namespace Thuleanx.PortalKnight {
 	}
 
 	public partial class SpawnerEnemy : Movable {
+		#region Components
+		public StateMachine<SpawnerEnemy> StateMachine {get; private set; }
+		#endregion
+
+		#region Spawing
+		[SerializeField, BoxGroup("Spawning"), MinMaxSlider(0, 30)] Vector2 cooldown;
+		[SerializeField, BoxGroup("Spawning"), Range(0, 3)] float spellDuration;
+		[SerializeField, BoxGroup("Spawning")] Vector3 offset;
+		[SerializeField, BoxGroup("Spawning"), Range(0, 20)] float range = 3;
+		[SerializeField, BoxGroup("Spawning"), Range(0, 20)] int maxShadowEnemies;
+		[SerializeField, BoxGroup("Spawning"), Required] BubblePool shadowEnemeyPool;
+		#endregion
+
+		List<ShadowEnemy> enemies = new List<ShadowEnemy>();
+
+		void Awake() {
+			StateMachine = GetComponent<StateMachine<SpawnerEnemy>>();
+		}
+
+		protected override void Update() {
+			// check if alive
+			foreach (var shadow in enemies) 
+				if (!shadow.gameObject) // if disabled
+					enemies.Remove(shadow);
+			StateMachine.RunUpdate();
+			base.Update();
+		}
+
+		void FixedUpdate() {
+			StateMachine.RunFixUpdate();
+		}
+
+		protected override void Move(Vector3 displacement) {
+			// does nothing, this boi do not move
+		}
+
+		void OnDrawGizmosSelected() {
+			Gizmos.color = Color.red;
+			Gizmos.DrawWireSphere(transform.position + offset, range);
+		}
 	}
 }
