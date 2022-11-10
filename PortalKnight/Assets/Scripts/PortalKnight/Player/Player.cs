@@ -11,12 +11,10 @@ using Thuleanx.Utils;
 namespace Thuleanx.PortalKnight {
 	public partial class Player {
 		public enum State {
-			Neutral = 0,
-			Attack = 1,
-			Shoot = 2,
-			Dash = 3,
-			Frozen = 4,
-			Dead = 5
+			Neutral,
+			Attack,
+			Dash,
+			Dead
 		};
 
 		public enum ActionType {
