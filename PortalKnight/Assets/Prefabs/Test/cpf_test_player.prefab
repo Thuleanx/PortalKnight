@@ -77,6 +77,8 @@ GameObject:
   - component: {fileID: 1731204700953670262}
   - component: {fileID: 1731204700953670025}
   - component: {fileID: 1731204700953670024}
+  - component: {fileID: 7791207592889727339}
+  - component: {fileID: 2168469916281205935}
   m_Layer: 8
   m_Name: cpf_test_player
   m_TagString: Untagged
@@ -131,8 +133,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1731204700953670262}
-        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Player, Assembly-CSharp
+      - m_Target: {fileID: 2168469916281205935}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.PlayerInputHandler, Assembly-CSharp
         m_MethodName: OnMovement
         m_Mode: 0
         m_Arguments:
@@ -147,8 +149,8 @@ MonoBehaviour:
     m_ActionName: Global/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1731204700953670262}
-        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Player, Assembly-CSharp
+      - m_Target: {fileID: 2168469916281205935}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.PlayerInputHandler, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
@@ -163,8 +165,8 @@ MonoBehaviour:
     m_ActionName: Global/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1731204700953670262}
-        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Player, Assembly-CSharp
+      - m_Target: {fileID: 2168469916281205935}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.PlayerInputHandler, Assembly-CSharp
         m_MethodName: OnShoot
         m_Mode: 0
         m_Arguments:
@@ -179,8 +181,8 @@ MonoBehaviour:
     m_ActionName: Global/Shoot[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1731204700953670262}
-        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Player, Assembly-CSharp
+      - m_Target: {fileID: 2168469916281205935}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.PlayerInputHandler, Assembly-CSharp
         m_MethodName: OnDash
         m_Mode: 0
         m_Arguments:
@@ -195,8 +197,8 @@ MonoBehaviour:
     m_ActionName: Global/Dash[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1731204700953670262}
-        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Player, Assembly-CSharp
+      - m_Target: {fileID: 2168469916281205935}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.PlayerInputHandler, Assembly-CSharp
         m_MethodName: OnMousePos
         m_Mode: 0
         m_Arguments:
@@ -267,10 +269,6 @@ MonoBehaviour:
   manaOnHit: 0.25
   manaOrbPool: {fileID: 11400000, guid: 9181b321947d40f4dbb49242214c8d1d, type: 2}
   manaOrbFiringSource: {fileID: 2334746766397568296}
-  inputBufferTime: 0.2
-  movement: {x: 0, y: 0}
-  lastNonZeroMovement: {x: 0, y: 0}
-  mousePosSS: {x: 0, y: 0}
 --- !u!114 &1731204700953670025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +303,36 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   InitialMaxHealth: 5
+--- !u!114 &7791207592889727339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731204700953670256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74544c9a37e6cc45afa375fdc8cc961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {x: 0, y: 0}
+  lastNonZeroMovement: {x: 0, y: 0}
+  mousePosSS: {x: 0, y: 0}
+  canPerformAction: 
+  triggerAction: 
+--- !u!114 &2168469916281205935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731204700953670256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ade0c6fdf1a80744b6cbd0c22297b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputBufferTime: 0.2
 --- !u!1 &1731204701272541072
 GameObject:
   m_ObjectHideFlags: 0

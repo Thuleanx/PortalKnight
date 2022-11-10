@@ -18,7 +18,7 @@ namespace Thuleanx.PortalKnight {
 
 			public override void Begin(Player player) {
 				player.Drag = player.attackDrag;
-				attackDirection = player.lastNonZeroMovement;
+				attackDirection = player.Input.lastNonZeroMovement;
 				if (attackDirection.sqrMagnitude > 0) attackDirection = attackDirection.normalized;
 				player.attackHitbox.HitGenerator = this;
 				player.attackHitbox.OnHit.AddListener(OnHit);
@@ -42,8 +42,8 @@ namespace Thuleanx.PortalKnight {
 
 				Timer waiting = player.attackDuration;
 				while (waiting) {
-					if (player.movement != Vector2.zero) {
-						Vector3 inputDir = player.InputMovementToWorldDir(player.movement).normalized;
+					if (player.Input.movement != Vector2.zero) {
+						Vector3 inputDir = player.Input.MovementToWorldDir(player.Input.movement).normalized;
 						player.Velocity = inputDir * player.Velocity.magnitude;
 					}
 					yield return null;

@@ -17,7 +17,7 @@ namespace Thuleanx.PortalKnight {
 			public override bool CanEnter(Player player) => !onCooldown;
 
 			public override void Begin(Player player) {
-				dashDirection = player.InputMovementToWorldDir(player.lastNonZeroMovement);
+				dashDirection = player.Input.MovementToWorldDir(player.Input.lastNonZeroMovement);
 				beforeDashVelocity = player.Velocity;
 			}
 

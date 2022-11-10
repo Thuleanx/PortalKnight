@@ -10,22 +10,22 @@ namespace Thuleanx.PortalKnight {
 			bool OnAttack(Player player) => player.StateMachine.TrySetState((int) Player.State.Attack);
 
 			public override void Begin(Player agent) {
-				agent.ActionHandler[(int) ActionType.Dash] = OnDash;
-				agent.ActionHandler[(int) ActionType.Attack] = OnAttack;
-				agent.ActionHandler[(int) ActionType.Shoot] = OnShoot;
+				agent.Input.ActionHandler[(int) ActionType.Dash] = OnDash;
+				agent.Input.ActionHandler[(int) ActionType.Attack] = OnAttack;
+				agent.Input.ActionHandler[(int) ActionType.Shoot] = OnShoot;
 			}
 
 			public override void End(Player agent) {
-				agent.ActionHandler[(int) ActionType.Dash] = null;
-				agent.ActionHandler[(int) ActionType.Attack] = null;
-				agent.ActionHandler[(int) ActionType.Shoot] = null;
+				agent.Input.ActionHandler[(int) ActionType.Dash] = null;
+				agent.Input.ActionHandler[(int) ActionType.Attack] = null;
+				agent.Input.ActionHandler[(int) ActionType.Shoot] = null;
 			}
 
 			public override int Update(Player player) {
 				Vector3 desiredVelocity = player.Velocity;
 
-				if (player.movement.sqrMagnitude >= 0.01f)
-					desiredVelocity = player.InputMovementToWorldDir(player.movement) * player.speed;
+				if (player.Input.movement.sqrMagnitude >= 0.01f)
+					desiredVelocity = player.Input.MovementToWorldDir(player.Input.movement) * player.speed;
 				else desiredVelocity = Vector3.zero;
 
 				player.Velocity = Mathx.Damp(Vector3.Lerp, player.Velocity, desiredVelocity, 
@@ -48,7 +48,7 @@ namespace Thuleanx.PortalKnight {
 			void SpawnManaOrb(Player player) {
 				GameObject obj = player.manaOrbPool.Borrow(player.gameObject.scene);
 				obj.transform.position = player.manaOrbFiringSource.transform.position;
-				Vector3 targetPos = player.mousePosWS;
+				Vector3 targetPos = player.Input.mousePosWS;
 
 				Puppet closestTarget = null;
 				foreach (var target in GameObject.FindGameObjectsWithTag("Enemy")) {

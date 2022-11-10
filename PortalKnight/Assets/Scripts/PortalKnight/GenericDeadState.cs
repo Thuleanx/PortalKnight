@@ -9,7 +9,6 @@ namespace Thuleanx.PortalKnight {
 		}
 
 		public override IEnumerator Coroutine(T agent) {
-			Debug.Log("DEAD");
 			yield return new WaitForSeconds(3);
 			agent.gameObject.SetActive(false);
 		}

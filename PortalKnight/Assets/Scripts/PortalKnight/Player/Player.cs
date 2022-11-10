@@ -24,11 +24,13 @@ namespace Thuleanx.PortalKnight {
 		};
 	}
 
+	[RequireComponent(typeof(PlayerInputChain))]
 	[RequireComponent(typeof(CharacterController))]
 	public partial class Player : Alive {
 		#region Components
 		public StateMachine<Player> StateMachine {get; private set;}
 		public CharacterController Controller {get; private set; }
+		public PlayerInputChain Input {get; private set; }
 		public Status Status => Puppet.Status;
 		#endregion
 
@@ -71,43 +73,11 @@ namespace Thuleanx.PortalKnight {
 		}}
 		#endregion
 
-		# region Input Fields
-		[Header("Input Related Fields")]
-		[SerializeField] float inputBufferTime = 0.2f;
-		[ReadOnly, SerializeField] Vector2 movement;
-		[ReadOnly, SerializeField] Vector2 lastNonZeroMovement;
-		[ReadOnly, SerializeField] Vector2 mousePosSS;
-		Vector3 mousePosWS {
-			get {
-				Camera cam = Camera.main;
-				Vector2 vp = cam.ScreenToViewportPoint(mousePosSS);
-				Ray ray = Camera.main.ViewportPointToRay(vp);
-				Plane plane = new Plane(Vector3.up, transform.position.y);
-				float dist;
-				if (plane.Raycast(ray, out dist)) {
-					Vector3 pos = ray.GetPoint(dist);
-					return pos;
-				}
-				return Camera.main.ScreenToWorldPoint(mousePosSS);
-			} 
-		}
-		#endregion
-
-		#region State Related Fields
-		Timer[] inputBuffers;
-
-		// Only States should access this
-		[HideInInspector]
-		public Func<Player, bool>[] ActionHandler;
-		#endregion
-
 		public override void Awake() {
 			base.Awake();
 			StateMachine = GetComponent<StateMachine<Player>>();
 			Controller = GetComponent<CharacterController>();
-
-			inputBuffers = new Timer[Enum.GetNames(typeof(ActionType)).Length];
-			ActionHandler = new Func<Player, bool>[Enum.GetNames(typeof(ActionType)).Length];
+			Input = GetComponent<PlayerInputChain>();
 		}
 
 		void OnEnable() {
@@ -116,13 +86,7 @@ namespace Thuleanx.PortalKnight {
 		}
 
 		protected override void Update() {
-			// Trigger all ActionHandlers, if it is not null and the input is buffered recently
-			for (int i = 0; i < inputBuffers.Length; i++) {
-				if (inputBuffers[i] && ActionHandler[i] != null) {
-					ActionHandler[i].Invoke(this);
-					inputBuffers[i].Stop();
-				}
-			}
+			Input.ProcessInputs();
 			StateMachine.RunUpdate();
 			base.Update();
 			Controller.Move(Velocity * Time.deltaTime);
@@ -131,32 +95,6 @@ namespace Thuleanx.PortalKnight {
 
 		void FixedUpdate() {
 			StateMachine.RunFixUpdate();
-		}
-
-		public void OnMovement(InputAction.CallbackContext ctx) {
-			movement = ctx.ReadValue<Vector2>();
-			if (movement.sqrMagnitude > 0)
-				lastNonZeroMovement = movement;
-		}
-		public void OnMousePos(InputAction.CallbackContext ctx) => mousePosSS = ctx.ReadValue<Vector2>();
-
-		// Buffering an input to an action
-		public void OnButton(InputAction.CallbackContext ctx, ActionType action) {
-			if (ctx.started) inputBuffers[(int) action] = inputBufferTime;
-		}
-
-		public void OnAttack(InputAction.CallbackContext ctx) =>	OnButton(ctx, ActionType.Attack);
-		public void OnShoot(InputAction.CallbackContext ctx) => 	OnButton(ctx, ActionType.Shoot);
-		public void OnDash(InputAction.CallbackContext ctx) => 		OnButton(ctx, ActionType.Dash);
-		
-		Vector3 InputMovementToWorldDir(Vector2 movement) {
-			Vector3 inputDir = new Vector3(
-				movement.x, 0, movement.y
-			).normalized;
-
-			return Quaternion.Euler(
-				0, Camera.main.transform.eulerAngles.y, 0f
-			) * inputDir;
 		}
 
 		protected override void Move(Vector3 displacement) => Controller.Move(displacement);
