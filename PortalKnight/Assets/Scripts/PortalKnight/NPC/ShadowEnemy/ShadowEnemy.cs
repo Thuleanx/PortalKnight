@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.AI;
 using NaughtyAttributes;
-
 using Thuleanx.AI.FSM;
 using Thuleanx.Combat3D;
 using Thuleanx.Utils;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Thuleanx.PortalKnight {
 	public partial class ShadowEnemy {
@@ -84,6 +83,9 @@ namespace Thuleanx.PortalKnight {
 				// NavMeshHit hit;
 				// if (NavAgent.Raycast(transform.position + displacement, out hit))
 				// 	displacement *= hit.distance / displacement.magnitude;
+				RaycastHit hit;
+				if (Physics.Raycast(transform.position + Vector3.down * 0.05f, Vector3.down, out hit))
+					displacement += Vector3.down * (hit.distance - 0.05f);
 				Controller.Move(displacement);
 			}
 		}

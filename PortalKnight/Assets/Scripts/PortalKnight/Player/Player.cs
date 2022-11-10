@@ -1,12 +1,11 @@
 using System;
+using NaughtyAttributes;
+using Thuleanx.AI.FSM;
+using Thuleanx.Combat3D;
+using Thuleanx.PrettyPatterns;
+using Thuleanx.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using NaughtyAttributes;
-
-using Thuleanx.AI.FSM;
-using Thuleanx.PrettyPatterns;
-using Thuleanx.Combat3D;
-using Thuleanx.Utils;
 
 namespace Thuleanx.PortalKnight {
 	public partial class Player {
@@ -97,7 +96,12 @@ namespace Thuleanx.PortalKnight {
 			StateMachine.RunFixUpdate();
 		}
 
-		protected override void Move(Vector3 displacement) => Controller.Move(displacement);
+		protected override void Move(Vector3 displacement) {
+			RaycastHit hit;
+			if (Physics.Raycast(transform.position + Vector3.down * 0.05f, Vector3.down, out hit))
+				displacement += Vector3.down * (hit.distance - 0.05f);
+			Controller.Move(displacement);
+		}
 		protected override void OnDeath(Puppet puppet) {
 			StateMachine.SetState((int)State.Dead);
 		}

@@ -31,6 +31,7 @@ namespace Thuleanx.PortalKnight {
 				monster.Velocity = Mathx.Damp(Vector3.Lerp, monster.Velocity, desiredVelocity, 
 					(desiredVelocity.sqrMagnitude >= monster.Velocity.sqrMagnitude ? 
 						monster.accelerationAlpha : monster.deccelerationAlpha), Time.deltaTime);
+
 				monster.TurnToFace(monster.Velocity);
 
 				return -1;

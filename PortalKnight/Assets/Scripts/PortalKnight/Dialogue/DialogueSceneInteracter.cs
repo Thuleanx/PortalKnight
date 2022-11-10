@@ -21,6 +21,7 @@ namespace Thuleanx.PortalKnight.Dialogue {
 
 		void Awake() {
 			Runner = GetComponent<DialogueRunner>();
+			Runner.VariableStorage = App.instance.GetComponentInChildren<VariableStorage>();
 			Player = FindObjectOfType<Player>();
 		}
 
