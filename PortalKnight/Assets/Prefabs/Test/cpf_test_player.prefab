@@ -211,6 +211,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bbbde02c-027b-4eba-9cf8-d4844fcff723
     m_ActionName: Global/MousePos[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2168469916281205935}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnSpecial
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4e39e3ea-6536-4aea-b61d-bdd20bd5d145
+    m_ActionName: Global/Special[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Global
@@ -266,9 +282,13 @@ MonoBehaviour:
   attackHitbox: {fileID: 1731204699796176313}
   manaOrbDamage: 1
   manaOrbMouseRange: 3
+  novaTrackingRange: 3
   maxMana: 2
   manaOnHit: 0.25
+  novaDelay: 0.5
+  novaRecovery: 0.25
   manaOrbPool: {fileID: 11400000, guid: 9181b321947d40f4dbb49242214c8d1d, type: 2}
+  novaPool: {fileID: 11400000, guid: c6a655b3223ce2146852ffc7238f77a2, type: 2}
   manaOrbFiringSource: {fileID: 2334746766397568296}
 --- !u!114 &1731204700953670025
 MonoBehaviour:

@@ -14,13 +14,15 @@ namespace Thuleanx.PortalKnight {
 			Neutral,
 			Attack,
 			Dash,
+			Special,
 			Dead
 		};
 
 		public enum ActionType {
 			Attack = 0,
 			Shoot = 1,
-			Dash = 2
+			Dash = 2,
+			Special = 3
 		};
 	}
 
@@ -60,9 +62,13 @@ namespace Thuleanx.PortalKnight {
 		#region Spell Casting
 		[BoxGroup("Spell"), Range(1, 5), SerializeField] int manaOrbDamage;
 		[BoxGroup("Spell"), Range(0, 10), SerializeField] float manaOrbMouseRange = 3;
+		[BoxGroup("Spell"), Range(0, 10), SerializeField] float novaTrackingRange = 3;
 		[BoxGroup("Spell"), Range(1, 5), SerializeField] int maxMana = 2;
 		[BoxGroup("Spell"), Range(0, 1), SerializeField] float manaOnHit;
+		[BoxGroup("Spell"), Range(0, 1), SerializeField] float novaDelay = 0.5f;
+		[BoxGroup("Spell"), Range(0, 1), SerializeField] float novaRecovery = 0.25f;
 		[BoxGroup("Spell"), SerializeField, Required] BubblePool manaOrbPool;
+		[BoxGroup("Spell"), SerializeField, Required] BubblePool novaPool;
 		[BoxGroup("Spell"), SerializeField, Required] Transform manaOrbFiringSource;
 
 		public float MaxMana => maxMana;
@@ -83,6 +89,7 @@ namespace Thuleanx.PortalKnight {
 		void OnEnable() {
 			StateMachine.Construct();
 			StateMachine.Init();
+			Mana = MaxMana;
 		}
 
 		protected override void Update() {

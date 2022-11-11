@@ -27,9 +27,6 @@ namespace Thuleanx.PortalKnight {
 			Hitbox = GetComponentInChildren<Hitbox3D>();
 		}
 
-		void Start() {
-		}
-
 		protected override void Update() {
 			Vector3 targetPos = (target && !target.IsDead ? target.transform.position : targetPosFallback) + targetOffset;
 			if (!alive || (!target && (transform.position - targetPos).sqrMagnitude < 0.5))

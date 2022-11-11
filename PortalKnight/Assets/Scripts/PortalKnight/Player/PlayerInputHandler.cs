@@ -35,6 +35,7 @@ namespace Thuleanx.PortalKnight {
 		public void OnAttack(InputAction.CallbackContext ctx) => OnButton(ctx, Player.ActionType.Attack);
 		public void OnShoot(InputAction.CallbackContext ctx) => OnButton(ctx, Player.ActionType.Shoot);
 		public void OnDash(InputAction.CallbackContext ctx) => OnButton(ctx, Player.ActionType.Dash);
+		public void OnSpecial(InputAction.CallbackContext ctx) => OnButton(ctx, Player.ActionType.Special);
 
 		public int GetPriority() => 0;
 
