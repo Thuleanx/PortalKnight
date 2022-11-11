@@ -49,6 +49,9 @@ namespace Thuleanx.PrettyPatterns {
 			borrowedLedger.Clear();
 		}
 
+		public T BorrowTyped<T>(Scene scene, Vector3? positionNullable = null, Quaternion? rotationNullable = null)
+			=> Borrow(scene, positionNullable, rotationNullable).GetComponent<T>();
+
 		public GameObject Borrow(Scene scene, Vector3? positionNullable = null, Quaternion? rotationNullable = null) {
 			TryInit();
 			if (pool.Count == 0) Expand(Mathf.Max(totalBubbles, DefaultSize));

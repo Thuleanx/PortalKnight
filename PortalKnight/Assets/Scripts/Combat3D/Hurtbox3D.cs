@@ -21,6 +21,7 @@ namespace Thuleanx.Combat3D {
 
 		void Awake() {
 			Collider = GetComponent<Collider>();
+			ID = NextID++;
 		}
 
 		void Update() {

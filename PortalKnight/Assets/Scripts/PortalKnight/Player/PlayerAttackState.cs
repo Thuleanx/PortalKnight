@@ -66,7 +66,7 @@ namespace Thuleanx.PortalKnight {
 			public Hit3D GenerateHit(Hitbox3D hitbox, Hurtbox3D hurtbox) {
 				// assumes hitbox is parented 
 				Player player = hitbox.GetComponentInParent<Player>();
-				return new Hit3D(player.attackDamage, player.attackKnockback, player.transform.forward);
+				return new Hit3D(player.attackDamage, player.attackKnockback, player.transform.forward, hurtbox.transform.position);
 			}
 		}
 	}

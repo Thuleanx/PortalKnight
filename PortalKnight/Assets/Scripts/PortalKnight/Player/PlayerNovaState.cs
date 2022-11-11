@@ -37,7 +37,8 @@ namespace Thuleanx.PortalKnight {
 			}
 
 			void SpawnNova(Player player, Vector3 targetPos) {
-				GameObject obj = player.novaPool.Borrow(player.gameObject.scene);
+				Nova nova = player.novaPool.BorrowTyped<Nova>(player.gameObject.scene);
+				nova.Initialize(player);
 
 				Puppet closestTarget = null;
 				foreach (var target in GameObject.FindGameObjectsWithTag("Enemy")) {
@@ -48,11 +49,8 @@ namespace Thuleanx.PortalKnight {
 				if (closestTarget && (closestTarget.transform.position - targetPos).sqrMagnitude > player.novaTrackingRange) 
 					closestTarget = null;
 
-				if (closestTarget == null)  obj.transform.position = targetPos;
-				else 						obj.transform.position = closestTarget.transform.position;
-
-				Nova nova = obj.GetComponent<Nova>();
-				// you dont use this for anything 
+				if (closestTarget == null) nova.transform.position = targetPos;
+				else nova.transform.position = closestTarget.transform.position;
 			}
 
 			bool ShouldSwap(Puppet a, Puppet b, Vector3 pos) {
