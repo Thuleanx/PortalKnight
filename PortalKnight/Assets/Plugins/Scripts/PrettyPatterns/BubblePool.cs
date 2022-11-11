@@ -79,13 +79,16 @@ namespace Thuleanx.PrettyPatterns {
 		}
 
 		void CollectsAll(Scene scene) {
-			List<Bubble> bubbles = new List<Bubble>(borrowedLedger[scene.name]);
-			foreach (Bubble bubble in bubbles) 
-				bubble.Pop();
-			borrowedLedger.Remove(scene.name);
+			if (borrowedLedger.ContainsKey(scene.name)) {
+				List<Bubble> bubbles = new List<Bubble>(borrowedLedger[scene.name]);
+				foreach (Bubble bubble in bubbles) 
+					bubble.Pop();
+				borrowedLedger.Remove(scene.name);
+			}
 		}
 
 		void Collect(Bubble bubble) {
+			Debug.Log("Collecting " + bubble.gameObject.name);
 			if (borrowedLedger.ContainsKey(bubble.gameObject.scene.name))
 				borrowedLedger[bubble.gameObject.scene.name].Remove(bubble);
 			DontDestroyOnLoad(bubble.gameObject);

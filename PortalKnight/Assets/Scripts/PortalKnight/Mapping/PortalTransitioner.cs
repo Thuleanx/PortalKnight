@@ -16,7 +16,7 @@ namespace Thuleanx.PortalKnight.Mapping {
 
 		IEnumerator iTransition(SceneReference TargetScene) {
 			yield return null;
-			TargetScene.LoadScene();
+			App.instance.RequestLoad(TargetScene.SceneName);
 			transitioning = false;
 		}
 	}

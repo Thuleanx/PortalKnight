@@ -871,6 +871,7 @@ GameObject:
   - component: {fileID: 1344546386}
   - component: {fileID: 1344546387}
   - component: {fileID: 1344546388}
+  - component: {fileID: 1344546389}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Enemy
@@ -906,6 +907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5871ccf8fb3b548a89122ac1177def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinWidth: 0.05
   Velocity: {x: 0, y: 0, z: 0}
   Knockback: {x: 0, y: 0, z: 0}
   KnockbackResistance: 1
@@ -958,10 +960,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1344546389}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Dialogue.VariableSetter,
+          Assembly-CSharp
+        m_MethodName: SetBit
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: $cleared_library
+          m_BoolArgument: 1
+        m_CallState: 2
   OnHit:
     m_PersistentCalls:
       m_Calls: []
-  InitialMaxHealth: 20
+  InitialMaxHealth: 1
+--- !u!114 &1344546389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344546384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d923cb0ec39f44469891ff3a3e25c31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1535195644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,6 +1826,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1417503490551499893, guid: f7c602ef1c54f284b846b83dc5fef16a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417503490551499893, guid: f7c602ef1c54f284b846b83dc5fef16a,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417503490551499893, guid: f7c602ef1c54f284b846b83dc5fef16a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417503490551499893, guid: f7c602ef1c54f284b846b83dc5fef16a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1417503491508488440, guid: f7c602ef1c54f284b846b83dc5fef16a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1914,6 +1961,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1535195646}
+    - target: {fileID: 1417503491917796151, guid: f7c602ef1c54f284b846b83dc5fef16a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417503491917796151, guid: f7c602ef1c54f284b846b83dc5fef16a,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417503491917796151, guid: f7c602ef1c54f284b846b83dc5fef16a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1417503491917796151, guid: f7c602ef1c54f284b846b83dc5fef16a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7c602ef1c54f284b846b83dc5fef16a, type: 3}
 --- !u!114 &2129501540716240168

@@ -1419,6 +1419,7 @@ GameObject:
   - component: {fileID: 1344546386}
   - component: {fileID: 1344546387}
   - component: {fileID: 1344546388}
+  - component: {fileID: 1344546389}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Enemy
@@ -1507,10 +1508,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1344546389}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Dialogue.VariableSetter,
+          Assembly-CSharp
+        m_MethodName: SetBit
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: $cleared_garden
+          m_BoolArgument: 1
+        m_CallState: 2
   OnHit:
     m_PersistentCalls:
       m_Calls: []
   InitialMaxHealth: 2
+--- !u!114 &1344546389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344546384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d923cb0ec39f44469891ff3a3e25c31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1344943047 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8097040019346204063, guid: 17b3e1fd7c51f0342a4d7c50025b492c,
@@ -2092,22 +2118,22 @@ PrefabInstance:
     - target: {fileID: 760552295515602620, guid: b3a1b47bb72299b4d89be988eb63f436,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.75
+      value: 34.479645
       objectReference: {fileID: 0}
     - target: {fileID: 760552295515602620, guid: b3a1b47bb72299b4d89be988eb63f436,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 4.75
       objectReference: {fileID: 0}
     - target: {fileID: 760552295515602620, guid: b3a1b47bb72299b4d89be988eb63f436,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -66.75
+      value: -25.125
       objectReference: {fileID: 0}
     - target: {fileID: 760552295515602620, guid: b3a1b47bb72299b4d89be988eb63f436,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.49999994
       objectReference: {fileID: 0}
     - target: {fileID: 760552295515602620, guid: b3a1b47bb72299b4d89be988eb63f436,
         type: 3}
@@ -2117,7 +2143,7 @@ PrefabInstance:
     - target: {fileID: 760552295515602620, guid: b3a1b47bb72299b4d89be988eb63f436,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.86602545
       objectReference: {fileID: 0}
     - target: {fileID: 760552295515602620, guid: b3a1b47bb72299b4d89be988eb63f436,
         type: 3}
@@ -2132,7 +2158,7 @@ PrefabInstance:
     - target: {fileID: 760552295515602620, guid: b3a1b47bb72299b4d89be988eb63f436,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 760552295515602620, guid: b3a1b47bb72299b4d89be988eb63f436,
         type: 3}
