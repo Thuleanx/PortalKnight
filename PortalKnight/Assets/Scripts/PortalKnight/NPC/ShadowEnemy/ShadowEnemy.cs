@@ -46,20 +46,28 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Melee Attack"), Required, SerializeField] 	Hitbox3D meleeHitbox;
 		#endregion
 
+		bool firstFrame = true;
+
 		public override void Awake() {
 			base.Awake();
 			NavAgent = GetComponent<NavMeshAgent>();
 			StateMachine = GetComponent<StateMachine<ShadowEnemy>>();
 			Controller = GetComponent<CharacterController>();
+			StateMachine.Construct();
 
 			NavAgent.updatePosition = false;
 			NavAgent.updateRotation = false;
 		}
 
+		public override void Start() {
+			base.Start();
+			StateMachine.Init();
+			firstFrame = false;
+		}
+
 		void OnEnable() {
 			player = FindObjectOfType<Player>();
-			StateMachine.Construct();
-			StateMachine.Init();
+			if (!firstFrame) StateMachine.Init();
 		}
 
 		protected override void Update() {

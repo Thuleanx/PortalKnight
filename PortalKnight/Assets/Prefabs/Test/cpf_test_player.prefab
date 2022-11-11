@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 2168469916281205935}
   m_Layer: 8
   m_Name: cpf_test_player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,6 +227,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4e39e3ea-6536-4aea-b61d-bdd20bd5d145
     m_ActionName: Global/Special[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ccbc2e6e-3401-4d44-8ea1-661a6b7369bd
+    m_ActionName: Dialogue/Skip[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Global

@@ -37,10 +37,11 @@ namespace Thuleanx.PortalKnight {
 		public override void Awake() {
 			base.Awake();
 			StateMachine = GetComponent<StateMachine<SpawnerEnemy>>();
+			StateMachine.Construct();
 		}
 
-		void OnEnable(){
-			StateMachine.Construct();
+		public override void Start(){
+			base.Start();
 			StateMachine.Init();
 		}
 

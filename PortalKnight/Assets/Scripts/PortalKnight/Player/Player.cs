@@ -84,10 +84,11 @@ namespace Thuleanx.PortalKnight {
 			StateMachine = GetComponent<StateMachine<Player>>();
 			Controller = GetComponent<CharacterController>();
 			Input = GetComponent<PlayerInputChain>();
+			StateMachine.Construct();
 		}
 
-		void OnEnable() {
-			StateMachine.Construct();
+		public override void Start() {
+			base.Start();
 			StateMachine.Init();
 			Mana = MaxMana;
 		}

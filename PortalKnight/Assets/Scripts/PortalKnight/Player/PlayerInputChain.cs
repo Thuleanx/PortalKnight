@@ -48,6 +48,12 @@ namespace Thuleanx.PortalKnight {
 			) * inputDir;
 		}
 
+		public Vector2 WorldDirToMovement(Vector3 worldDir) {
+			Vector3 inputDir = Quaternion.Euler(0, -Camera.main.transform.eulerAngles.y, 0) * worldDir;
+			Vector2 movement = new Vector2(inputDir.x, inputDir.z);
+			return movement == Vector2.zero ? movement : movement.normalized;
+		}
+
 		void Awake() {
 			Player = GetComponent<Player>();
 

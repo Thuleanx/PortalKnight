@@ -6,7 +6,7 @@ namespace Thuleanx.PortalKnight {
 		public virtual void Awake() {
 			Puppet = GetComponent<Puppet>();
 		}
-		void Start() {
+		public virtual void Start() {
 			Puppet.OnDeath.AddListener(OnDeath);
 		}
 		protected abstract void OnDeath(Puppet puppet);

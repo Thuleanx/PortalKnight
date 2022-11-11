@@ -18,6 +18,7 @@ namespace Thuleanx.PortalKnight.Dialogue {
 			data.mousePosSS = Vector2.zero;
 			data.movement = Vector2.zero;
 			Array.Fill(data.canTriggerAction, false);
+			Array.Fill(data.triggerAction, false);
 			return data;
 		}
 
