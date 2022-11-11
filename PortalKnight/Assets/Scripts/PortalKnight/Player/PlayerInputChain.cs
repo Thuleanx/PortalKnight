@@ -28,12 +28,16 @@ namespace Thuleanx.PortalKnight {
 				Camera cam = Camera.main;
 				Vector2 vp = cam.ScreenToViewportPoint(mousePosSS);
 				Ray ray = Camera.main.ViewportPointToRay(vp);
-				Plane plane = new Plane(Vector3.up, transform.position.y);
-				float dist;
-				if (plane.Raycast(ray, out dist)) {
-					Vector3 pos = ray.GetPoint(dist);
-					return pos;
-				}
+				if (Physics.Raycast(ray, out RaycastHit hit)) 
+					return hit.point;
+				// Plane plane = new Plane(Vector3.up, transform.position.y);
+				// float dist;
+				// if (plane.Raycast(ray, out dist)) {
+				// 	Vector3 pos = ray.GetPoint(dist);
+				// 	Debug.Log(pos + " || " +transform.position);
+				// 	return pos;
+				// }
+				// Debug.Log("Getting this");
 				return Camera.main.ScreenToWorldPoint(mousePosSS);
 			}
 		}
