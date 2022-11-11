@@ -20,6 +20,22 @@ ScriptedImporter:
     description: 
     isImplicit: 0
     sourceYarnAsset: {instanceID: 0}
+  - name: $cleared_garden
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: 
+    isImplicit: 0
+    sourceYarnAsset: {instanceID: 0}
+  - name: $cleared_location
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: 
+    isImplicit: 0
+    sourceYarnAsset: {instanceID: 0}
   defaultLanguage: en-US
   languagesToSourceAssets: []
   useAddressableAssets: 0

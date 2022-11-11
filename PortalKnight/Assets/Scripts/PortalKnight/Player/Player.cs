@@ -102,7 +102,7 @@ namespace Thuleanx.PortalKnight {
 				Vector3 nxtPos = displacement + transform.position;
 				if (FindClosestNavPoint(nxtPos, out Vector3 adjustedNxtPos)) 
 					Controller.Move(adjustedNxtPos - transform.position);
-				// else transform.position = FindClosestNavPoint(transform.position);
+				else Controller.Move(Physics.gravity * Time.deltaTime);
 			}
 		}
 		protected override void OnDeath(Puppet puppet) {

@@ -246,15 +246,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4945d614487d7044ab4e406bd9d513db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinWidth: 0.005
   Velocity: {x: 0, y: 0, z: 0}
   Knockback: {x: 0, y: 0, z: 0}
   KnockbackResistance: 32
   Drag: 0
-  speed: 3
+  speed: 5
   accelerationAlpha: 24
   deccelerationAlpha: 12
   dashCooldown: 0.5
-  dashSpeed: 20
+  dashSpeed: 30
   dashDuration: 0.1
   dashDrag: 18
   attackDamage: 1

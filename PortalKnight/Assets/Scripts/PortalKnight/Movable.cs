@@ -6,6 +6,7 @@ using Thuleanx.Utils;
 namespace Thuleanx.PortalKnight {
 	public abstract class Movable : MonoBehaviour {
 		[Header("Movement Info Fields")]
+		[SerializeField] protected float skinWidth = 0.05f;
 		[ReadOnly, SerializeField] protected Vector3 Velocity;
 		[ReadOnly, SerializeField] protected Vector3 Knockback;
 		[Range(1,64), SerializeField] protected float KnockbackResistance = 1;
@@ -64,8 +65,16 @@ namespace Thuleanx.PortalKnight {
 		}
 
 		protected Vector3 FindClosestNavPoint(Vector3 pos) {
-			if (NavMesh.SamplePosition(pos, out NavMeshHit hit, 0.5f, NavMesh.AllAreas))
+			if (NavMesh.SamplePosition(pos, out NavMeshHit hit, skinWidth, NavMesh.AllAreas))
 				return hit.position;
+			return pos;
+		}
+
+		protected Vector3 StickOnGround(Vector3 pos) {
+			var ray = new Ray(transform.position + Vector3.down* skinWidth, Vector3.down);
+			if (Physics.Raycast(ray, out RaycastHit hit)) {
+				if (hit.distance > skinWidth) return hit.point;
+			}
 			return pos;
 		}
 	}
