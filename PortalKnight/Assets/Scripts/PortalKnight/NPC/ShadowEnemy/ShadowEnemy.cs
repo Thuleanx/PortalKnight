@@ -52,18 +52,18 @@ namespace Thuleanx.PortalKnight {
 			StateMachine = GetComponent<StateMachine<ShadowEnemy>>();
 			Controller = GetComponent<CharacterController>();
 
-			player = FindObjectOfType<Player>();
-
 			NavAgent.updatePosition = false;
 			NavAgent.updateRotation = false;
 		}
 
 		void OnEnable() {
+			player = FindObjectOfType<Player>();
 			StateMachine.Construct();
 			StateMachine.Init();
 		}
 
 		protected override void Update() {
+			transform.position = FindClosestNavPoint(transform.position);
 			NavAgent.nextPosition = transform.position; // syncs nav mesh agent position with current
 			StateMachine.RunUpdate();
 			NavAgent.velocity = Velocity + Knockback;
@@ -75,18 +75,16 @@ namespace Thuleanx.PortalKnight {
 		}
 
 		void TurnToFace(Vector3 dir) {
-			if (dir != Vector3.zero) transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
+			dir.y = 0;
+			if (dir != Vector3.zero)
+				transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
 		}
 
 		protected override void Move(Vector3 displacement) {
-			if (displacement.sqrMagnitude > 0) {
-				// NavMeshHit hit;
-				// if (NavAgent.Raycast(transform.position + displacement, out hit))
-				// 	displacement *= hit.distance / displacement.magnitude;
-				RaycastHit hit;
-				if (Physics.Raycast(transform.position + Vector3.down * 0.05f, Vector3.down, out hit))
-					displacement += Vector3.down * (hit.distance - 0.05f);
-				Controller.Move(displacement);
+			if (displacement.sqrMagnitude > 0)  {
+				displacement = AdjustVelocityToSlope(displacement, Controller.slopeLimit);
+				bool inMesh = FindClosestNavPoint(transform.position + displacement, out Vector3 resPos); 
+				if (inMesh) Controller.Move(resPos - transform.position);
 			}
 		}
 		protected override void OnDeath(Puppet puppet) => StateMachine.SetState((int) State.Dead);

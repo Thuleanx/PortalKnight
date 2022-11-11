@@ -5,6 +5,7 @@ using Thuleanx.Combat3D;
 using Thuleanx.PrettyPatterns;
 using Thuleanx.Utils;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 namespace Thuleanx.PortalKnight {
@@ -49,7 +50,7 @@ namespace Thuleanx.PortalKnight {
 		#region Combat
 		[HorizontalLine(color:EColor.Red)]
 		[BoxGroup("Attack"), Range(0, 10), SerializeField] int attackDamage = 1;
-		[BoxGroup("Attack"), Range(0, 30), SerializeField] float attackKnockback = 20;
+		[BoxGroup("Attack"), Range(0, 300), SerializeField] float attackKnockback = 20;
 		[BoxGroup("Attack"), Range(0, 1), SerializeField] float attackCooldown = 0.5f;
 		[BoxGroup("Attack"), Range(0, 5), SerializeField] float attackDuration = 0.5f;
 		[BoxGroup("Attack"), Range(0,64), SerializeField] float attackDrag = 8f;
@@ -85,22 +86,24 @@ namespace Thuleanx.PortalKnight {
 		}
 
 		protected override void Update() {
+			transform.position = FindClosestNavPoint(transform.position);
 			Input.ProcessInputs();
 			StateMachine.RunUpdate();
 			base.Update();
-			Controller.Move(Velocity * Time.deltaTime);
 		}
-
 
 		void FixedUpdate() {
 			StateMachine.RunFixUpdate();
 		}
 
 		protected override void Move(Vector3 displacement) {
-			RaycastHit hit;
-			if (Physics.Raycast(transform.position + Vector3.down * 0.05f, Vector3.down, out hit))
-				displacement += Vector3.down * (hit.distance - 0.05f);
-			Controller.Move(displacement);
+			if (displacement.sqrMagnitude > 0)  {
+				displacement = AdjustVelocityToSlope(displacement, Controller.slopeLimit);
+				Vector3 nxtPos = displacement + transform.position;
+				if (FindClosestNavPoint(nxtPos, out Vector3 adjustedNxtPos)) 
+					Controller.Move(adjustedNxtPos - transform.position);
+				// else transform.position = FindClosestNavPoint(transform.position);
+			}
 		}
 		protected override void OnDeath(Puppet puppet) {
 			StateMachine.SetState((int)State.Dead);

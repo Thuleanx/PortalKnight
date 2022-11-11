@@ -34,6 +34,7 @@ namespace Thuleanx.PortalKnight {
 				while (waiting) {
 					// face player
 					Vector3 facingDir = monster.player.transform.position - monster.transform.position;
+					facingDir.y = 0;
 					monster.TurnToFace(facingDir);
 					yield return null;
 				}

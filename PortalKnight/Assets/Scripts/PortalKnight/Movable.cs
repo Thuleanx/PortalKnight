@@ -1,6 +1,6 @@
 using UnityEngine;
+using UnityEngine.AI;
 using NaughtyAttributes;
-
 using Thuleanx.Utils;
 
 namespace Thuleanx.PortalKnight {
@@ -27,6 +27,46 @@ namespace Thuleanx.PortalKnight {
 			Velocity = Vector3.zero;
 			Knockback = Vector3.zero;
 			Drag = 0;
+		}
+
+		protected Vector3 AdjustVelocityToSlope(Vector3 velocity, float slopeLimit) {
+			float slideFriction = 0.3f;
+			var ray = new Ray(transform.position + Vector3.down* 0.005f, Vector3.down);
+			if (Physics.Raycast(ray, out RaycastHit hit)) {
+				Vector3 hitNormal = hit.normal;
+				bool isGrounded = (Vector3.Angle (Vector3.up, hitNormal) <= slopeLimit);
+
+				if (!isGrounded) {
+					velocity.x += (1f - hitNormal.y) * hitNormal.x * (1f - slideFriction);
+					velocity.z += (1f - hitNormal.y) * hitNormal.z * (1f - slideFriction);
+				} 
+
+				velocity += Physics.gravity * Time.deltaTime;
+				// var slopeRotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+				// var adjustedVelocity = slopeRotation * velocity;
+
+				// if (adjustedVelocity.y < 0) 
+				// 	velocity = adjustedVelocity;
+					// return adjustedVelocity;
+				// velocity += Physics.gravity * Time.deltaTime;
+				return velocity;
+			}
+			return velocity;
+		}
+
+		protected bool FindClosestNavPoint(Vector3 pos, out Vector3 resPos) {
+			if (NavMesh.SamplePosition(pos, out NavMeshHit hit, 0.5f, NavMesh.AllAreas)) {
+				resPos = hit.position;
+				return true;
+			}
+			resPos = pos;
+			return false;
+		}
+
+		protected Vector3 FindClosestNavPoint(Vector3 pos) {
+			if (NavMesh.SamplePosition(pos, out NavMeshHit hit, 0.5f, NavMesh.AllAreas))
+				return hit.position;
+			return pos;
 		}
 	}
 }

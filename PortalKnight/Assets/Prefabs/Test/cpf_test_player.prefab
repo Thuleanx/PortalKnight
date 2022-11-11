@@ -318,7 +318,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   lastNonZeroMovement: {x: 0, y: 0}
   mousePosSS: {x: 0, y: 0}
-  canPerformAction: 
+  canTriggerAction: 
   triggerAction: 
 --- !u!114 &2168469916281205935
 MonoBehaviour:
