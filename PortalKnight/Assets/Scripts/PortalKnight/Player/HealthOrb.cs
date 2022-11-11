@@ -7,7 +7,6 @@ namespace Thuleanx.PortalKnight {
 
 		[SerializeField, Range(1,5)] int healthRestored;
 		[SerializeField, Range(0, 5)] float trackingRange = 3;
-		[SerializeField, Range(0,64)] float trackingLambda = 2f;
 		[SerializeField, Range(0,1)] float collectingRange = 0.2f;
 		[SerializeField, Range(0, 30)] float maxSpeed = 10;
 

@@ -172,6 +172,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Dialogue",
+            "id": "7e9b32de-059d-4f05-882e-f3d793208e02",
+            "actions": [
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "ccbc2e6e-3401-4d44-8ea1-661a6b7369bd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "182f35a4-854c-40ed-940d-185fde1988e6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
