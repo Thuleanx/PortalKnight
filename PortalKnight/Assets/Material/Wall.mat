@@ -43,8 +43,9 @@ Material:
     - _Sphere_Mask_Hardness: 0.596
     - _Sphere_Mask_Radius: 2
     m_Colors:
+    - _Bounds_Size: {r: 0, g: 0, b: 0, a: 0}
     - _Character_Position: {r: 0.14, g: -2.45, b: -2.15, a: 0}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.7372549, g: 0.7372549, b: 0.7372549, a: 1}
     - _Noise_Move_Speed: {r: 1, g: 1, b: 0, a: 0}
     - _Player_Position: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
