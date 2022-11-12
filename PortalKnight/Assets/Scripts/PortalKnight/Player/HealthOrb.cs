@@ -6,12 +6,15 @@ namespace Thuleanx.PortalKnight {
 		public Player Player {get; private set; }
 
 		[SerializeField, Range(1,5)] int healthRestored;
+		[SerializeField, Range(0, 64)] float trackingDecceleration = 4;
 		[SerializeField, Range(0, 5)] float trackingRange = 3;
 		[SerializeField, Range(0,1)] float collectingRange = 0.2f;
 		[SerializeField, Range(0, 30)] float maxSpeed = 10;
+		Vector3 velocity;
 
 		public void Initialize(Player player) {
 			Player = player;
+			velocity = Vector3.zero;
 		}
 
 		void Update() {
@@ -23,9 +26,13 @@ namespace Thuleanx.PortalKnight {
 					Collect();
 				else if (displacement.sqrMagnitude <= trackingRange * trackingRange) {
 					float speed = Mathf.Lerp(maxSpeed, 0.5f, displacement.magnitude / trackingRange);
-					transform.position += Vector3.ClampMagnitude(displacement.normalized * speed * Time.deltaTime, displacement.magnitude);
+					if (Time.deltaTime > 0)
+						velocity = Vector3.ClampMagnitude(displacement.normalized * speed, displacement.magnitude / Time.deltaTime);
 				}
-			}
+			} 
+
+			transform.position += velocity * Time.deltaTime;
+			velocity = Mathx.Damp(Vector3.Lerp, velocity, Vector3.zero, trackingDecceleration, Time.deltaTime);
 		}
 
 		void Collect() {

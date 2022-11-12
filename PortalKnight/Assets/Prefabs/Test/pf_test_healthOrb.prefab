@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthRestored: 1
+  trackingDecceleration: 11.2
   trackingRange: 3
-  trackingLambda: 2
   collectingRange: 0.2
+  maxSpeed: 10
