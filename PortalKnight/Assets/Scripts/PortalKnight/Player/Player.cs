@@ -104,6 +104,10 @@ namespace Thuleanx.PortalKnight {
 			StateMachine.RunFixUpdate();
 		}
 
+		void TurnToFace(Vector3 dir) {
+			transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
+		}
+
 		protected override void Move(Vector3 displacement) {
 			if (displacement.sqrMagnitude > 0)  {
 				displacement = AdjustVelocityToSlope(displacement, Controller.slopeLimit);

@@ -35,10 +35,8 @@ namespace Thuleanx.PortalKnight {
 				player.Velocity = Mathx.Damp(Vector3.Lerp, player.Velocity, desiredVelocity, 
 					(player.Velocity.sqrMagnitude > desiredVelocity.sqrMagnitude) ? player.deccelerationAlpha : player.accelerationAlpha, Time.deltaTime);
 
-				if (player.Velocity != Vector3.zero) {
-					// turn to face velocity
-					player.transform.rotation = Quaternion.LookRotation(player.Velocity, Vector3.up);
-				}
+				if (player.Velocity != Vector3.zero) 
+					player.TurnToFace(player.Velocity);
 
 				return -1;
 			}

@@ -19,10 +19,9 @@ namespace Thuleanx.PortalKnight {
 			public override void Begin(Player player) {
 				player.Drag = player.attackDrag;
 
-				attackDirection = player.Input.mousePosWS;
-
-				// attackDirection = player.Input.lastNonZeroMovement;
-				// if (attackDirection.sqrMagnitude > 0) attackDirection = attackDirection.normalized;
+				attackDirection = player.Input.mousePosWSFlat - player.transform.position;
+				attackDirection.y = 0;
+				if (attackDirection.sqrMagnitude > 0) attackDirection = attackDirection.normalized;
 
 				player.attackHitbox.HitGenerator = this;
 				player.attackHitbox.OnHit.AddListener(OnHit);
@@ -43,6 +42,7 @@ namespace Thuleanx.PortalKnight {
 				dragTween = DOVirtual.Float(player.attackDrag, 0, player.attackDuration, (x) => player.Drag = x);
 
 				player.attackHitbox.startCheckingCollision();
+				player.TurnToFace(attackDirection);
 
 				Timer waiting = player.attackDuration;
 				while (waiting) {
@@ -70,7 +70,7 @@ namespace Thuleanx.PortalKnight {
 			public Hit3D GenerateHit(Hitbox3D hitbox, Hurtbox3D hurtbox) {
 				// assumes hitbox is parented 
 				Player player = hitbox.GetComponentInParent<Player>();
-				return new Hit3D(player.attackDamage, player.attackKnockback, player.transform.forward, hurtbox.transform.position);
+				return new Hit3D(player.attackDamage, player.attackKnockback, attackDirection, hurtbox.transform.position);
 			}
 		}
 	}
