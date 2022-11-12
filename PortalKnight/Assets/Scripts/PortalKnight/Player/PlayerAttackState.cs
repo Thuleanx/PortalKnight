@@ -18,8 +18,12 @@ namespace Thuleanx.PortalKnight {
 
 			public override void Begin(Player player) {
 				player.Drag = player.attackDrag;
-				attackDirection = player.Input.lastNonZeroMovement;
-				if (attackDirection.sqrMagnitude > 0) attackDirection = attackDirection.normalized;
+
+				attackDirection = player.Input.mousePosWS;
+
+				// attackDirection = player.Input.lastNonZeroMovement;
+				// if (attackDirection.sqrMagnitude > 0) attackDirection = attackDirection.normalized;
+
 				player.attackHitbox.HitGenerator = this;
 				player.attackHitbox.OnHit.AddListener(OnHit);
 			}
