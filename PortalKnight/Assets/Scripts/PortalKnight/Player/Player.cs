@@ -100,6 +100,10 @@ namespace Thuleanx.PortalKnight {
 			base.Update();
 		}
 
+		void LateUpdate() {
+			Shader.SetGlobalVector("_Player_Position", transform.position + Vector3.up * Controller.height / 2);
+		}
+
 		void FixedUpdate() {
 			StateMachine.RunFixUpdate();
 		}
