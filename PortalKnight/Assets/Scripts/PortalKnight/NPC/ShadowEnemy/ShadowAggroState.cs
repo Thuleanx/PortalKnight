@@ -34,7 +34,7 @@ namespace Thuleanx.PortalKnight {
 					(desiredVelocity.sqrMagnitude >= monster.Velocity.sqrMagnitude ? 
 						monster.accelerationAlpha : monster.deccelerationAlpha), Time.deltaTime);
 
-				monster.TurnToFace(monster.Velocity);
+				monster.TurnToFace(monster.Velocity, monster.turnSpeed);
 
 				return -1;
 			}

@@ -29,28 +29,30 @@ namespace Thuleanx.PortalKnight {
 			}
 
 			public override IEnumerator Coroutine(ShadowEnemy monster) {
-				Timer waiting = monster.attackWindupTime;
-
 				monster.Drag = monster.deccelerationAlpha;
+
+				monster.Anim.SetTrigger(monster.attackWindupTrigger);
+				yield return iWaitWhileFacingPlayer(monster, monster.attackWindupTime);
+				monster.Anim.SetTrigger(monster.attackTrigger);
+				yield return monster.iWaitForTrigger();
+				yield return monster.iWaitForTrigger();
+				// yield return iWaitWhileFacingPlayer(monster, monster.attackRecovery);
+				yield return new WaitForSeconds(monster.attackRecovery);
+				onCooldown = monster.attackCooldown;
+				monster.Drag = 0;
+				attackFinished = true;
+				monster.Anim.SetTrigger(monster.neutralTrigger);
+			}
+
+			IEnumerator iWaitWhileFacingPlayer(ShadowEnemy monster, float time) {
+				Timer waiting = time;
 				while (waiting) {
 					// face player
 					Vector3 facingDir = monster.player.transform.position - monster.transform.position;
 					facingDir.y = 0;
-					monster.TurnToFace(facingDir);
+					monster.TurnToFace(facingDir, monster.attackTurnSpeed);
 					yield return null;
 				}
-				monster.Drag = 0;
-
-				monster.meleeHitbox.startCheckingCollision();
-				waiting = monster.attackDuration;
-				while (waiting) {
-					yield return null;
-				}
-
-				monster.meleeHitbox.stopCheckingCollision();
-				onCooldown = monster.attackCooldown;
-
-				attackFinished = true;
 			}
 
 			bool InAttackRange(ShadowEnemy monster) 

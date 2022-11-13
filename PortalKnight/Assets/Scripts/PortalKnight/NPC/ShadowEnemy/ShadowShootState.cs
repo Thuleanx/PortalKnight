@@ -30,19 +30,11 @@ namespace Thuleanx.PortalKnight {
 
 			public override IEnumerator Coroutine(ShadowEnemy monster) {
 				dragging?.Kill();
-				// monster.StartAnimationWait();
-				Timer waiting = monster.attackWindupTime;
-
 				monster.Drag = monster.deccelerationAlpha;
-				// while (monster.WaitingForTrigger) {
-				while (waiting) {
-					// face player
-					Vector3 facingDir = monster.player.transform.position - monster.transform.position;
-					facingDir.y = 0;
-					monster.TurnToFace(facingDir);
-					yield return null;
-				}
-				monster.Drag = 0;
+				// monster.StartAnimationWait();
+				
+				monster.Anim.SetTrigger(monster.specialTrigger);
+				yield return monster.iWaitForTrigger();
 
 				// actual special
 				for (int i = 0; i < monster.specialCount; i++) {
@@ -57,14 +49,13 @@ namespace Thuleanx.PortalKnight {
 					projectile.Initialize(startSpeed);
 				}
 
-				// wind down
-				// monster.StartAnimationWait();
-				// while (monster.WaitingForTrigger) yield return null;
-
+				yield return monster.iWaitForTrigger();
 				yield return new WaitForSeconds(monster.specialRecovery);
 
 				onCooldown = Mathx.RandomRange(monster.specialCooldown.x, monster.specialCooldown.y);
 
+				monster.Anim.SetTrigger(monster.neutralTrigger);
+				monster.Drag = 0;
 				finished = true;
 			}
 
