@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 285224966}
   - component: {fileID: 285224968}
   - component: {fileID: 285224967}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: melee hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,10 +72,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1011392546}
+  - component: {fileID: 1011392549}
   - component: {fileID: 1011392548}
   - component: {fileID: 1011392547}
-  - component: {fileID: 1011392549}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,6 +97,19 @@ Transform:
   m_Father: {fileID: 7896126220031578061}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1011392549
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011392545}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.77
+  m_Center: {x: 0, y: 0.27, z: 0}
 --- !u!114 &1011392548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,19 +143,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!135 &1011392549
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1011392545}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.77
-  m_Center: {x: 0, y: 0.27, z: 0}
 --- !u!1001 &7646572905410340902
 PrefabInstance:
   m_ObjectHideFlags: 0
