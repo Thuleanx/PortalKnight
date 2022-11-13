@@ -36,6 +36,7 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Animation"), AnimatorParam("Anim"), SerializeField] string attackWindupTrigger;
 		[BoxGroup("Animation"), AnimatorParam("Anim"), SerializeField] string attackTrigger;
 		[BoxGroup("Animation"), AnimatorParam("Anim"), SerializeField] string specialTrigger;
+		[BoxGroup("Animation"), AnimatorParam("Anim"), SerializeField] string deathTrigger;
 		#endregion
 
 		#region Movement
@@ -86,7 +87,8 @@ namespace Thuleanx.PortalKnight {
 			firstFrame = false;
 		}
 
-		void OnEnable() {
+		protected override void OnEnable() {
+			base.OnEnable();
 			player = FindObjectOfType<Player>();
 			if (!firstFrame) StateMachine.Init();
 		}
@@ -144,5 +146,20 @@ namespace Thuleanx.PortalKnight {
 			Calc.DrawWireDisk(centerHigh, radiusHigh, Color.cyan);
 			Calc.DrawWireDisk(centerLo, radiusLo, Color.cyan);
 		}
+
+
+		public override void Reanimated() {
+			NavAgent.enabled = true;
+			Controller.enabled = true;
+		}
+
+		public override void Vanquish() {
+			meleeHitbox.stopCheckingCollision();
+			NavAgent.enabled = false;
+			Controller.enabled = false;
+		}
+
 	}
+
+
 }

@@ -6,6 +6,7 @@ using System.Collections;
 
 namespace Thuleanx.PortalKnight {
 	public partial class SpawnerEnemy {
+
 		public class SpawnerSpellState : State<SpawnerEnemy> {
 			Timer onCooldown;
 			bool finished = false;

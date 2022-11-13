@@ -77,5 +77,11 @@ namespace Thuleanx.PortalKnight {
 		protected override void OnDeath(Puppet puppet) {
 			StateMachine.SetState((int) State.Dead);
 		}
+
+		public override void Reanimated() {
+		}
+
+		public override void Vanquish() {
+		}
 	}
 }

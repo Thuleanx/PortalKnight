@@ -702,6 +702,7 @@ MonoBehaviour:
   attackWindupTrigger: Attack Windup
   attackTrigger: Attack
   specialTrigger: Special
+  deathTrigger: Death
   navMeshUpdateInterval: 0.2
   turnSpeed: 557
   accelerationAlpha: 24
