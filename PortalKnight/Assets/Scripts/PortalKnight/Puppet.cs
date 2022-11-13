@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.Events;
+using NaughtyAttributes;
 
 using Thuleanx.Combat3D;
 
 namespace Thuleanx.PortalKnight {
 	[RequireComponent(typeof(Alive))]
 	public class Puppet : MonoBehaviour {
-		public Status 	Status;
+		[ReadOnly] public Status Status;
 		public Alive Entity {get; private set; }
 		public bool IsDead => Status.IsDead;
 

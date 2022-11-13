@@ -3,8 +3,16 @@ using UnityEngine;
 
 namespace Thuleanx.PortalKnight {
 	public abstract class Animated : Alive {
+		[field:Header("Animated")]
+		[field:SerializeField] protected Animator Anim {get; private set; }
+
 		bool waitingForTrigger = false;
 		public void _AnimTrigger() => waitingForTrigger = false;
+
+		public override void Awake() {
+			base.Awake();
+			if (!Anim) Anim = GetComponent<Animator>();
+		}
 
 		protected IEnumerator iWaitForTrigger() {
 			waitingForTrigger = true;

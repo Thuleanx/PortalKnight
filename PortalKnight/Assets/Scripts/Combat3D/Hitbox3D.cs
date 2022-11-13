@@ -9,10 +9,12 @@ namespace Thuleanx.Combat3D {
 	public class Hitbox3D : MonoBehaviour {
 		public Collider Collider {get; private set;}
 
+
 		public bool Active {
 			get => Collider.enabled; 
 			private set => Collider.enabled = value;
 		}
+		bool lastFrameActive;
 
 		[HideInInspector] public iHitGenerator3D HitGenerator;
 
@@ -31,6 +33,7 @@ namespace Thuleanx.Combat3D {
 
 		private void OnTriggerStay(Collider other) {
 			Hurtbox3D hurtbox = other.GetComponent<Hurtbox3D>();
+			if (lastFrameActive ^ Active) hurtboxCooldown.Clear();
 			if (HitGenerator != null && hurtbox && faction != hurtbox.faction && hurtbox.CanTakeHit && TimedOut(hurtbox.ID)) {
 				Hit3D Hit = HitGenerator.GenerateHit(this, hurtbox);
 				if (Hit.damage > 0) {
@@ -43,6 +46,10 @@ namespace Thuleanx.Combat3D {
 
 		void OnEnable() {
 			hurtboxCooldown.Clear();
+		}
+
+		void LateUpdate() {
+			lastFrameActive = Active;
 		}
 
 		public void startCheckingCollision() => Active = true;

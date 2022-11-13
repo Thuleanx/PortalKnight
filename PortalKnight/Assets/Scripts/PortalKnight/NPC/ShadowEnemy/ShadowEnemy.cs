@@ -30,9 +30,19 @@ namespace Thuleanx.PortalKnight {
 		Player player;
 		#endregion
 
+		#region Animation
+		[HorizontalLine(color:EColor.Indigo)]
+		[BoxGroup("Animation"), AnimatorParam("Anim"), SerializeField] string neutralTrigger;
+		[BoxGroup("Animation"), AnimatorParam("Anim"), SerializeField] string attackWindupTrigger;
+		[BoxGroup("Animation"), AnimatorParam("Anim"), SerializeField] string attackTrigger;
+		[BoxGroup("Animation"), AnimatorParam("Anim"), SerializeField] string specialTrigger;
+		[BoxGroup("Animation"), AnimatorParam("Anim"), SerializeField] string deathTrigger;
+		#endregion
+
 		#region Movement
 		[HorizontalLine(color:EColor.Blue)]
 		[SerializeField] float navMeshUpdateInterval = 0.2f;
+		[BoxGroup("Movement"), Range(0, 720), SerializeField] float turnSpeed = 24;
 		[BoxGroup("Movement"), Range(0, 64), SerializeField] float accelerationAlpha = 24;
 		[BoxGroup("Movement"), Range(0, 64), SerializeField] float deccelerationAlpha = 12;
 		#endregion
@@ -43,8 +53,9 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Melee Attack"), Range(0, 10), SerializeField] int attackDamage = 1;
 		[BoxGroup("Melee Attack"), Range(0, 30), SerializeField] float attackKnockback = 15;
 		[BoxGroup("Melee Attack"), Range(0, 3), SerializeField] float attackWindupTime = 1;
-		[BoxGroup("Melee Attack"), Range(0, 1), SerializeField] float attackDuration = 1;
+		[BoxGroup("Melee Attack"), Range(0, 2), SerializeField] float attackRecovery = 1;
 		[BoxGroup("Melee Attack"), Range(0, 1), SerializeField] float attackCooldown = 1;
+		[BoxGroup("Melee Attack"), Range(0, 360), SerializeField] float attackTurnSpeed = 2;
 		[BoxGroup("Melee Attack"), Required, SerializeField] 	Hitbox3D meleeHitbox;
 
 		[BoxGroup("Special Attack"), Range(0, 10), SerializeField] float specialRange = 4;
@@ -76,7 +87,8 @@ namespace Thuleanx.PortalKnight {
 			firstFrame = false;
 		}
 
-		void OnEnable() {
+		protected override void OnEnable() {
+			base.OnEnable();
 			player = FindObjectOfType<Player>();
 			if (!firstFrame) StateMachine.Init();
 		}
@@ -93,7 +105,16 @@ namespace Thuleanx.PortalKnight {
 			StateMachine.RunFixUpdate();
 		}
 
-		void TurnToFace(Vector3 dir) {
+		void TurnToFace(Vector3 dir, float turnSpeed = -1) {
+			if (turnSpeed == -1) turnSpeed = this.turnSpeed;
+			dir.y = 0;
+			if (dir != Vector3.zero) {
+				Quaternion desiredRotation = Quaternion.LookRotation(dir, Vector3.up);
+				transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, Time.deltaTime * turnSpeed);
+			}
+		}
+
+		void TurnToFaceImmediate(Vector3 dir) {
 			dir.y = 0;
 			if (dir != Vector3.zero)
 				transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
@@ -125,5 +146,20 @@ namespace Thuleanx.PortalKnight {
 			Calc.DrawWireDisk(centerHigh, radiusHigh, Color.cyan);
 			Calc.DrawWireDisk(centerLo, radiusLo, Color.cyan);
 		}
+
+
+		public override void Reanimated() {
+			NavAgent.enabled = true;
+			Controller.enabled = true;
+		}
+
+		public override void Vanquish() {
+			meleeHitbox.stopCheckingCollision();
+			NavAgent.enabled = false;
+			Controller.enabled = false;
+		}
+
 	}
+
+
 }
