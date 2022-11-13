@@ -25,15 +25,24 @@ namespace Thuleanx.PortalKnight.Mapping {
 			Player player = FindObjectOfType<Player>();
 			player.Interactible = false;
 
-			yield return iWalkToPos(-Triggerer.transform.forward * enterOffset + Triggerer.transform.position);
+			// project player onto Triggerer.transform.forward;
+			float dist = Vector3.Dot(Triggerer.transform.forward, player.transform.position - Triggerer.transform.position);
+			dist = Mathf.Min(dist, enterOffset);
+
+			yield return iWalkToPos(-Triggerer.transform.forward * dist + Triggerer.transform.position);
+
 			yield return iWalkToPos(Triggerer.transform.forward * exitOffset + Triggerer.transform.position);
 			// yield return new WaitForSeconds(transitionDuration);
 			Passage destination = (Triggerer as Passage).Link;
 			destination.GetComponent<Collider>().enabled = false;
 			// we need to teleport the player ==> disable controller
 			player.Controller.enabled = false;
+			Vector3 deltaPos = destination.transform.position - player.transform.position;
 			player.transform.position = destination.transform.position;
+			FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().OnTargetObjectWarped(player.transform, deltaPos);
 			player.Controller.enabled = true;
+
+
 			Debug.Log("WALKING TO POS");
 			yield return iWalkToPos(-destination.transform.forward * enterOffset + destination.transform.position);
 			Debug.Log("Finished TO POS");
