@@ -7,7 +7,10 @@ namespace Thuleanx.PortalKnight {
 		[field:SerializeField] protected Animator Anim {get; private set; }
 
 		bool waitingForTrigger = false;
-		public void _AnimTrigger() => waitingForTrigger = false;
+		public void _AnimTrigger() {
+			Debug.Log("TRIGGERED");
+			waitingForTrigger = false;
+		}
 
 		public override void Awake() {
 			base.Awake();

@@ -219,6 +219,9 @@ AnimatorController:
     - serializedVersion: 2
       m_State: {fileID: 2431599413669435736}
       m_Motion: {fileID: 7400000, guid: 989c557f2f6d1564b9b66164d950715c, type: 2}
+    - serializedVersion: 2
+      m_State: {fileID: 4698314839676849295}
+      m_Motion: {fileID: 7400000, guid: 8f0d7d600d935cf4fbcf312e641f9601, type: 2}
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: 0
@@ -441,7 +444,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: -50, y: 190, z: 0}
   m_ExitPosition: {x: 1020, y: 160, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -7935358888479452205}
+  m_DefaultState: {fileID: 4698314839676849295}
 --- !u!1102 &8617765096708770571
 AnimatorState:
   serializedVersion: 6

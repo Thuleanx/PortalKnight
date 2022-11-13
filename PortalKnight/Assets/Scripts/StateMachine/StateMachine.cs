@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 namespace Thuleanx.AI.FSM {
 	public abstract class StateMachine<Agent> : MonoBehaviour {
@@ -51,6 +51,8 @@ namespace Thuleanx.AI.FSM {
 			// 	if (States[i] == null) 
 			// 		Debug.LogWarning("State " + i + " is null");
 			States[_currentState].Begin(agent);
+			IEnumerator enumerator = States[_currentState]?.Coroutine(agent);
+			if (enumerator != null) currentCoroutine = StartCoroutine(enumerator);
 		}
 
 		public void RunUpdate() {

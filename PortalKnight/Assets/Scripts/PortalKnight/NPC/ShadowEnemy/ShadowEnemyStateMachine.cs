@@ -8,8 +8,9 @@ namespace Thuleanx.PortalKnight {
 		public override void Construct() {
 			ConstructMachine(GetComponent<ShadowEnemy>(), 
 				Enum.GetNames(typeof(ShadowEnemy.State)).Length, 
-				(int) ShadowEnemy.State.Aggro, false);
+				(int) ShadowEnemy.State.Spawn, false);
 
+			AssignState((int) ShadowEnemy.State.Spawn, new ShadowEnemy.ShadowSpawnState());
 			AssignState((int) ShadowEnemy.State.Aggro, new ShadowEnemy.ShadowAggroState());
 			AssignState((int) ShadowEnemy.State.Attack, new ShadowEnemy.ShadowAttackState());
 			AssignState((int) ShadowEnemy.State.Dead, new ShadowEnemy.ShadowDeathState());
