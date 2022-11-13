@@ -92,6 +92,7 @@ namespace Thuleanx.PrettyPatterns {
 		void Collect(Bubble bubble) {
 			if (borrowedLedger.ContainsKey(bubble.gameObject.scene.name))
 				borrowedLedger[bubble.gameObject.scene.name].Remove(bubble);
+			bubble.DisposalRequested = null;
 			DontDestroyOnLoad(bubble.gameObject);
 			bubble.gameObject.SetActive(false);
 			pool.Add(bubble);
