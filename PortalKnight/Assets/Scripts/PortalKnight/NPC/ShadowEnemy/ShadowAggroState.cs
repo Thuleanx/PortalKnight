@@ -16,7 +16,9 @@ namespace Thuleanx.PortalKnight {
 			}
 
 			public override int Transition(ShadowEnemy monster) {
-				if (InAttackRange(monster) && monster.StateMachine.CanEnter((int) State.Attack)) 
+				if (monster.StateMachine.CanEnter((int) State.Special)) 
+					return (int) State.Special;
+				if (monster.StateMachine.CanEnter((int) State.Attack)) 
 					return (int) State.Attack;
 				return -1;
 			}
@@ -37,8 +39,6 @@ namespace Thuleanx.PortalKnight {
 				return -1;
 			}
 
-			bool InAttackRange(ShadowEnemy monster) 
-				=> (monster.transform.position - monster.player.transform.position).sqrMagnitude <= monster.attackRange * monster.attackRange;
 
 			void UpdateNavMeshTarget(ShadowEnemy monster) {
 				monster.NavAgent.SetDestination(monster.player.transform.position);

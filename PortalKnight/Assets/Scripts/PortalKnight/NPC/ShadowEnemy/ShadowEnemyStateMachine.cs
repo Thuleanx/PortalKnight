@@ -13,6 +13,7 @@ namespace Thuleanx.PortalKnight {
 			AssignState((int) ShadowEnemy.State.Aggro, new ShadowEnemy.ShadowAggroState());
 			AssignState((int) ShadowEnemy.State.Attack, new ShadowEnemy.ShadowAttackState());
 			AssignState((int) ShadowEnemy.State.Dead, new GenericDeadState<ShadowEnemy>());
+			AssignState((int) ShadowEnemy.State.Special, new ShadowEnemy.ShadowShootState());
 		}
 	}
 }

@@ -254,6 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199bf70eb3cbfed4983599b3b1342fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinWidth: 0.05
   Velocity: {x: 0, y: 0, z: 0}
   Knockback: {x: 0, y: 0, z: 0}
   KnockbackResistance: 32
@@ -268,6 +269,14 @@ MonoBehaviour:
   attackDuration: 0.75
   attackCooldown: 1
   meleeHitbox: {fileID: 5229646389192037773}
+  specialRange: 4
+  specialSpeed: 4
+  specialRecovery: 2
+  specialEmissionDistance: 1.6
+  specialEmissionPhi: {x: 31.718063, y: 50.11454}
+  specialCount: 4
+  specialCooldown: {x: 8.563877, y: 15.224671}
+  specialBulletPool: {fileID: 11400000, guid: 9ec3c0861b57c4e4a99e906ba618ae3c, type: 2}
 --- !u!114 &5229646388600331161
 MonoBehaviour:
   m_ObjectHideFlags: 0

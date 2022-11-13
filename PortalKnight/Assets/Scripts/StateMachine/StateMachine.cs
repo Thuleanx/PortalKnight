@@ -35,7 +35,7 @@ namespace Thuleanx.AI.FSM {
 			States[index] = state;
 			state.SetStateMachine(this);
 		}
-		public bool CanEnter(int index) => States[index] == null || States[index].CanEnter(agent);
+		public bool CanEnter(int index) => States[index] != null && States[index].CanEnter(agent);
 		public void SetState(int index) => State = index;
 		public bool TrySetState(int index) {
 			if (index == -1 || index == State) return false;

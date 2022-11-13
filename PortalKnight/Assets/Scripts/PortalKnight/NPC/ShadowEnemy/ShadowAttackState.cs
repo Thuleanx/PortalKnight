@@ -1,15 +1,16 @@
-using UnityEngine;
-using Thuleanx.AI.FSM;
-using Thuleanx.Utils;
 using System.Collections;
-
+using Thuleanx.AI.FSM;
 using Thuleanx.Combat3D;
+using Thuleanx.Utils;
+using UnityEngine;
 
 namespace Thuleanx.PortalKnight {
 	public partial class ShadowEnemy {
 		public class ShadowAttackState : State<ShadowEnemy>, iHitGenerator3D {
 			Timer onCooldown;
 			bool attackFinished;
+
+			public override bool CanEnter(ShadowEnemy monster) => !onCooldown && InAttackRange(monster);
 
 			public override void Begin(ShadowEnemy monster) {
 				monster.meleeHitbox.HitGenerator = this;
@@ -51,6 +52,9 @@ namespace Thuleanx.PortalKnight {
 
 				attackFinished = true;
 			}
+
+			bool InAttackRange(ShadowEnemy monster) 
+				=> (monster.transform.position - monster.player.transform.position).sqrMagnitude <= monster.attackRange * monster.attackRange;
 
 			public Hit3D GenerateHit(Hitbox3D hitbox, Hurtbox3D hurtbox) {
 				ShadowEnemy monster = hitbox.GetComponentInParent<ShadowEnemy>(); // kinda inefficient

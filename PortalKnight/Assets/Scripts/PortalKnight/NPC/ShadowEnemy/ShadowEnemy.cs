@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using Thuleanx.AI.FSM;
 using Thuleanx.Combat3D;
+using Thuleanx.PrettyPatterns;
 using Thuleanx.Utils;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,12 +14,13 @@ namespace Thuleanx.PortalKnight {
 			Spawn,
 			Aggro,
 			Attack,
+			Special,
 			Dead
 		}
 	}
 
 	[RequireComponent(typeof(NavMeshAgent))]
-	public partial class ShadowEnemy : Alive {
+	public partial class ShadowEnemy : Animated {
 
 		#region Components
 		public CharacterController Controller {get; private set;}
@@ -44,6 +46,15 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Melee Attack"), Range(0, 1), SerializeField] float attackDuration = 1;
 		[BoxGroup("Melee Attack"), Range(0, 1), SerializeField] float attackCooldown = 1;
 		[BoxGroup("Melee Attack"), Required, SerializeField] 	Hitbox3D meleeHitbox;
+
+		[BoxGroup("Special Attack"), Range(0, 10), SerializeField] float specialRange = 4;
+		[BoxGroup("Special Attack"), Range(0, 10), SerializeField] float specialSpeed = 2;
+		[BoxGroup("Special Attack"), Range(0, 10), SerializeField] float specialRecovery = 2;
+		[BoxGroup("Special Attack"), Range(0, 3), SerializeField] float specialEmissionDistance = 0.5f;
+		[BoxGroup("Special Attack"), MinMaxSlider(0, 90), SerializeField] Vector2 specialEmissionPhi;
+		[BoxGroup("Special Attack"), Range(1, 10), SerializeField] int specialCount = 1;
+		[BoxGroup("Special Attack"), MinMaxSlider(0, 30), SerializeField] Vector2 specialCooldown;
+		[BoxGroup("Special Attack"), SerializeField, Required] BubblePool specialBulletPool;
 		#endregion
 
 		bool firstFrame = true;
@@ -97,5 +108,22 @@ namespace Thuleanx.PortalKnight {
 		}
 		protected override void OnDeath(Puppet puppet) => StateMachine.SetState((int) State.Dead);
 
+		void OnDrawGizmosSelected() {
+			Vector3 high = Calc.ToSpherical(specialEmissionDistance, specialEmissionPhi.x * Mathf.Deg2Rad, 0);
+			Vector3 lo = Calc.ToSpherical(specialEmissionDistance, specialEmissionPhi.y * Mathf.Deg2Rad, 0);
+
+			Vector3 centerHigh = transform.position;
+			Vector3 centerLo = transform.position;
+			centerHigh.y += high.y;
+			centerLo.y += lo.y;
+			high += transform.position;
+			lo += transform.position;
+
+			float radiusHigh = (high - centerHigh).magnitude;
+			float radiusLo = (lo - centerLo).magnitude;
+
+			Calc.DrawWireDisk(centerHigh, radiusHigh, Color.cyan);
+			Calc.DrawWireDisk(centerLo, radiusLo, Color.cyan);
+		}
 	}
 }
