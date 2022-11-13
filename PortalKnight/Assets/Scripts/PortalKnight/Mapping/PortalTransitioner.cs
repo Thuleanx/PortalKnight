@@ -36,12 +36,9 @@ namespace Thuleanx.PortalKnight.Mapping {
 			Passage destination = (Triggerer as Passage).Link;
 			destination.GetComponent<Collider>().enabled = false;
 			// we need to teleport the player ==> disable controller
-			player.Controller.enabled = false;
 			Vector3 deltaPos = destination.transform.position - player.transform.position;
-			player.transform.position = destination.transform.position;
+			player.SetPosition(destination.transform.position);
 			FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().OnTargetObjectWarped(player.transform, deltaPos);
-			player.Controller.enabled = true;
-
 
 			Debug.Log("WALKING TO POS");
 			yield return iWalkToPos(-destination.transform.forward * enterOffset + destination.transform.position);

@@ -8,6 +8,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
+using Thuleanx.PortalKnight.Dialogue;
+
 namespace Thuleanx.PortalKnight {
 	public partial class Player {
 		public enum State {
@@ -92,6 +94,10 @@ namespace Thuleanx.PortalKnight {
 			base.Start();
 			StateMachine.Init();
 			Mana = MaxMana;
+
+			var storage = App.instance.GetComponentInChildren<VariableStorage>();
+			if (storage && storage.GetDeathCount() > 0) 
+				SetPosition(GameObject.FindWithTag("Death Anchor").transform.position);
 		}
 
 		protected override void Update() {
@@ -128,5 +134,11 @@ namespace Thuleanx.PortalKnight {
 
 		public override void Reanimated() {}
 		public override void Vanquish() {}
+
+		public void SetPosition(Vector3 pos) {
+			Controller.enabled = false;
+			transform.position = pos;
+			Controller.enabled = true;
+		}
 	}
 }

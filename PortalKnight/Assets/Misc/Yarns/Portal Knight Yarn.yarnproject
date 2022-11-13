@@ -3,4 +3,7 @@
 <<declare $cleared_library = false>>
 <<declare $cleared_garden = false>>
 <<declare $cleared_location = false>>
+
+/// number of times the player die
+<<declare $death_count = 0>>
 ===

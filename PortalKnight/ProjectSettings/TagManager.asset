@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Death Anchor
   layers:
   - Default
   - TransparentFX
