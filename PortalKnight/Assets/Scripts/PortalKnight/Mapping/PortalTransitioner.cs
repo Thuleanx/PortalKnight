@@ -32,7 +32,7 @@ namespace Thuleanx.PortalKnight.Mapping {
 			yield return iWalkToPos(-Triggerer.transform.forward * dist + Triggerer.transform.position);
 
 			yield return iWalkToPos(Triggerer.transform.forward * exitOffset + Triggerer.transform.position);
-			// yield return new WaitForSeconds(transitionDuration);
+			if (transitionDuration > 0) yield return new WaitForSeconds(transitionDuration);
 			Passage destination = (Triggerer as Passage).Link;
 			destination.GetComponent<Collider>().enabled = false;
 			// we need to teleport the player ==> disable controller
