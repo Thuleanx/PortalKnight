@@ -33,9 +33,11 @@ namespace Thuleanx.Combat3D {
 			Hurtbox3D hurtbox = other.GetComponent<Hurtbox3D>();
 			if (HitGenerator != null && hurtbox && faction != hurtbox.faction && hurtbox.CanTakeHit && TimedOut(hurtbox.ID)) {
 				Hit3D Hit = HitGenerator.GenerateHit(this, hurtbox);
-				hurtbox.ApplyHit(Hit);
-				OnHit?.Invoke(Hit);
-				Refresh(hurtbox.ID);
+				if (Hit.damage > 0) {
+					hurtbox.ApplyHit(Hit);
+					OnHit?.Invoke(Hit);
+					Refresh(hurtbox.ID);
+				}
 			}
 		}
 

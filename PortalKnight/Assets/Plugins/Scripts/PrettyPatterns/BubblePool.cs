@@ -49,6 +49,9 @@ namespace Thuleanx.PrettyPatterns {
 			borrowedLedger.Clear();
 		}
 
+		public T BorrowTyped<T>(Scene scene, Vector3? positionNullable = null, Quaternion? rotationNullable = null)
+			=> Borrow(scene, positionNullable, rotationNullable).GetComponent<T>();
+
 		public GameObject Borrow(Scene scene, Vector3? positionNullable = null, Quaternion? rotationNullable = null) {
 			TryInit();
 			if (pool.Count == 0) Expand(Mathf.Max(totalBubbles, DefaultSize));
@@ -79,13 +82,16 @@ namespace Thuleanx.PrettyPatterns {
 		}
 
 		void CollectsAll(Scene scene) {
-			List<Bubble> bubbles = new List<Bubble>(borrowedLedger[scene.name]);
-			foreach (Bubble bubble in bubbles) 
-				bubble.Pop();
-			borrowedLedger.Remove(scene.name);
+			if (borrowedLedger.ContainsKey(scene.name)) {
+				List<Bubble> bubbles = new List<Bubble>(borrowedLedger[scene.name]);
+				foreach (Bubble bubble in bubbles) 
+					bubble.Pop();
+				borrowedLedger.Remove(scene.name);
+			}
 		}
 
 		void Collect(Bubble bubble) {
+			Debug.Log("Collecting " + bubble.gameObject.name);
 			if (borrowedLedger.ContainsKey(bubble.gameObject.scene.name))
 				borrowedLedger[bubble.gameObject.scene.name].Remove(bubble);
 			DontDestroyOnLoad(bubble.gameObject);

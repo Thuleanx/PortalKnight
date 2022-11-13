@@ -1,17 +1,17 @@
 using UnityEngine;
 using Thuleanx.Utils;
+using Thuleanx.PortalKnight.Interactions;
+using NaughtyAttributes;
 
 namespace Thuleanx.PortalKnight.Mapping {
 	[RequireComponent(typeof(Collider))]
-	public class Passage : MonoBehaviour {
-		[SerializeField] SceneReference Endpoint;
+	public class Passage : Interactible {
+		public SceneTransitioner Transitioner { get; private set; }
+		[Required] public Passage Link;
 
-		public void Transition() {
-			FindObjectOfType<SceneTransitioner>().Transition(Endpoint);
+		protected override void Interact() {
+			FindObjectOfType<PortalTransitioner>().Transition(this);
 		}
 
-		void OnTriggerEnter(Collider other) {
-			Transition();
-		}
 	}
 }

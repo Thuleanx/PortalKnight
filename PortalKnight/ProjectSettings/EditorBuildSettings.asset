@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Skeleton/scn_skeleton_hub.unity
     guid: 6c88dfa10933d5a469cc689fbec84c65
+  - enabled: 1
+    path: Assets/Scenes/Skeleton/scn_skeleton_garden.unity
+    guid: 7de32cabe7c29ab4499cdc049fdec563
   m_configObjects: {}

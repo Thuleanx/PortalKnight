@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 2168469916281205935}
   m_Layer: 8
   m_Name: cpf_test_player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,6 +211,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bbbde02c-027b-4eba-9cf8-d4844fcff723
     m_ActionName: Global/MousePos[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2168469916281205935}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnSpecial
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4e39e3ea-6536-4aea-b61d-bdd20bd5d145
+    m_ActionName: Global/Special[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ccbc2e6e-3401-4d44-8ea1-661a6b7369bd
+    m_ActionName: Dialogue/Skip[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Global
@@ -246,15 +266,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4945d614487d7044ab4e406bd9d513db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinWidth: 0.005
   Velocity: {x: 0, y: 0, z: 0}
   Knockback: {x: 0, y: 0, z: 0}
   KnockbackResistance: 32
   Drag: 0
-  speed: 3
+  speed: 5
   accelerationAlpha: 24
   deccelerationAlpha: 12
   dashCooldown: 0.5
-  dashSpeed: 20
+  dashSpeed: 30
   dashDuration: 0.1
   dashDrag: 18
   attackDamage: 1
@@ -265,9 +286,13 @@ MonoBehaviour:
   attackHitbox: {fileID: 1731204699796176313}
   manaOrbDamage: 1
   manaOrbMouseRange: 3
+  novaTrackingRange: 3
   maxMana: 2
   manaOnHit: 0.25
+  novaDelay: 0.5
+  novaRecovery: 0.25
   manaOrbPool: {fileID: 11400000, guid: 9181b321947d40f4dbb49242214c8d1d, type: 2}
+  novaPool: {fileID: 11400000, guid: c6a655b3223ce2146852ffc7238f77a2, type: 2}
   manaOrbFiringSource: {fileID: 2334746766397568296}
 --- !u!114 &1731204700953670025
 MonoBehaviour:

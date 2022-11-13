@@ -1,4 +1,6 @@
 ﻿title: Program
 ---
 <<declare $cleared_library = false>>
+<<declare $cleared_garden = false>>
+<<declare $cleared_location = false>>
 ===

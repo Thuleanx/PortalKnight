@@ -14,13 +14,15 @@ namespace Thuleanx.PortalKnight {
 			Neutral,
 			Attack,
 			Dash,
+			Special,
 			Dead
 		};
 
 		public enum ActionType {
 			Attack = 0,
 			Shoot = 1,
-			Dash = 2
+			Dash = 2,
+			Special = 3
 		};
 	}
 
@@ -60,12 +62,17 @@ namespace Thuleanx.PortalKnight {
 		#region Spell Casting
 		[BoxGroup("Spell"), Range(1, 5), SerializeField] int manaOrbDamage;
 		[BoxGroup("Spell"), Range(0, 10), SerializeField] float manaOrbMouseRange = 3;
+		[BoxGroup("Spell"), Range(0, 10), SerializeField] float novaTrackingRange = 3;
 		[BoxGroup("Spell"), Range(1, 5), SerializeField] int maxMana = 2;
 		[BoxGroup("Spell"), Range(0, 1), SerializeField] float manaOnHit;
+		[BoxGroup("Spell"), Range(0, 1), SerializeField] float novaDelay = 0.5f;
+		[BoxGroup("Spell"), Range(0, 1), SerializeField] float novaRecovery = 0.25f;
 		[BoxGroup("Spell"), SerializeField, Required] BubblePool manaOrbPool;
+		[BoxGroup("Spell"), SerializeField, Required] BubblePool novaPool;
 		[BoxGroup("Spell"), SerializeField, Required] Transform manaOrbFiringSource;
 
 		public float MaxMana => maxMana;
+		public bool Interactible = true;
 
 		float _mana;
 		public float Mana {get => _mana; private set {
@@ -78,11 +85,13 @@ namespace Thuleanx.PortalKnight {
 			StateMachine = GetComponent<StateMachine<Player>>();
 			Controller = GetComponent<CharacterController>();
 			Input = GetComponent<PlayerInputChain>();
+			StateMachine.Construct();
 		}
 
-		void OnEnable() {
-			StateMachine.Construct();
+		public override void Start() {
+			base.Start();
 			StateMachine.Init();
+			Mana = MaxMana;
 		}
 
 		protected override void Update() {
@@ -92,8 +101,16 @@ namespace Thuleanx.PortalKnight {
 			base.Update();
 		}
 
+		void LateUpdate() {
+			Shader.SetGlobalVector("_Player_Position", transform.position + Vector3.up * Controller.height / 2);
+		}
+
 		void FixedUpdate() {
 			StateMachine.RunFixUpdate();
+		}
+
+		void TurnToFace(Vector3 dir) {
+			transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
 		}
 
 		protected override void Move(Vector3 displacement) {
@@ -102,7 +119,7 @@ namespace Thuleanx.PortalKnight {
 				Vector3 nxtPos = displacement + transform.position;
 				if (FindClosestNavPoint(nxtPos, out Vector3 adjustedNxtPos)) 
 					Controller.Move(adjustedNxtPos - transform.position);
-				// else transform.position = FindClosestNavPoint(transform.position);
+				else Controller.Move(Physics.gravity * Time.deltaTime);
 			}
 		}
 		protected override void OnDeath(Puppet puppet) {

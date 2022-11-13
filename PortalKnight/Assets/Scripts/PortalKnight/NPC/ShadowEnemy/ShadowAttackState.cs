@@ -54,7 +54,7 @@ namespace Thuleanx.PortalKnight {
 
 			public Hit3D GenerateHit(Hitbox3D hitbox, Hurtbox3D hurtbox) {
 				ShadowEnemy monster = hitbox.GetComponentInParent<ShadowEnemy>(); // kinda inefficient
-				return new Hit3D(monster.attackDamage, monster.attackKnockback, monster.transform.forward);
+				return new Hit3D(monster.attackDamage, monster.attackKnockback, monster.transform.forward, hurtbox.transform.position);
 			}
 		}
 	}

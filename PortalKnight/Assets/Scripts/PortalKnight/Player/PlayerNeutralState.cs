@@ -8,17 +8,21 @@ namespace Thuleanx.PortalKnight {
 		public class PlayerNeutralState : State<Player> {
 			bool OnDash(Player player) => player.StateMachine.TrySetState((int) Player.State.Dash);
 			bool OnAttack(Player player) => player.StateMachine.TrySetState((int) Player.State.Attack);
+			bool OnSpecial(Player player) => player.StateMachine.TrySetState((int) Player.State.Special);
 
 			public override void Begin(Player agent) {
 				agent.Input.ActionHandler[(int) ActionType.Dash] = OnDash;
 				agent.Input.ActionHandler[(int) ActionType.Attack] = OnAttack;
-				agent.Input.ActionHandler[(int) ActionType.Shoot] = OnShoot;
+				agent.Input.ActionHandler[(int) ActionType.Special] = OnSpecial;
+				// agent.Input.ActionHandler[(int) ActionType.Shoot] = OnShoot;
 			}
 
 			public override void End(Player agent) {
+				// unbind event handlers
 				agent.Input.ActionHandler[(int) ActionType.Dash] = null;
 				agent.Input.ActionHandler[(int) ActionType.Attack] = null;
-				agent.Input.ActionHandler[(int) ActionType.Shoot] = null;
+				// agent.Input.ActionHandler[(int) ActionType.Shoot] = null;
+				agent.Input.ActionHandler[(int) ActionType.Special] = null;
 			}
 
 			public override int Update(Player player) {
@@ -31,10 +35,8 @@ namespace Thuleanx.PortalKnight {
 				player.Velocity = Mathx.Damp(Vector3.Lerp, player.Velocity, desiredVelocity, 
 					(player.Velocity.sqrMagnitude > desiredVelocity.sqrMagnitude) ? player.deccelerationAlpha : player.accelerationAlpha, Time.deltaTime);
 
-				if (player.Velocity != Vector3.zero) {
-					// turn to face velocity
-					player.transform.rotation = Quaternion.LookRotation(player.Velocity, Vector3.up);
-				}
+				if (player.Velocity != Vector3.zero) 
+					player.TurnToFace(player.Velocity);
 
 				return -1;
 			}

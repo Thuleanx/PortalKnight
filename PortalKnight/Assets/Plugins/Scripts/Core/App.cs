@@ -34,17 +34,23 @@ namespace Thuleanx {
 		public static UnityEvent<Scene> BeforeSceneUnload;
 		#endregion
 
+		public string GetActiveScene() => SceneManager.GetActiveScene().name;
+
 		public void RequestLoad(string sceneName, LoadSceneMode mode = LoadSceneMode.Single) {
 			if (mode == LoadSceneMode.Single) TriggerBeforeUnload();
 			SceneManager.LoadScene(sceneName, mode);
 		}
-		public void RequestLoadAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single) {
-			if (mode == LoadSceneMode.Single) TriggerBeforeUnload();
-			SceneManager.LoadSceneAsync(sceneName);
-		}
+		public void RequestLoadAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)
+			=> StartCoroutine(DirectLoadAsync(sceneName, mode));
 		public IEnumerator DirectLoadAsync(string sceneName, LoadSceneMode mode = LoadSceneMode.Single)  {
 			if (mode == LoadSceneMode.Single) TriggerBeforeUnload();
-			yield return SceneManager.LoadSceneAsync(sceneName) as IEnumerator;
+			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+			asyncLoad.allowSceneActivation = false;
+			while (!asyncLoad.isDone) {
+				if (asyncLoad.progress >= 0.9f)
+					asyncLoad.allowSceneActivation = true;
+				yield return null;
+			}
 		}
 		public void RequestUnload(string sceneName, UnloadSceneOptions options = UnloadSceneOptions.None)
 			=> StartCoroutine(_UnloadNextFrame(sceneName, options));

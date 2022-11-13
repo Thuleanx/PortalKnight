@@ -27,9 +27,6 @@ namespace Thuleanx.PortalKnight {
 			Hitbox = GetComponentInChildren<Hitbox3D>();
 		}
 
-		void Start() {
-		}
-
 		protected override void Update() {
 			Vector3 targetPos = (target && !target.IsDead ? target.transform.position : targetPosFallback) + targetOffset;
 			if (!alive || (!target && (transform.position - targetPos).sqrMagnitude < 0.5))
@@ -79,7 +76,7 @@ namespace Thuleanx.PortalKnight {
 			gameObject.SetActive(false);
 		}
 
-		public Hit3D GenerateHit(Hitbox3D hitbox, Hurtbox3D hurtbox) => new Hit3D(damage, 0, Velocity == Vector3.zero ? Vector3.zero : Velocity.normalized);
+		public Hit3D GenerateHit(Hitbox3D hitbox, Hurtbox3D hurtbox) => new Hit3D(damage, 0, Velocity == Vector3.zero ? Vector3.zero : Velocity.normalized, hurtbox.transform.position);
 
 		// steering behaviour
 	}

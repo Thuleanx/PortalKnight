@@ -26,11 +26,34 @@ namespace Thuleanx.PortalKnight {
 		public Vector3 mousePosWS {
 			get {
 				Camera cam = Camera.main;
+				// Vector2 vp = cam.ScreenToViewportPoint(mousePosSS);
+				Ray ray = Camera.main.ScreenPointToRay(mousePosSS);
+				if (Physics.Raycast(ray, out RaycastHit hit)) 
+					return hit.point;
+				Plane plane = new Plane(Vector3.up, -transform.position.y);
+				if (plane.Raycast(ray, out float dist)) {
+					Vector3 pos = ray.GetPoint(dist);
+					return pos;
+				}
+				// Plane plane = new Plane(Vector3.up, transform.position.y);
+				// float dist;
+				// if (plane.Raycast(ray, out dist)) {
+				// 	Vector3 pos = ray.GetPoint(dist);
+				// 	Debug.Log(pos + " || " +transform.position);
+				// 	return pos;
+				// }
+				// Debug.Log("Getting this");
+				return Camera.main.ScreenToWorldPoint(mousePosSS);
+			}
+		}
+
+		public Vector3 mousePosWSFlat {
+			get {
+				Camera cam = Camera.main;
 				Vector2 vp = cam.ScreenToViewportPoint(mousePosSS);
 				Ray ray = Camera.main.ViewportPointToRay(vp);
-				Plane plane = new Plane(Vector3.up, transform.position.y);
-				float dist;
-				if (plane.Raycast(ray, out dist)) {
+				Plane plane = new Plane(Vector3.up, -transform.position.y);
+				if (plane.Raycast(ray, out float dist)) {
 					Vector3 pos = ray.GetPoint(dist);
 					return pos;
 				}
@@ -46,6 +69,12 @@ namespace Thuleanx.PortalKnight {
 			return Quaternion.Euler(
 				0, Camera.main.transform.eulerAngles.y, 0f
 			) * inputDir;
+		}
+
+		public Vector2 WorldDirToMovement(Vector3 worldDir) {
+			Vector3 inputDir = Quaternion.Euler(0, -Camera.main.transform.eulerAngles.y, 0) * worldDir;
+			Vector2 movement = new Vector2(inputDir.x, inputDir.z);
+			return movement == Vector2.zero ? movement : movement.normalized;
 		}
 
 		void Awake() {
