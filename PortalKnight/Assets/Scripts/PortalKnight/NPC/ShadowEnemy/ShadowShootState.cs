@@ -45,9 +45,9 @@ namespace Thuleanx.PortalKnight {
 				monster.Drag = 0;
 
 				// actual special
-				for (int _ = 0; _ < monster.specialCount; _++) {
+				for (int i = 0; i < monster.specialCount; i++) {
 					float phi = Mathx.RandomRange(monster.specialEmissionPhi.x, monster.specialEmissionPhi.y) * Mathf.Deg2Rad;
-					float theta = Mathx.RandomRange(0, 360) * Mathf.Deg2Rad;
+					float theta = 360 * i / monster.specialCount * Mathf.Deg2Rad;
 					float r = monster.specialEmissionDistance;
 
 					Vector3 spawnOffset = Calc.ToSpherical(r, phi, theta);

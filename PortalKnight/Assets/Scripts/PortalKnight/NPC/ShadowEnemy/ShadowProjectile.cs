@@ -1,15 +1,21 @@
 using UnityEngine;
 
+using Thuleanx.PrettyPatterns;
+
 namespace Thuleanx.PortalKnight {
 	public class ShadowProjectile : Movable {
-		[SerializeField] float gravityMultiplier = 0.1f;
 		public Rigidbody Body { get; private set; }
+
+		[Header("Shadow Projectile")]
+		[SerializeField] float gravityMultiplier = 0.1f;
+		[SerializeField] BubblePool blobPool;
 
 		void Awake() {
 			Body = GetComponent<Rigidbody>();
 		}
 
-		void OnCollisionEnter(Collision other) {
+		void OnCollisionEnter(Collision collision) {
+			blobPool.BorrowTyped<ShadowBlob>(gameObject.scene, transform.position);
 			gameObject.SetActive(false);
 		}
 

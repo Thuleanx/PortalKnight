@@ -149,6 +149,7 @@ MonoBehaviour:
   KnockbackResistance: 1
   Drag: 0
   gravityMultiplier: 1
+  blobPool: {fileID: 11400000, guid: 1102b8811f75542418447a8bd16fdb68, type: 2}
 --- !u!54 &348607821288189370
 Rigidbody:
   m_ObjectHideFlags: 0

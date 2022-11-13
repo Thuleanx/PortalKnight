@@ -61,8 +61,7 @@ namespace Thuleanx.PrettyPatterns {
 
 			Bubble bubble = pool[pool.Count - 1];
 			pool.RemoveAt(pool.Count - 1);
-			bubble.gameObject.transform.position = position;
-			bubble.gameObject.transform.rotation = rotation;
+			bubble.gameObject.transform.SetPositionAndRotation(position, rotation);
 			bubble.gameObject.SetActive(true);
 			bubble.DisposalRequested = Collect;
 
@@ -91,7 +90,6 @@ namespace Thuleanx.PrettyPatterns {
 		}
 
 		void Collect(Bubble bubble) {
-			Debug.Log("Collecting " + bubble.gameObject.name);
 			if (borrowedLedger.ContainsKey(bubble.gameObject.scene.name))
 				borrowedLedger[bubble.gameObject.scene.name].Remove(bubble);
 			DontDestroyOnLoad(bubble.gameObject);

@@ -14,6 +14,7 @@ namespace Thuleanx.PortalKnight {
 		Timer alive;
 
 		void Awake() {
+			Hitbox = GetComponentInChildren<Hitbox3D>();
 			Hitbox.HitGenerator = this;
 		}
 
