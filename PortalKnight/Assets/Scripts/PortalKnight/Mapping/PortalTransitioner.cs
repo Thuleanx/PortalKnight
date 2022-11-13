@@ -40,9 +40,7 @@ namespace Thuleanx.PortalKnight.Mapping {
 			player.SetPosition(destination.transform.position);
 			FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().OnTargetObjectWarped(player.transform, deltaPos);
 
-			Debug.Log("WALKING TO POS");
 			yield return iWalkToPos(-destination.transform.forward * enterOffset + destination.transform.position);
-			Debug.Log("Finished TO POS");
 			// TODO: animate the portal out
 			destination.GetComponent<Collider>().enabled = true;
 
