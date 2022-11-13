@@ -72,6 +72,7 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Spell"), SerializeField, Required] Transform manaOrbFiringSource;
 
 		public float MaxMana => maxMana;
+		public bool Interactible = true;
 
 		float _mana;
 		public float Mana {get => _mana; private set {

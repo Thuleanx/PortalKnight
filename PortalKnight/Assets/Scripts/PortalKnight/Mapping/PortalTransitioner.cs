@@ -8,40 +8,39 @@ using Thuleanx.Utils;
 using Thuleanx.PortalKnight.Interactions;
 
 namespace Thuleanx.PortalKnight.Mapping {
-	public class PortalTransitioner : SceneTransitioner {
+	public class PortalTransitioner : MonoBehaviour {
 		[SerializeField] float enterOffset = 1;
 		[SerializeField] float exitOffset = 1;
 		[SerializeField] float transitionDuration = 0.5f;
+		bool transitioning = false;
 
-
-		public override bool Transition(SceneReference TargetScene, Interactible Triggerer) {
+		public bool Transition(Interactible Triggerer) {
 			if (transitioning) return false;
 			transitioning = true;
-			StartCoroutine(iTransition(TargetScene, Triggerer));
+			StartCoroutine(iTransition(Triggerer));
 			return true;
 		}
 
-		IEnumerator iTransition(SceneReference TargetScene, Interactible Triggerer) {
-			int ID = (Triggerer as Passage).ID;
+		IEnumerator iTransition(Interactible Triggerer) {
+			Player player = FindObjectOfType<Player>();
+			player.Interactible = false;
+
 			yield return iWalkToPos(-Triggerer.transform.forward * enterOffset + Triggerer.transform.position);
 			yield return iWalkToPos(Triggerer.transform.forward * exitOffset + Triggerer.transform.position);
-			yield return new WaitForSeconds(transitionDuration);
-			Triggerer = null; // Triggerer will now throw errors. Do not use it
-			App.instance.RequestLoad(TargetScene.SceneName);
-			yield return null; // for scene to load
-			foreach (Passage passage in FindObjectsOfType<Passage>()) {
-				if (passage.ID == ID) {
-					Player player = FindObjectOfType<Player>();
-					// we need to teleport the player ==> disable controller
-					player.Controller.enabled = false;
-					player.transform.position = passage.transform.position;
-					player.Controller.enabled = true;
-					yield return iWalkToPos(-passage.transform.forward * enterOffset + passage.transform.position);
-					// TODO: animate the portal out
-					passage.gameObject.SetActive(false);
-					break;
-				}
-			}
+			// yield return new WaitForSeconds(transitionDuration);
+			Passage destination = (Triggerer as Passage).Link;
+			destination.GetComponent<Collider>().enabled = false;
+			// we need to teleport the player ==> disable controller
+			player.Controller.enabled = false;
+			player.transform.position = destination.transform.position;
+			player.Controller.enabled = true;
+			Debug.Log("WALKING TO POS");
+			yield return iWalkToPos(-destination.transform.forward * enterOffset + destination.transform.position);
+			Debug.Log("Finished TO POS");
+			// TODO: animate the portal out
+			destination.GetComponent<Collider>().enabled = true;
+
+			player.Interactible = true;
 			transitioning = false;
 		}
 
