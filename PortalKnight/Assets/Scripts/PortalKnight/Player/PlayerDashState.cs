@@ -16,7 +16,6 @@ namespace Thuleanx.PortalKnight {
 			public override bool CanEnter(Player player) => !onCooldown;
 
 			public override void Begin(Player player) {
-				player.Anim.SetTrigger(player.dashTrigger);
 				dashDirection = player.Input.MovementToWorldDir(player.Input.lastNonZeroMovement);
 				beforeDashVelocity = player.Velocity;
 				player.TurnToFaceImmediate(dashDirection);
@@ -33,6 +32,7 @@ namespace Thuleanx.PortalKnight {
 					player.Drag = x;
 				});
 				player.Velocity = dashDirection * player.dashSpeed;
+				player.Anim.SetTrigger(player.dashTrigger);
 
 				// you can call the FX right here
 				yield return new WaitForSeconds(player.dashDuration);
