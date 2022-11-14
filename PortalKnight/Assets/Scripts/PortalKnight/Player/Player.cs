@@ -167,5 +167,6 @@ namespace Thuleanx.PortalKnight {
 			Vector3 nudge = transform.forward * nudgeSpeed;
 			Velocity += nudge;
 		}
+
 	}
 }
