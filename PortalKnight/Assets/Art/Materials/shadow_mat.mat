@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: shadow_mat
-  m_Shader: {fileID: -6465566751694194690, guid: b03e298b053a5489f9530f346545e507,
+  m_Shader: {fileID: -6465566751694194690, guid: 53342d8bcd6ec430a9d5b20c7ab85b75,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -67,14 +67,15 @@ Material:
     - Vector1_4cd03d7b2efb4915bacc546c5fbccab2: 0.1
     - Vector1_60ece6e4d9e144d89b3e1a4ca1675c16: 100
     - Vector1_8db20cea9b8646bfb0b7281d9b2195ed: 5
-    - Vector1_9119a77f898e4831a3769ebd713ed317: 3
+    - Vector1_9119a77f898e4831a3769ebd713ed317: 30
     - Vector1_a35d67df9ae24346a519be4567dde0ff: 1
-    - Vector1_a733b1ccabb44d358fb023bf798c478b: 1
+    - Vector1_a733b1ccabb44d358fb023bf798c478b: 2
     - Vector1_c32dc17fc31d4f359c8d82947abee73b: 0.17
     - Vector1_ce4dce001248402e9fcc5e120b1ecd5a: 5
     - Vector1_fd329a19a65045aab86810b961674e99: 30
-    - _Alpha: 1
-    - _CorruptionValue: 0.32
+    - _Alpha: 0.95
+    - _CorruptionValue: 0.151
+    - _DisplacementValue: 0.2
     - _Dissolve: 2
     - _HandMask: -0.7
     - _HueOffset: 10
@@ -90,5 +91,5 @@ Material:
     - _BodyPingOffsetSpeed: {r: 0, g: 1, b: 0, a: 0}
     - _BodyTextureOffsetSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _BodyTextureTiling: {r: 1, g: 1, b: 0, a: 0}
-    - _Color: {r: 0.4811321, g: 0, b: 0, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
