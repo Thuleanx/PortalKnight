@@ -42,6 +42,7 @@ namespace Thuleanx.PortalKnight {
 		#region Movement
 		[HorizontalLine(color:EColor.Blue)]
 		[SerializeField] float navMeshUpdateInterval = 0.2f;
+		[BoxGroup("Movement"), Range(0, 40), SerializeField] float nudgeSpeed = 24;
 		[BoxGroup("Movement"), Range(0, 720), SerializeField] float turnSpeed = 24;
 		[BoxGroup("Movement"), Range(0, 64), SerializeField] float accelerationAlpha = 24;
 		[BoxGroup("Movement"), Range(0, 64), SerializeField] float deccelerationAlpha = 12;
@@ -50,6 +51,7 @@ namespace Thuleanx.PortalKnight {
 		#region Combat
 		[HorizontalLine(color:EColor.Red)]
 		[BoxGroup("Melee Attack"), Range(0, 3), SerializeField] float attackRange = 2;
+		[BoxGroup("Melee Attack"), Range(0, 64), SerializeField] float attackDrag = 2;
 		[BoxGroup("Melee Attack"), Range(0, 10), SerializeField] int attackDamage = 1;
 		[BoxGroup("Melee Attack"), Range(0, 30), SerializeField] float attackKnockback = 15;
 		[BoxGroup("Melee Attack"), Range(0, 3), SerializeField] float attackWindupTime = 1;
@@ -109,7 +111,7 @@ namespace Thuleanx.PortalKnight {
 			if (displacement.sqrMagnitude > 0)  {
 				displacement = AdjustVelocityToSlope(displacement, Controller.slopeLimit);
 				bool inMesh = FindClosestNavPoint(transform.position + displacement, out Vector3 resPos); 
-				if (inMesh) Controller.Move(resPos - transform.position);
+				if (inMesh && Controller.enabled) Controller.Move(resPos - transform.position);
 			}
 		}
 		protected override void OnDeath(Puppet puppet) => StateMachine.SetState((int) State.Dead);
@@ -144,6 +146,10 @@ namespace Thuleanx.PortalKnight {
 			Controller.enabled = false;
 		}
 
+		public void _Nudge() {
+			Vector3 nudge = transform.forward * nudgeSpeed;
+			Velocity += nudge;
+		}
 	}
 
 

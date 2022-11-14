@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8d1ab4665f2514983a5a71d7de1953, type: 3}
   m_Name: bp_healthOrb
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6126688593840155852, guid: f601814f556a6e54fb707bba4361c5c3, type: 3}
-  pool: []
+  prefab: {fileID: 77382448848609812, guid: e475c4c0cec844f53a5c3fb73c9091a1, type: 3}
+  pool:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
