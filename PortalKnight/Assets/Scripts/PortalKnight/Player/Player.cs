@@ -30,12 +30,17 @@ namespace Thuleanx.PortalKnight {
 
 	[RequireComponent(typeof(PlayerInputChain))]
 	[RequireComponent(typeof(CharacterController))]
-	public partial class Player : Alive {
+	public partial class Player : Animated {
 		#region Components
 		public StateMachine<Player> StateMachine {get; private set;}
 		public CharacterController Controller {get; private set; }
 		public PlayerInputChain Input {get; private set; }
 		public Status Status => Puppet.Status;
+		#endregion
+
+		#region Animations
+		[HorizontalLine(color:EColor.Red)]
+		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string speedVariable;
 		#endregion
 
 		#region Movement
@@ -109,6 +114,7 @@ namespace Thuleanx.PortalKnight {
 
 		void LateUpdate() {
 			Shader.SetGlobalVector("_Player_Position", transform.position + Vector3.up * Controller.height / 2);
+			Anim.SetFloat(speedVariable, Velocity.magnitude);
 		}
 
 		void FixedUpdate() {

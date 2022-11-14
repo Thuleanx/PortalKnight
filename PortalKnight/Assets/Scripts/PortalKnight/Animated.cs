@@ -8,7 +8,6 @@ namespace Thuleanx.PortalKnight {
 
 		bool waitingForTrigger = false;
 		public void _AnimTrigger() {
-			Debug.Log("TRIGGERED");
 			waitingForTrigger = false;
 		}
 
