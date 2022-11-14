@@ -11,7 +11,6 @@ namespace Thuleanx.PortalKnight {
 		public class PlayerDashState : State<Player> {
 			Vector3 dashDirection;
 			Vector3 beforeDashVelocity;
-
 			Timer 	onCooldown;
 
 			public override bool CanEnter(Player player) => !onCooldown;
@@ -21,6 +20,7 @@ namespace Thuleanx.PortalKnight {
 				dashDirection = player.Input.MovementToWorldDir(player.Input.lastNonZeroMovement);
 				beforeDashVelocity = player.Velocity;
 				player.TurnToFaceImmediate(dashDirection);
+				player.Puppet.GiveIframes(player.dashIframes);
 			}
 
 			public override void End(Player player) {
