@@ -12,17 +12,22 @@ namespace Thuleanx.PortalKnight {
 	public partial class Player {
 		public class PlayerNovaState : State<Player> {
 			bool finished = false;
-
+			bool canDash;
+			bool OnDash(Player player) { return canDash && player.StateMachine.TrySetState((int) Player.State.Dash); }
+			
 			public override bool CanEnter(Player player) => player.Mana >= 1;
 
 			public override void Begin(Player player) {
 				player.Drag = player.deccelerationAlpha;
 				player.Mana--;
 				finished = false;
+				canDash = false;
+				player.Input.ActionHandler[(int) ActionType.Dash] = OnDash;
 			}
 
 			public override void End(Player player) {
 				player.Drag = 0;
+				player.Input.ActionHandler[(int) ActionType.Dash] = null;
 			}
 
 			public override int Transition(Player agent) => finished ? (int) Player.State.Neutral : -1;
@@ -34,6 +39,7 @@ namespace Thuleanx.PortalKnight {
 				yield return player.iWaitForAnimationWhileTurn(targetPos - player.transform.position, player.spellTurnSpeed);
 
 				SpawnNova(player, targetPos);
+				canDash = true;
 
 				yield return player.iWaitForTrigger();
 				player.Anim.SetTrigger(player.neutralTrigger);

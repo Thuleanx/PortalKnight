@@ -19,7 +19,6 @@ namespace Thuleanx.PortalKnight {
 
 			bool OnAttack(Player player) {
 				if (queueAttack || !canQueueAttack) return false;
-				Debug.Log("Attack Triggered");
 				queueAttack = true;
 				return true;
 			}

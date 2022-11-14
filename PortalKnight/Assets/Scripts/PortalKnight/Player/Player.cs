@@ -71,7 +71,6 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Attack"), Range(0, 10), SerializeField] int attackDamage = 1;
 		[BoxGroup("Attack"), Range(0, 300), SerializeField] float attackKnockback = 20;
 		[BoxGroup("Attack"), Range(0, 1), SerializeField] float attackCooldown = 0.5f;
-		[BoxGroup("Attack"), Range(0, 5), SerializeField] float attackDuration = 0.5f;
 		[BoxGroup("Attack"), Range(0,64), SerializeField] float attackDrag = 8f;
 		[BoxGroup("Attack"), Required, SerializeField] Hitbox3D attackHitbox;
 		#endregion
@@ -83,8 +82,6 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Spell"), Range(0, 10), SerializeField] float novaTrackingRange = 3;
 		[BoxGroup("Spell"), Range(1, 5), SerializeField] int maxMana = 2;
 		[BoxGroup("Spell"), Range(0, 1), SerializeField] float manaOnHit;
-		[BoxGroup("Spell"), Range(0, 1), SerializeField] float novaDelay = 0.5f;
-		[BoxGroup("Spell"), Range(0, 1), SerializeField] float novaRecovery = 0.25f;
 		[BoxGroup("Spell"), SerializeField, Required] BubblePool manaOrbPool;
 		[BoxGroup("Spell"), SerializeField, Required] BubblePool novaPool;
 		[BoxGroup("Spell"), SerializeField, Required] Transform manaOrbFiringSource;
