@@ -42,7 +42,7 @@ namespace Thuleanx.PortalKnight {
 				dragTween = DOVirtual.Float(player.attackDrag, 0, player.attackDuration, (x) => player.Drag = x);
 
 				player.attackHitbox.startCheckingCollision();
-				player.TurnToFace(attackDirection);
+				player.TurnToFace(attackDirection, 10000);
 
 				Timer waiting = player.attackDuration;
 				while (waiting) {

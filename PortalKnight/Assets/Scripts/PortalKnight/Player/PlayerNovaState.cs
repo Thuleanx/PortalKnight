@@ -29,10 +29,14 @@ namespace Thuleanx.PortalKnight {
 
 			public override IEnumerator Coroutine(Player player) {
 				Vector3 targetPos = player.Input.mousePosWS;
-				// TODO: change this to waiting for the animation instead
-				yield return new WaitForSeconds(player.novaDelay);
+
+				player.Anim.SetTrigger(player.novaTrigger);
+				yield return player.iWaitForAnimationWhileTurn(targetPos - player.transform.position, player.spellTurnSpeed);
+
 				SpawnNova(player, targetPos);
-				yield return new WaitForSeconds(player.novaRecovery);
+
+				yield return player.iWaitForTrigger();
+				player.Anim.SetTrigger(player.neutralTrigger);
 				finished = true;
 			}
 

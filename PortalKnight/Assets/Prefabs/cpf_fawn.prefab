@@ -333,24 +333,32 @@ MonoBehaviour:
   Drag: 0
   <Anim>k__BackingField: {fileID: 8569863512189823100}
   speedVariable: Speed
+  attackTrigger: Attack
+  novaTrigger: Nova
+  dashTrigger: Dash
+  neutralTrigger: Neutral
+  deathTrigger: Death
   speed: 5
   accelerationAlpha: 24
   deccelerationAlpha: 12
+  turnSpeed: 420
   dashCooldown: 0.5
   dashSpeed: 30
   dashDuration: 0.1
   dashDrag: 18
+  attackTurnSpeed: 720
   attackDamage: 1
   attackKnockback: 30
   attackCooldown: 0.5
   attackDuration: 0.5
   attackDrag: 6
   attackHitbox: {fileID: 2145100283}
+  spellTurnSpeed: 480
   manaOrbDamage: 1
   manaOrbMouseRange: 3
   novaTrackingRange: 3
   maxMana: 2
-  manaOnHit: 0.25
+  manaOnHit: 1
   novaDelay: 0.5
   novaRecovery: 0.25
   manaOrbPool: {fileID: 11400000, guid: 9181b321947d40f4dbb49242214c8d1d, type: 2}

@@ -36,7 +36,7 @@ namespace Thuleanx.PortalKnight {
 					(player.Velocity.sqrMagnitude > desiredVelocity.sqrMagnitude) ? player.deccelerationAlpha : player.accelerationAlpha, Time.deltaTime);
 
 				if (player.Velocity != Vector3.zero) 
-					player.TurnToFace(player.Velocity);
+					player.TurnToFace(player.Velocity, player.turnSpeed);
 
 				return -1;
 			}

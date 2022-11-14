@@ -17,8 +17,10 @@ namespace Thuleanx.PortalKnight {
 			public override bool CanEnter(Player player) => !onCooldown;
 
 			public override void Begin(Player player) {
+				player.Anim.SetTrigger(player.dashTrigger);
 				dashDirection = player.Input.MovementToWorldDir(player.Input.lastNonZeroMovement);
 				beforeDashVelocity = player.Velocity;
+				player.TurnToFaceImmediate(dashDirection);
 			}
 
 			public override void End(Player player) {
@@ -37,6 +39,7 @@ namespace Thuleanx.PortalKnight {
 
 				tween.Kill();
 
+				player.Anim.SetTrigger(player.neutralTrigger);
 				player.StateMachine.SetState((int) Player.State.Neutral);
 			}
 		}

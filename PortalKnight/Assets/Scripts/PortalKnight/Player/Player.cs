@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using NaughtyAttributes;
 using Thuleanx.AI.FSM;
 using Thuleanx.Combat3D;
@@ -41,6 +42,11 @@ namespace Thuleanx.PortalKnight {
 		#region Animations
 		[HorizontalLine(color:EColor.Red)]
 		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string speedVariable;
+		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string attackTrigger;
+		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string novaTrigger;
+		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string dashTrigger;
+		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string neutralTrigger;
+		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string deathTrigger;
 		#endregion
 
 		#region Movement
@@ -48,6 +54,7 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Movement"), Range(0, 10), SerializeField] float speed = 4;
 		[BoxGroup("Movement"), Range(0, 64), SerializeField] float accelerationAlpha = 24;
 		[BoxGroup("Movement"), Range(0, 64), SerializeField] float deccelerationAlpha = 12;
+		[BoxGroup("Movement"), Range(0, 720), SerializeField] float turnSpeed = 24;
 
 		[HorizontalLine(color:EColor.Violet)]
 		[BoxGroup("Dash"), Range(0, 4), SerializeField] float dashCooldown = 1;
@@ -58,6 +65,7 @@ namespace Thuleanx.PortalKnight {
 		
 		#region Combat
 		[HorizontalLine(color:EColor.Red)]
+		[BoxGroup("Attack"), Range(0, 720), SerializeField] float attackTurnSpeed = 24;
 		[BoxGroup("Attack"), Range(0, 10), SerializeField] int attackDamage = 1;
 		[BoxGroup("Attack"), Range(0, 300), SerializeField] float attackKnockback = 20;
 		[BoxGroup("Attack"), Range(0, 1), SerializeField] float attackCooldown = 0.5f;
@@ -67,6 +75,7 @@ namespace Thuleanx.PortalKnight {
 		#endregion
 
 		#region Spell Casting
+		[BoxGroup("Spell"), Range(0, 720), SerializeField] float spellTurnSpeed = 24;
 		[BoxGroup("Spell"), Range(1, 5), SerializeField] int manaOrbDamage;
 		[BoxGroup("Spell"), Range(0, 10), SerializeField] float manaOrbMouseRange = 3;
 		[BoxGroup("Spell"), Range(0, 10), SerializeField] float novaTrackingRange = 3;
@@ -121,10 +130,6 @@ namespace Thuleanx.PortalKnight {
 			StateMachine.RunFixUpdate();
 		}
 
-		void TurnToFace(Vector3 dir) {
-			transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
-		}
-
 		protected override void Move(Vector3 displacement) {
 			if (displacement.sqrMagnitude > 0)  {
 				displacement = AdjustVelocityToSlope(displacement, Controller.slopeLimit);
@@ -145,6 +150,14 @@ namespace Thuleanx.PortalKnight {
 			Controller.enabled = false;
 			transform.position = pos;
 			Controller.enabled = true;
+		}
+
+		IEnumerator iWaitForAnimationWhileTurn(Vector3 desiredRotation, float turnSpeed) {
+			StartAnimationWait();
+			while (WaitingForTrigger) {
+				TurnToFace(desiredRotation, turnSpeed);
+				yield return null;
+			}
 		}
 	}
 }

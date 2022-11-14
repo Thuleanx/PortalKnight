@@ -77,5 +77,19 @@ namespace Thuleanx.PortalKnight {
 			}
 			return pos;
 		}
+
+		public void TurnToFace(Vector3 dir, float turnSpeed) {
+			dir.y = 0;
+			if (dir != Vector3.zero) {
+				Quaternion desiredRotation = Quaternion.LookRotation(dir, Vector3.up);
+				transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, Time.deltaTime * turnSpeed);
+			}
+		}
+
+		public void TurnToFaceImmediate(Vector3 dir) {
+			dir.y = 0;
+			if (dir != Vector3.zero)
+				transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
+		}
 	}
 }

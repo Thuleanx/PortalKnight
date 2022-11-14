@@ -105,21 +105,6 @@ namespace Thuleanx.PortalKnight {
 			StateMachine.RunFixUpdate();
 		}
 
-		void TurnToFace(Vector3 dir, float turnSpeed = -1) {
-			if (turnSpeed == -1) turnSpeed = this.turnSpeed;
-			dir.y = 0;
-			if (dir != Vector3.zero) {
-				Quaternion desiredRotation = Quaternion.LookRotation(dir, Vector3.up);
-				transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, Time.deltaTime * turnSpeed);
-			}
-		}
-
-		void TurnToFaceImmediate(Vector3 dir) {
-			dir.y = 0;
-			if (dir != Vector3.zero)
-				transform.rotation = Quaternion.LookRotation(dir, Vector3.up);
-		}
-
 		protected override void Move(Vector3 displacement) {
 			if (displacement.sqrMagnitude > 0)  {
 				displacement = AdjustVelocityToSlope(displacement, Controller.slopeLimit);
