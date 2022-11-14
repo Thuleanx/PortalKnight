@@ -29,7 +29,7 @@ namespace Thuleanx.PortalKnight {
 			}
 
 			public override IEnumerator Coroutine(ShadowEnemy monster) {
-				monster.Drag = monster.deccelerationAlpha;
+				monster.Drag = monster.attackDrag;
 
 				monster.Anim.SetTrigger(monster.attackWindupTrigger);
 				yield return iWaitWhileFacingPlayer(monster, monster.attackWindupTime);
