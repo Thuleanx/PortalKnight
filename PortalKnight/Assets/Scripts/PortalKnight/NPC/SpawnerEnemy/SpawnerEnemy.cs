@@ -24,12 +24,15 @@ namespace Thuleanx.PortalKnight {
 		#endregion
 
 		#region Spawing
+		[SerializeField] float detectionRadius = 20;
 		[SerializeField, BoxGroup("Spawning"), MinMaxSlider(0, 30)] Vector2 cooldown;
 		[SerializeField, BoxGroup("Spawning"), Range(0, 3)] float spellDuration;
 		[SerializeField, BoxGroup("Spawning")] Vector3 offset;
 		[SerializeField, BoxGroup("Spawning"), Range(0, 20)] float range = 3;
 		[SerializeField, BoxGroup("Spawning"), Range(0, 20)] int maxShadowEnemies;
 		[SerializeField, BoxGroup("Spawning"), Required] BubblePool shadowEnemeyPool;
+
+		Player player;
 		#endregion
 
 		List<ShadowEnemy> enemies = new List<ShadowEnemy>();
@@ -38,6 +41,7 @@ namespace Thuleanx.PortalKnight {
 			base.Awake();
 			StateMachine = GetComponent<StateMachine<SpawnerEnemy>>();
 			StateMachine.Construct();
+			player = FindObjectOfType<Player>();
 		}
 
 		public override void Start(){
@@ -83,5 +87,7 @@ namespace Thuleanx.PortalKnight {
 
 		public override void Vanquish() {
 		}
+
+		bool playerInRange => (player.transform.position - transform.position).magnitude < detectionRadius;
 	}
 }

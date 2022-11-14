@@ -24,18 +24,20 @@ namespace Thuleanx.PortalKnight {
 			}
 
 			public override int Update(ShadowEnemy monster) {
-				// every x frames, update destination
-				if (Time.time - timeLastNavMeshUpdate >= monster.navMeshUpdateInterval)
-					UpdateNavMeshTarget(monster);
+				Vector3 desiredVelocity = Vector3.zero;
+				if (monster.playerInRange) {
+					// every x frames, update destination
+					if (Time.time - timeLastNavMeshUpdate >= monster.navMeshUpdateInterval)
+						UpdateNavMeshTarget(monster);
 
-				Vector3 desiredVelocity = monster.NavAgent.desiredVelocity;
+					desiredVelocity = monster.NavAgent.desiredVelocity;
+				} 
 
 				monster.Velocity = Mathx.Damp(Vector3.Lerp, monster.Velocity, desiredVelocity, 
 					(desiredVelocity.sqrMagnitude >= monster.Velocity.sqrMagnitude ? 
 						monster.accelerationAlpha : monster.deccelerationAlpha), Time.deltaTime);
 
 				monster.TurnToFace(monster.Velocity, monster.turnSpeed);
-
 				return -1;
 			}
 

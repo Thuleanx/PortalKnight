@@ -42,6 +42,7 @@ namespace Thuleanx.PortalKnight {
 		#region Movement
 		[HorizontalLine(color:EColor.Blue)]
 		[SerializeField] float navMeshUpdateInterval = 0.2f;
+		[BoxGroup("Movement"), Range(0, 40), SerializeField] float detectionRadius = 20;
 		[BoxGroup("Movement"), Range(0, 40), SerializeField] float nudgeSpeed = 24;
 		[BoxGroup("Movement"), Range(0, 720), SerializeField] float turnSpeed = 24;
 		[BoxGroup("Movement"), Range(0, 64), SerializeField] float accelerationAlpha = 24;
@@ -150,6 +151,8 @@ namespace Thuleanx.PortalKnight {
 			Vector3 nudge = transform.forward * nudgeSpeed;
 			Velocity += nudge;
 		}
+
+		bool playerInRange => (player.transform.position - transform.position).magnitude < detectionRadius;
 	}
 
 
