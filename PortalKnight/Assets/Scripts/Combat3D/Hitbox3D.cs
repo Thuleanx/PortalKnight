@@ -52,8 +52,13 @@ namespace Thuleanx.Combat3D {
 			lastFrameActive = Active;
 		}
 
-		public void startCheckingCollision() => Active = true;
+		public void startCheckingCollision() { 
+			Active = true;
+			Debug.Log("start");
+		}
+
 		public void stopCheckingCollision() {
+			Debug.Log("stop");
 			Active = false;
 			hurtboxCooldown.Clear();
 		} 

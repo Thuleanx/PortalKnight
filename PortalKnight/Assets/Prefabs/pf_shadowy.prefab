@@ -612,6 +612,82 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31b97be079238854fa5b0cd151ff5a36, type: 3}
+--- !u!1 &1194221180122232677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8830622486282559299, guid: 31b97be079238854fa5b0cd151ff5a36,
+    type: 3}
+  m_PrefabInstance: {fileID: 7646572905410340902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1633108304049226509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194221180122232677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72fd9a465dbbf904d89380dfe4198e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.3
+--- !u!1 &3066635513865435668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4570883915625541070, guid: 31b97be079238854fa5b0cd151ff5a36,
+    type: 3}
+  m_PrefabInstance: {fileID: 7646572905410340902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4901564766802241673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066635513865435668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72fd9a465dbbf904d89380dfe4198e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.3
+--- !u!1 &4594699063646119773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3036072665133723781, guid: 31b97be079238854fa5b0cd151ff5a36,
+    type: 3}
+  m_PrefabInstance: {fileID: 7646572905410340902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1093728437632234736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594699063646119773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72fd9a465dbbf904d89380dfe4198e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.3
+--- !u!1 &4829187578377178198 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2961869986546230384, guid: 31b97be079238854fa5b0cd151ff5a36,
+    type: 3}
+  m_PrefabInstance: {fileID: 7646572905410340902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8268471335445172236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4829187578377178198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72fd9a465dbbf904d89380dfe4198e21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashDuration: 0.3
 --- !u!1 &7412780240685045111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 31b97be079238854fa5b0cd151ff5a36,
@@ -676,7 +752,55 @@ MonoBehaviour:
       m_Calls: []
   OnHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1633108304049226509}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Effects.FlashEffect, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1093728437632234736}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Effects.FlashEffect, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4901564766802241673}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Effects.FlashEffect, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8268471335445172236}
+        m_TargetAssemblyTypeName: Thuleanx.PortalKnight.Effects.FlashEffect, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   InitialMaxHealth: 2
 --- !u!114 &460150655
 MonoBehaviour:
@@ -708,6 +832,7 @@ MonoBehaviour:
   KnockbackResistance: 32
   Drag: 0
   <Anim>k__BackingField: {fileID: 460150653}
+  animationEvents: []
   neutralTrigger: Walk
   attackWindupTrigger: Attack Windup
   attackTrigger: Attack
