@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2602806661134045374
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: shadow_eyes_mat
+  m_Shader: {fileID: -6465566751694194690, guid: dba7286d48357480ba37a599de8dc827,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Vector1_60ece6e4d9e144d89b3e1a4ca1675c16: 100
+    - Vector1_a35d67df9ae24346a519be4567dde0ff: 1
+    - Vector1_c32dc17fc31d4f359c8d82947abee73b: 0.17
+    - Vector1_ce4dce001248402e9fcc5e120b1ecd5a: 8.42
+    - Vector1_fd329a19a65045aab86810b961674e99: 30
+    - _Dissolve: 11.36
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    m_Colors:
+    - Color_38e84acb48a84c088c0ef04a60eb7dfb: {r: 1, g: 1, b: 1, a: 0}
+    - Vector2_54edcfd1f42746a183557df8c4e50b5c: {r: 0.01, g: 0.3, b: 0, a: 0}
+  m_BuildTextureStacks: []
