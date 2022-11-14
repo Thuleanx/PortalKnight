@@ -67,6 +67,8 @@ namespace Thuleanx.PortalKnight {
 		
 		#region Combat
 		[HorizontalLine(color:EColor.Red)]
+		[BoxGroup("General Combar"), Range(0, 4), SerializeField] float hitIframes = 1;
+
 		[BoxGroup("Attack"), Range(0, 100), SerializeField] float nudgeSpeed = 40;
 		[BoxGroup("Attack"), Range(0, 720), SerializeField] float attackTurnSpeed = 24;
 		[BoxGroup("Attack"), Range(0, 10), SerializeField] int attackDamage = 1;
@@ -112,6 +114,7 @@ namespace Thuleanx.PortalKnight {
 			var storage = App.instance.GetComponentInChildren<VariableStorage>();
 			if (storage && storage.GetDeathCount() > 0) 
 				SetPosition(GameObject.FindWithTag("Death Anchor").transform.position);
+			Puppet.OnHit.AddListener((p) => {p.GiveIframes(hitIframes);});
 		}
 
 		protected override void Update() {
