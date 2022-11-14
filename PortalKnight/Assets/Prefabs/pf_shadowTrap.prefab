@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 806ce56584a62cc48863c82b2a1f3269, type: 2}
+  - {fileID: 2100000, guid: 3ce889f1b524d4f739b6e4fb9198359b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5199360773534860007}
   - component: {fileID: 6266183473094236034}
   m_Layer: 9
-  m_Name: pf_test_shadowBlob
+  m_Name: pf_shadowTrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
