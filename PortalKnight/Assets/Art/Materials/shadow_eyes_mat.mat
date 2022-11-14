@@ -76,13 +76,14 @@ Material:
     - _Alpha: 1
     - _CorruptionValue: 0.195
     - _DisplacementMask: 1
-    - _DisplacementValue: -0.1
+    - _DisplacementOffset: 0
+    - _DisplacementValue: -0.25
     - _Dissolve: 1
     - _HandMask: 1
     - _HueOffset: 10
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WholeMask: -0.5
+    - _WholeMask: -0.4
     m_Colors:
     - Color_38e84acb48a84c088c0ef04a60eb7dfb: {r: 1, g: 1, b: 1, a: 0}
     - Color_4f5bbd86720e4b5c85b725167a548d82: {r: 1, g: 1, b: 1, a: 0}

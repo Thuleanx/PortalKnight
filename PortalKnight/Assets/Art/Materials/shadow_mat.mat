@@ -67,16 +67,17 @@ Material:
     - Vector1_4cd03d7b2efb4915bacc546c5fbccab2: 0.1
     - Vector1_60ece6e4d9e144d89b3e1a4ca1675c16: 100
     - Vector1_8db20cea9b8646bfb0b7281d9b2195ed: 5
-    - Vector1_9119a77f898e4831a3769ebd713ed317: 30
+    - Vector1_9119a77f898e4831a3769ebd713ed317: 50
     - Vector1_a35d67df9ae24346a519be4567dde0ff: 1
-    - Vector1_a733b1ccabb44d358fb023bf798c478b: 2
+    - Vector1_a733b1ccabb44d358fb023bf798c478b: 3
     - Vector1_c32dc17fc31d4f359c8d82947abee73b: 0.17
     - Vector1_ce4dce001248402e9fcc5e120b1ecd5a: 5
     - Vector1_fd329a19a65045aab86810b961674e99: 30
     - _Alpha: 0.95
     - _CorruptionValue: 0.151
     - _DisplacementMask: 0.66
-    - _DisplacementValue: 0.4
+    - _DisplacementOffset: 0.22
+    - _DisplacementValue: 0.25
     - _Dissolve: 2
     - _HandMask: -0.7
     - _HueOffset: 10
