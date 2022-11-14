@@ -27,11 +27,11 @@ namespace Thuleanx.PortalKnight.Mapping {
 			transitioning = false;
 
 			canvasGroup.DOFade(1, fadeOutDuration);
-			yield return new WaitForSeconds(1);
+			yield return new WaitForSeconds(fadeOutDuration);
 
 			App.instance.RequestLoad(sceneName);
 
-			canvasGroup.DOFade(1, fadeInDuration);
+			canvasGroup.DOFade(0, fadeInDuration);
 			yield return new WaitForSeconds(1);
 		}
 

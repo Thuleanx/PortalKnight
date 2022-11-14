@@ -6,12 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Skeleton/scn_skeleton_library.unity
-    guid: df343c8a3244f8d488a927aff38b007c
+    path: Assets/Scenes/Official/scn_official_hubthrone.unity
+    guid: fd1ec8de9dc86fb40ba20d2d5e8f09c3
   - enabled: 1
-    path: Assets/Scenes/Skeleton/scn_skeleton_hub.unity
-    guid: 6c88dfa10933d5a469cc689fbec84c65
-  - enabled: 1
-    path: Assets/Scenes/Skeleton/scn_skeleton_garden.unity
-    guid: 7de32cabe7c29ab4499cdc049fdec563
+    path: Assets/Scenes/Official/scn_official_end.unity
+    guid: 2955db3b08441a840acf3f7a28625064
   m_configObjects: {}
