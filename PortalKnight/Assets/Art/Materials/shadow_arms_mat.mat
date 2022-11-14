@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: shadow_mat
+  m_Name: shadow_arms_mat
   m_Shader: {fileID: -6465566751694194690, guid: 53342d8bcd6ec430a9d5b20c7ab85b75,
     type: 3}
   m_ValidKeywords: []
@@ -75,8 +75,8 @@ Material:
     - Vector1_fd329a19a65045aab86810b961674e99: 30
     - _Alpha: 0.95
     - _CorruptionValue: 0.151
-    - _DisplacementMask: 0.66
-    - _DisplacementValue: 0.4
+    - _DisplacementMask: 0
+    - _DisplacementValue: 0.5
     - _Dissolve: 2
     - _HandMask: -0.7
     - _HueOffset: 10
