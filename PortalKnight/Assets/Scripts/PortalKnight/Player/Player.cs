@@ -58,9 +58,10 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Movement"), Range(0, 720), SerializeField] float turnSpeed = 24;
 
 		[HorizontalLine(color:EColor.Violet)]
+		[BoxGroup("Dash"), Range(0, 4), SerializeField] float dashIframes = 1;
 		[BoxGroup("Dash"), Range(0, 4), SerializeField] float dashCooldown = 1;
 		[BoxGroup("Dash"), Range(0, 100), SerializeField] float dashSpeed = 10;
-		[BoxGroup("Dash"), Range(0, 1), Tooltip("Dash duration in seconds"), SerializeField] float dashDuration = 10;
+		[BoxGroup("Dash"), Range(0, 1), Tooltip("Dash duration in seconds"), SerializeField] float dashDuration = 1;
 		[BoxGroup("Dash"), Range(0, 64), SerializeField] float dashDrag;
 		#endregion
 		

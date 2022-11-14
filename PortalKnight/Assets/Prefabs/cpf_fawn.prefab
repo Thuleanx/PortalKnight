@@ -875,6 +875,7 @@ MonoBehaviour:
   accelerationAlpha: 24
   deccelerationAlpha: 12
   turnSpeed: 420
+  dashIframes: 0.4
   dashCooldown: 0.5
   dashSpeed: 30
   dashDuration: 0.1
@@ -884,7 +885,6 @@ MonoBehaviour:
   attackDamage: 1
   attackKnockback: 30
   attackCooldown: 0.5
-  attackDuration: 0.5
   attackDrag: 8
   attackHitbox: {fileID: 2145100283}
   spellTurnSpeed: 480
@@ -893,8 +893,6 @@ MonoBehaviour:
   novaTrackingRange: 3
   maxMana: 2
   manaOnHit: 1
-  novaDelay: 0.5
-  novaRecovery: 0.25
   manaOrbPool: {fileID: 11400000, guid: 9181b321947d40f4dbb49242214c8d1d, type: 2}
   novaPool: {fileID: 11400000, guid: c6a655b3223ce2146852ffc7238f77a2, type: 2}
   manaOrbFiringSource: {fileID: 1559809896}
