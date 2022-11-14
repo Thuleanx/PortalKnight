@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8d1ab4665f2514983a5a71d7de1953, type: 3}
   m_Name: bp_shadowProjectile
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8375574544275891203, guid: 98f04d969b7c4ef4aad8c0c8f4d66548, type: 3}
+  prefab: {fileID: 8375574544275891203, guid: 7761f754c76594dfbb5410ee9071a8f7, type: 3}
   pool: []

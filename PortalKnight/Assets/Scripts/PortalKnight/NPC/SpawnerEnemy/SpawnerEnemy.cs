@@ -59,7 +59,6 @@ namespace Thuleanx.PortalKnight {
 			enemyPuppet.OnDeath.RemoveListener(OnEnemyDeath);
 		}
 		public ShadowEnemy SpawnEnemy(Vector3 spawnPos) {
-			Debug.Log("SPAWN");
 			GameObject shadowEnemyObj = shadowEnemeyPool.Borrow(gameObject.scene, spawnPos);
 			ShadowEnemy shadowEnemy = shadowEnemyObj.GetComponent<ShadowEnemy>();
 			enemies.Add(shadowEnemy);

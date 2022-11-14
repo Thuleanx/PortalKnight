@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8d1ab4665f2514983a5a71d7de1953, type: 3}
   m_Name: bp_shadowBlob
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5199360773534860006, guid: a5f1866bcad64e046a1532559de7f2ae, type: 3}
+  prefab: {fileID: 5199360773534860006, guid: ac60209e8a7524c5c921f0424081de08, type: 3}
   pool: []

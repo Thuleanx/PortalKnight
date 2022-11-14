@@ -133,6 +133,9 @@ MonoBehaviour:
   knockback: 16
   bomb: {fileID: 0}
   lifetime: 4
+  exitDuration: 0.75
+  sizeVariation: {x: 0.75763834, y: 1.3224604}
+  OutEase: 26
 --- !u!1 &8769142792685552219
 GameObject:
   m_ObjectHideFlags: 0
