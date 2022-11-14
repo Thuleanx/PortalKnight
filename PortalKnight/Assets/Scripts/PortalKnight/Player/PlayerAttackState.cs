@@ -13,11 +13,28 @@ namespace Thuleanx.PortalKnight {
 			Timer 	onCooldown;
 			Vector3 attackDirection;
 			Tween 	dragTween;
+			bool queueAttack;
+			bool canQueueAttack;
+			bool canDash;
+
+			bool OnAttack(Player player) {
+				if (queueAttack || !canQueueAttack) return false;
+				Debug.Log("Attack Triggered");
+				queueAttack = true;
+				return true;
+			}
+
+			bool OnDash(Player player) { return canDash && player.StateMachine.TrySetState((int) Player.State.Dash); }
 
 			public override bool CanEnter(Player player) => !onCooldown;
 
 			public override void Begin(Player player) {
-				player.Drag = player.attackDrag;
+				player.Input.ActionHandler[(int) ActionType.Attack] = OnAttack;
+				player.Input.ActionHandler[(int) ActionType.Dash] = OnDash;
+
+				canQueueAttack = false;
+				queueAttack = false;
+				canDash = false;
 
 				attackDirection = player.Input.mousePosWSFlat - player.transform.position;
 				attackDirection.y = 0;
@@ -30,7 +47,8 @@ namespace Thuleanx.PortalKnight {
 			public override void End(Player player) {
 				if (player.attackHitbox.HitGenerator == this) 
 					player.attackHitbox.HitGenerator = null;
-
+				player.Input.ActionHandler[(int) ActionType.Attack] = null;
+				player.Input.ActionHandler[(int) ActionType.Dash] = null;
 				player.Drag = 0;
 				player.attackHitbox.OnHit.RemoveListener(OnHit);
 				player.attackHitbox.stopCheckingCollision();
@@ -39,26 +57,42 @@ namespace Thuleanx.PortalKnight {
 			}
 
 			public override IEnumerator Coroutine(Player player) {
-				dragTween = DOVirtual.Float(player.attackDrag, 0, player.attackDuration, (x) => player.Drag = x);
+				player.Drag = player.attackDrag;
+				player.Anim.SetTrigger(player.attackTrigger);
 
-				player.attackHitbox.startCheckingCollision();
-				player.TurnToFace(attackDirection, 10000);
+				yield return iWaitForAttack(player, true);
+				canQueueAttack = true;
+				canDash = true;
+				yield return iWaitForAttack(player, false);
 
-				Timer waiting = player.attackDuration;
-				while (waiting) {
-					if (player.Input.movement != Vector2.zero) {
-						Vector3 inputDir = player.Input.MovementToWorldDir(player.Input.movement).normalized;
-						player.Velocity = inputDir * player.Velocity.magnitude;
-					}
-					yield return null;
+				if (queueAttack) {
+					// second attack, if queued
+					attackDirection = player.Input.mousePosWSFlat - player.transform.position;
+					canDash = false;
+					queueAttack = false;
+					canQueueAttack = false;
+					player.Anim.SetTrigger(player.attack2Trigger);
+					yield return iWaitForAttack(player, true);
+					canDash = true;
+					yield return iWaitForAttack(player, true);
 				}
 
-				player.attackHitbox.stopCheckingCollision();
-
 				onCooldown = player.attackCooldown;
-				dragTween.Kill(); // gotta kill to ensure no side erffects after exiting the state
-
+				player.Anim.SetTrigger(player.neutralTrigger);
 				player.StateMachine.SetState((int) Player.State.Neutral);
+			}
+
+			IEnumerator iWaitForAttack(Player player, bool ignoreQueueAttack) {
+				player.StartAnimationWait();
+				while (player.WaitingForTrigger && (!queueAttack || ignoreQueueAttack)) {
+					player.TurnToFace(attackDirection, player.attackTurnSpeed);
+					// move slightly
+					// if (player.Input.movement != Vector2.zero) {
+					// 	Vector3 inputDir = player.Input.MovementToWorldDir(player.Input.movement).normalized;
+					// 	player.Velocity = inputDir * player.Velocity.magnitude;
+					// }
+					yield return null;
+				}
 			}
 
 			void OnHit(Hit3D hit) {

@@ -110,8 +110,8 @@ namespace Thuleanx.PortalKnight {
 		protected override void Notify() {
 			for (int i = 0; i < ActionHandler.Length; i++)
 				if (canTriggerAction[i] && triggerAction[i] && ActionHandler[i] != null) {
-					ActionHandler[i]?.Invoke(Player);
-					triggerEvent[i]?.Invoke((Player.ActionType) i);
+					bool result = ActionHandler[i].Invoke(Player);
+					if (result) triggerEvent[i]?.Invoke((Player.ActionType) i);
 				}
 		}
 	}

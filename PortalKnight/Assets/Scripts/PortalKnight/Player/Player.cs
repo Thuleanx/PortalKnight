@@ -43,6 +43,7 @@ namespace Thuleanx.PortalKnight {
 		[HorizontalLine(color:EColor.Red)]
 		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string speedVariable;
 		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string attackTrigger;
+		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string attack2Trigger;
 		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string novaTrigger;
 		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string dashTrigger;
 		[BoxGroup("Animations"), AnimatorParam("Anim"), SerializeField] string neutralTrigger;
@@ -65,6 +66,7 @@ namespace Thuleanx.PortalKnight {
 		
 		#region Combat
 		[HorizontalLine(color:EColor.Red)]
+		[BoxGroup("Attack"), Range(0, 100), SerializeField] float nudgeSpeed = 40;
 		[BoxGroup("Attack"), Range(0, 720), SerializeField] float attackTurnSpeed = 24;
 		[BoxGroup("Attack"), Range(0, 10), SerializeField] int attackDamage = 1;
 		[BoxGroup("Attack"), Range(0, 300), SerializeField] float attackKnockback = 20;
@@ -158,6 +160,11 @@ namespace Thuleanx.PortalKnight {
 				TurnToFace(desiredRotation, turnSpeed);
 				yield return null;
 			}
+		}
+
+		public void _Nudge() {
+			Vector3 nudge = transform.forward * nudgeSpeed;
+			Velocity += nudge;
 		}
 	}
 }
