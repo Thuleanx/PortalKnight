@@ -14251,7 +14251,9 @@ MonoBehaviour:
   normalColor: {r: 0.0009765625, g: 0.0009765625, b: 0.0009765625, a: 0}
   flashColor: {r: 1, g: 0.95087373, b: 0.9283019, a: 0}
   fillFlashColor: {r: 8, g: 8, b: 8, a: 0}
+  pulsingColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
   flashDuration: 0.2
+  pulseFrequency: 0.5
   OnFill:
     m_PersistentCalls:
       m_Calls:
@@ -14279,6 +14281,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnUse:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1417503491810350899
 MonoBehaviour:
   m_ObjectHideFlags: 0

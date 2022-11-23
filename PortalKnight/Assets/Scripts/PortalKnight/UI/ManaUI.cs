@@ -20,11 +20,16 @@ namespace Thuleanx.PortalKnight.UI {
 		[SerializeField, ColorUsage(true, true)] Color normalColor;
 		[SerializeField, ColorUsage(true, true)] Color flashColor;
 		[SerializeField, ColorUsage(true, true)] Color fillFlashColor;
+		[SerializeField, ColorUsage(true, true)] Color pulsingColor;
 		[SerializeField, Range(0, 2)] float flashDuration;
+		[SerializeField, Range(0, 2), Tooltip("Number of pulses per second")] float pulseFrequency;
 		[SerializeField] UnityEvent OnFill;
+		[SerializeField] UnityEvent OnUse;
 
+		bool manaFull => Player.Mana == Player.MaxMana;
 		bool fillFlash;
 		Timer flashing;
+		float timeOffsetPulsing;
 
 		void Awake() {
 			Player = FindObjectOfType<Player>(); // permitted on awake
@@ -33,18 +38,23 @@ namespace Thuleanx.PortalKnight.UI {
 
 		void Start() {
 			Player.OnManaGained.AddListener(OnManaGained);
+			Player.OnManaUse.AddListener(OnManaUse);
 		}
 
 		void Update() {
 			Slider.value = Player.Mana / Player.MaxMana;
 			if (flashing) {
 				Material.SetColor(EMISSION_SHADER_NAME, Color.Lerp(fillFlash ? fillFlashColor : flashColor, normalColor, flashing.ElapsedFraction));
+			} else if (manaFull) {
+				float pulsingValue = Mathf.Sin((Time.time - timeOffsetPulsing) * 2 * Mathf.PI * pulseFrequency) / 2 + 1;
+				Material.SetColor(EMISSION_SHADER_NAME, Color.Lerp(normalColor, pulsingColor, pulsingValue));
 			} else TurnOffEmission();
 		}
 
 		void OnDestroy() {
 			TurnOffEmission();
 			Player.OnManaGained.RemoveListener(OnManaGained);
+			Player.OnManaUse.RemoveListener(OnManaUse);
 		}
 
 		[Button]
@@ -52,7 +62,8 @@ namespace Thuleanx.PortalKnight.UI {
 			Material.EnableKeyword("_EMISSION");
 			fillFlash = Player.Mana == Player.MaxMana;
 			flashing = flashDuration;
-			if (Player.MaxMana == Player.Mana) OnFill?.Invoke();
+			if (manaFull) OnFill?.Invoke();
+			timeOffsetPulsing = Time.time + flashDuration;
 		}
 
 		void TurnOffEmission() {
@@ -61,9 +72,8 @@ namespace Thuleanx.PortalKnight.UI {
 		}
 
 
-		void OnManaGained() { 
-			StartFlash();
-		}
+		void OnManaGained() => StartFlash();
+		void OnManaUse() => OnUse?.Invoke();
 
 	}
 }

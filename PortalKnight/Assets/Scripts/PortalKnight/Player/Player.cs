@@ -95,14 +95,18 @@ namespace Thuleanx.PortalKnight {
 
 		float _mana;
 		public float Mana {get => _mana; private set {
-			bool manaGained = Mathf.Clamp(value,0,MaxMana)> _mana;
-			_mana = Mathf.Clamp(value, 0, MaxMana);
+			value = Mathf.Clamp(value, 0, MaxMana);
+			bool manaGained = value > _mana;
+			bool manaUsed = value < _mana; 
+			_mana = value;
 			if (manaGained) OnManaGained?.Invoke();
+			if (manaUsed) OnManaUse?.Invoke();
 		}}
 		#endregion
 
 		#region Events
 		public UnityEvent OnManaGained;
+		public UnityEvent OnManaUse;
 		#endregion
 
 		public override void Awake() {
