@@ -28,6 +28,7 @@ namespace Thuleanx.PortalKnight.UI {
 		void Redraw() {
 			for (int i = 0; i < Player.Status.MaxHealth; i++) 
 				healthKnotches[i].SetFilled(Player.Status.Health > i);
+			healthKnotches[0].SetLow(Player.Status.Health == 1);
 		}
 	}
 }
