@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: 5809710353139680974
     second: fawn_attack2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 0ff3970cc4ea7404e9c25a4be9cf7cb0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

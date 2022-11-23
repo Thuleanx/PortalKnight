@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: 3917732695920821093
     second: fawn_spell
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 0ff3970cc4ea7404e9c25a4be9cf7cb0, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -26,6 +26,9 @@ namespace Thuleanx.PortalKnight {
 		}
 		protected void StartAnimationWait() => waitingForTrigger = true;
 		protected bool WaitingForTrigger => waitingForTrigger;
-		public void _TriggerAnimatedEvent(int index) => animationEvents[index]?.Invoke();
+		public void _TriggerAnimatedEvent(AnimationEvent animEvent) {
+			if (animEvent.animatorClipInfo.weight > 0.8f) 
+				animationEvents[animEvent.intParameter]?.Invoke();
+		}
 	}
 }

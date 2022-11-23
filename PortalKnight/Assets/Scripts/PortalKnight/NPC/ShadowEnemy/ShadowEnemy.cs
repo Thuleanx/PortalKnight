@@ -90,7 +90,7 @@ namespace Thuleanx.PortalKnight {
 		public override void Start() {
 			base.Start();
 			StateMachine.Init();
-			bodyHitbox.HitGenerator = this;
+			// bodyHitbox.HitGenerator = this;
 			firstFrame = false;
 		}
 
