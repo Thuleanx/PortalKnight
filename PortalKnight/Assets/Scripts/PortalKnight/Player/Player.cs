@@ -95,8 +95,9 @@ namespace Thuleanx.PortalKnight {
 
 		float _mana;
 		public float Mana {get => _mana; private set {
-			if (Mathf.Clamp(value,0,MaxMana)> _mana) OnManaGained?.Invoke();
+			bool manaGained = Mathf.Clamp(value,0,MaxMana)> _mana;
 			_mana = Mathf.Clamp(value, 0, MaxMana);
+			if (manaGained) OnManaGained?.Invoke();
 		}}
 		#endregion
 

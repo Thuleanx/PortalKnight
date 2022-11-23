@@ -19,7 +19,6 @@ namespace Thuleanx.PortalKnight {
 
 			public override void Begin(Player player) {
 				player.Drag = player.deccelerationAlpha;
-				player.Mana--;
 				finished = false;
 				canDash = false;
 				player.Input.ActionHandler[(int) ActionType.Dash] = OnDash;
@@ -39,6 +38,7 @@ namespace Thuleanx.PortalKnight {
 				yield return player.iWaitForAnimationWhileTurn(targetPos - player.transform.position, player.spellTurnSpeed);
 
 				SpawnNova(player, targetPos);
+				player.Mana--;
 				canDash = true;
 
 				yield return player.iWaitForTrigger();

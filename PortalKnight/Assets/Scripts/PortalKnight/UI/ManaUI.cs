@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using Thuleanx.Utils;
 using NaughtyAttributes;
@@ -18,8 +19,11 @@ namespace Thuleanx.PortalKnight.UI {
 		
 		[SerializeField, ColorUsage(true, true)] Color normalColor;
 		[SerializeField, ColorUsage(true, true)] Color flashColor;
+		[SerializeField, ColorUsage(true, true)] Color fillFlashColor;
 		[SerializeField, Range(0, 2)] float flashDuration;
+		[SerializeField] UnityEvent OnFill;
 
+		bool fillFlash;
 		Timer flashing;
 
 		void Awake() {
@@ -34,7 +38,7 @@ namespace Thuleanx.PortalKnight.UI {
 		void Update() {
 			Slider.value = Player.Mana / Player.MaxMana;
 			if (flashing) {
-				Material.SetColor(EMISSION_SHADER_NAME, Color.Lerp(flashColor, normalColor, flashing.ElapsedFraction));
+				Material.SetColor(EMISSION_SHADER_NAME, Color.Lerp(fillFlash ? fillFlashColor : flashColor, normalColor, flashing.ElapsedFraction));
 			} else TurnOffEmission();
 		}
 
@@ -46,8 +50,9 @@ namespace Thuleanx.PortalKnight.UI {
 		[Button]
 		void StartFlash() {
 			Material.EnableKeyword("_EMISSION");
-			Material.SetColor(EMISSION_SHADER_NAME, flashColor);
+			fillFlash = Player.Mana == Player.MaxMana;
 			flashing = flashDuration;
+			if (Player.MaxMana == Player.Mana) OnFill?.Invoke();
 		}
 
 		void TurnOffEmission() {
@@ -56,6 +61,9 @@ namespace Thuleanx.PortalKnight.UI {
 		}
 
 
-		void OnManaGained() => StartFlash();
+		void OnManaGained() { 
+			StartFlash();
+		}
+
 	}
 }
