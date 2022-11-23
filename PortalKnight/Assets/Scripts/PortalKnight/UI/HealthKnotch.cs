@@ -18,9 +18,14 @@ namespace Thuleanx.PortalKnight.UI {
 		[SerializeField, Required] Sprite emptySprite;
 
 		[Header("Shake on Health Gain")]
-		[SerializeField, Range(0,1)] float shakeDuration = 0.2f;
-		[SerializeField, Range(0,100)] float shakeStrength = 25;
-		[SerializeField, Range(0,100)] int shakeFrequency = 30;
+		[SerializeField, Range(0,1)] float shakeDurationGained = 0.2f;
+		[SerializeField, Range(0,100)] float shakeStrengthGained = 25;
+		[SerializeField, Range(0,100)] int shakeFrequencyGained = 30;
+
+		[Header("Shake on Health Lost")]
+		[SerializeField, Range(0,1)] float shakeDurationLost = 0.2f;
+		[SerializeField, Range(0,100)] float shakeStrengthLost = 25;
+		[SerializeField, Range(0,300)] int shakeFrequencyLost = 30;
 
 		void Awake() {
 			if (!Image) Image = GetComponent<Image>();
@@ -32,12 +37,13 @@ namespace Thuleanx.PortalKnight.UI {
 		void onFill() {
 			OnFill?.Invoke();
 			Image.sprite = filledSprite;
-			rectTransform.DOShakeAnchorPos(shakeDuration, shakeStrength, shakeFrequency);
 		}
 
 		void onEmpty() {
 			OnEmpty?.Invoke();
 			Image.sprite = emptySprite;
+			rectTransform.DOShakeAnchorPos(shakeDurationGained, shakeStrengthGained, shakeFrequencyGained);
+			rectTransform.DOShakeRotation(shakeDurationLost, shakeStrengthLost, shakeFrequencyLost);
 		}
 
 		public void SetFilled(bool filled) {
