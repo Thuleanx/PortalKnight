@@ -10,7 +10,9 @@ namespace Thuleanx.PortalKnight {
 		public Hitbox3D Hitbox {get; private set; }
 
 		[SerializeField] int damage = 9999;
-		[SerializeField, MinMaxSlider(0, 2)] Vector2 lifeTime;
+		[SerializeField, Range(0,1)] float delayTillHitboxCheck = 0.9f;
+		[SerializeField, Range(0,1)] float hitboxCheckingDuration = 0.3f;
+		[SerializeField, Range(0,2)] float lingerDuration = 1f;
 		[SerializeField] Vector3 healthOrbSpawnOffset;
 		[SerializeField, Required] BubblePool healthOrbPool;
 
@@ -30,16 +32,18 @@ namespace Thuleanx.PortalKnight {
 		}
 
 		void OnDisable() {
-			Hitbox.startCheckingCollision();
+			Hitbox.stopCheckingCollision();
 		}
 
 		void Update() {
 			aliveTime += Time.deltaTime;
-			if (aliveTime <= lifeTime.x && !Hitbox.Active)
-				Hitbox.startCheckingCollision();
-			if (aliveTime > lifeTime.x && Hitbox.Active) 
-				Hitbox.stopCheckingCollision();
-			if (aliveTime > lifeTime.y) gameObject.SetActive(false);
+			if (aliveTime <= delayTillHitboxCheck) {
+				if (Hitbox.Active) Hitbox.stopCheckingCollision();
+			} else if (aliveTime <= delayTillHitboxCheck + hitboxCheckingDuration)  {
+				if (!Hitbox.Active) Hitbox.startCheckingCollision();
+			} else if (aliveTime <= delayTillHitboxCheck + hitboxCheckingDuration + lingerDuration) {
+				if (Hitbox.Active) Hitbox.stopCheckingCollision();
+			} else gameObject.SetActive(false);
 		}
 
 		public void Initialize(Player player) => Player = player;

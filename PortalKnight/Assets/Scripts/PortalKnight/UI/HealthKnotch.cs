@@ -54,7 +54,6 @@ namespace Thuleanx.PortalKnight.UI {
 			OnFill?.Invoke();
 			Image.sprite = filledSprite;
 		}
-
 		void onEmpty() {
 			lowSequence?.Kill();
 			OnEmpty?.Invoke();
@@ -70,7 +69,6 @@ namespace Thuleanx.PortalKnight.UI {
 				Filled = filled;
 			}
 		}
-
 		public void SetLow(bool low) {
 			if (low ^ LowActive) {
 				if (low) {

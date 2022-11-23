@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8d1ab4665f2514983a5a71d7de1953, type: 3}
   m_Name: bp_nova
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4857910179543535507, guid: b1da25ecb181e394a921b481174febb4, type: 3}
+  prefab: {fileID: 4857910179543535507, guid: 1003fcffeb757a741adfe62a4ca0bcde, type: 3}
   pool: []

@@ -32,7 +32,7 @@ namespace Thuleanx.PortalKnight {
 			public override int Transition(Player agent) => finished ? (int) Player.State.Neutral : -1;
 
 			public override IEnumerator Coroutine(Player player) {
-				Vector3 targetPos = player.Input.mousePosWS;
+				Vector3 targetPos = player.Input.mousePosWSFlat;
 
 				player.Anim.SetTrigger(player.novaTrigger);
 				yield return player.iWaitForAnimationWhileTurn(targetPos - player.transform.position, player.spellTurnSpeed);
