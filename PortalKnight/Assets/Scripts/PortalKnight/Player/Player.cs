@@ -7,6 +7,7 @@ using Thuleanx.PrettyPatterns;
 using Thuleanx.Utils;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 using Thuleanx.PortalKnight.Dialogue;
@@ -94,8 +95,13 @@ namespace Thuleanx.PortalKnight {
 
 		float _mana;
 		public float Mana {get => _mana; private set {
+			if (Mathf.Clamp(value,0,MaxMana)> _mana) OnManaGained?.Invoke();
 			_mana = Mathf.Clamp(value, 0, MaxMana);
 		}}
+		#endregion
+
+		#region Events
+		public UnityEvent OnManaGained;
 		#endregion
 
 		public override void Awake() {

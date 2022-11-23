@@ -1674,12 +1674,15 @@ MonoBehaviour:
   manaOrbDamage: 1
   manaOrbMouseRange: 3
   novaTrackingRange: 3
-  maxMana: 2
-  manaOnHit: 1
+  maxMana: 1
+  manaOnHit: 0.25
   manaOrbPool: {fileID: 11400000, guid: 9181b321947d40f4dbb49242214c8d1d, type: 2}
   novaPool: {fileID: 11400000, guid: c6a655b3223ce2146852ffc7238f77a2, type: 2}
   manaOrbFiringSource: {fileID: 1559809896}
   Interactible: 1
+  OnManaGained:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1339669642
 MonoBehaviour:
   m_ObjectHideFlags: 0

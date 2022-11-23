@@ -21,6 +21,7 @@ namespace Thuleanx.Utils {
 			}
 		}
 		public float TimeLastSampled { get; private set; }
+		public float ElapsedFraction { get => 1 - TimeLeft / Duration; }
 
 		public Timer(float durationSeconds, bool pausedDefault = false) {
 			Duration = durationSeconds;

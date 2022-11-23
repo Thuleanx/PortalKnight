@@ -13,6 +13,10 @@ namespace Thuleanx.PortalKnight {
 				base.Begin(player);
 				FindObjectOfType<VariableStorage>()?.IncrementDeath();
 			}
+			public override int Update(Player player) {
+				player.ResetMovements();
+				return base.Update(player);
+			}
 			public override IEnumerator Coroutine(Player player) {
 				FindObjectOfType<DeathTransitioner>().Transition(App.instance.GetActiveScene());
 				yield return null;
