@@ -1,12 +1,12 @@
+using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
+using Thuleanx.AI.FSM;
+using Thuleanx.Combat3D;
+using Thuleanx.PrettyPatterns;
+using Thuleanx.Utils;
 using UnityEngine;
 using UnityEngine.AI;
-using NaughtyAttributes;
-
-using Thuleanx.AI.FSM;
-using Thuleanx.PrettyPatterns;
-using Thuleanx.Combat3D;
-using Thuleanx.Utils;
 
 namespace Thuleanx.PortalKnight {
 	public partial class SpawnerEnemy {
@@ -62,6 +62,25 @@ namespace Thuleanx.PortalKnight {
 			enemies.Remove(enemyPuppet.GetComponent<ShadowEnemy>());
 			enemyPuppet.OnDeath.RemoveListener(OnEnemyDeath);
 		}
+
+		[Button]
+		void ___SpawnEnemy() {
+			StartCoroutine(iSpawnEnemyInRange());
+		}
+
+		IEnumerator iSpawnEnemyInRange() {
+			while (true) {
+				Vector3 desiredSpawnPos = transform.position + offset;
+				Vector2 randInsideCircle = Random.insideUnitCircle * range;
+				desiredSpawnPos += randInsideCircle.x * Vector3.right + randInsideCircle.y * Vector3.forward;
+				NavMeshHit hit;
+				if (NavMesh.SamplePosition(desiredSpawnPos, out hit, range, NavMesh.AllAreas)) {
+					SpawnEnemy(hit.position);
+					break;
+				} else yield return new WaitForSeconds(0.5f); // keep waiting if not hitting a point
+			}
+		}
+
 		public ShadowEnemy SpawnEnemy(Vector3 spawnPos) {
 			GameObject shadowEnemyObj = shadowEnemeyPool.Borrow(gameObject.scene, spawnPos);
 			ShadowEnemy shadowEnemy = shadowEnemyObj.GetComponent<ShadowEnemy>();

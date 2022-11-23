@@ -23,24 +23,9 @@ namespace Thuleanx.PortalKnight {
 			}
 
 			public override IEnumerator Coroutine(SpawnerEnemy spawner) {
-				Vector3 spawnPos = spawner.transform.position;
-
-				while (true) {
-					Vector3 desiredSpawnPos = spawner.transform.position + spawner.offset;
-					Vector2 randInsideCircle = Random.insideUnitCircle * spawner.range;
-					desiredSpawnPos += randInsideCircle.x * Vector3.right + randInsideCircle.y * Vector3.forward;
-					NavMeshHit hit;
-					if (NavMesh.SamplePosition(desiredSpawnPos, out hit, spawner.range, NavMesh.AllAreas)) {
-						spawnPos = hit.position;
-						break;
-					} else yield return new WaitForSeconds(0.5f); // keep waiting if not hitting a point
-				}
-
+				yield return spawner.iSpawnEnemyInRange();
 				// vfx for spawning here
 				yield return new WaitForSeconds(spawner.spellDuration);
-
-				// spawn
-				ShadowEnemy enemy = spawner.SpawnEnemy(spawnPos);
 
 				finished = true;
 			}
