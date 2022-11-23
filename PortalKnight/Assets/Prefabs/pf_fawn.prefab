@@ -1656,7 +1656,7 @@ MonoBehaviour:
   speed: 5
   accelerationAlpha: 24
   deccelerationAlpha: 12
-  turnSpeed: 420
+  turnSpeed: 666
   dashIframes: 0.4
   dashCooldown: 0.5
   dashSpeed: 30
@@ -1670,7 +1670,7 @@ MonoBehaviour:
   attackCooldown: 0.5
   attackDrag: 8
   attackHitbox: {fileID: 2145100283}
-  spellTurnSpeed: 480
+  spellTurnSpeed: 720
   manaOrbDamage: 1
   manaOrbMouseRange: 3
   novaTrackingRange: 3
