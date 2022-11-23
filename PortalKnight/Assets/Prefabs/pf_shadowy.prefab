@@ -864,7 +864,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  InitialMaxHealth: 2
+  InitialMaxHealth: 10
 --- !u!114 &460150655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,7 +941,7 @@ NavMeshAgent:
   m_Acceleration: 6
   avoidancePriority: 50
   m_AngularSpeed: 4
-  m_StoppingDistance: 1
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1

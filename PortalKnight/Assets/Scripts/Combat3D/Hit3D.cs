@@ -10,7 +10,7 @@ namespace Thuleanx.Combat3D {
 		public Hit3D(int damage, float knockbackAmount, Vector3 hitDir, Vector3 position) {
 			this.damage = damage;
 			this.knockbackAmount = knockbackAmount;
-			this.hitDir = hitDir;
+			this.hitDir = hitDir.sqrMagnitude > 0 ? hitDir.normalized : Vector3.zero;
 			this.position = position;
 		}
 	}

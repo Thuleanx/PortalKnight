@@ -44,12 +44,12 @@ namespace Thuleanx.PortalKnight {
 			}
 
 			public override void End(Player player) {
-				if (player.attackHitbox.HitGenerator == this) 
-					player.attackHitbox.HitGenerator = null;
+				player.attackHitbox.HitGenerator = null;
+				player.attackHitbox.OnHit.RemoveListener(OnHit);
+
 				player.Input.ActionHandler[(int) ActionType.Attack] = null;
 				player.Input.ActionHandler[(int) ActionType.Dash] = null;
 				player.Drag = 0;
-				player.attackHitbox.OnHit.RemoveListener(OnHit);
 				player.attackHitbox.stopCheckingCollision();
 				onCooldown = player.attackCooldown;
 				dragTween.Kill();
