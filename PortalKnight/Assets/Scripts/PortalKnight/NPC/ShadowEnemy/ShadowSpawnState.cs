@@ -12,6 +12,10 @@ namespace Thuleanx.PortalKnight {
 				finished = false;
 			}
 
+			public override void End(ShadowEnemy monster) {
+				monster.bodyHitbox.startCheckingCollision();
+			}
+
 			public override int Transition(ShadowEnemy monster) {
 				if (finished) return (int) ShadowEnemy.State.Aggro;
 				return -1;

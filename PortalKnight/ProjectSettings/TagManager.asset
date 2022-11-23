@@ -17,8 +17,8 @@ TagManager:
   - Hurtbox
   - Entities
   - Projectile
-  - 
-  - 
+  - Hitbox Player
+  - Hurtbox Player
   - 
   - 
   - 

@@ -20,7 +20,7 @@ namespace Thuleanx.PortalKnight {
 	}
 
 	[RequireComponent(typeof(NavMeshAgent))]
-	public partial class ShadowEnemy : Animated {
+	public partial class ShadowEnemy : Animated, iHitGenerator3D {
 
 		#region Components
 		public CharacterController Controller {get; private set;}
@@ -47,6 +47,9 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Movement"), Range(0, 720), SerializeField] float turnSpeed = 24;
 		[BoxGroup("Movement"), Range(0, 64), SerializeField] float accelerationAlpha = 24;
 		[BoxGroup("Movement"), Range(0, 64), SerializeField] float deccelerationAlpha = 12;
+		[BoxGroup("Movement"), Range(0, 10), SerializeField] int bodyDamage = 1;
+		[BoxGroup("Movement"), Range(0, 100), SerializeField] float bodyKnockback = 15;
+		[BoxGroup("Movement"), Required, SerializeField] 	Hitbox3D bodyHitbox;
 		#endregion
 
 		#region Combat
@@ -54,7 +57,7 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Melee Attack"), Range(0, 3), SerializeField] float attackRange = 2;
 		[BoxGroup("Melee Attack"), Range(0, 64), SerializeField] float attackDrag = 2;
 		[BoxGroup("Melee Attack"), Range(0, 10), SerializeField] int attackDamage = 1;
-		[BoxGroup("Melee Attack"), Range(0, 30), SerializeField] float attackKnockback = 15;
+		[BoxGroup("Melee Attack"), Range(0, 100), SerializeField] float attackKnockback = 15;
 		[BoxGroup("Melee Attack"), Range(0, 3), SerializeField] float attackWindupTime = 1;
 		[BoxGroup("Melee Attack"), Range(0, 2), SerializeField] float attackRecovery = 1;
 		[BoxGroup("Melee Attack"), Range(0, 1), SerializeField] float attackCooldown = 1;
@@ -87,6 +90,7 @@ namespace Thuleanx.PortalKnight {
 		public override void Start() {
 			base.Start();
 			StateMachine.Init();
+			bodyHitbox.HitGenerator = this;
 			firstFrame = false;
 		}
 
@@ -150,6 +154,12 @@ namespace Thuleanx.PortalKnight {
 		public void _Nudge() {
 			Vector3 nudge = transform.forward * nudgeSpeed;
 			Velocity += nudge;
+		}
+
+		public Hit3D GenerateHit(Hitbox3D hitbox, Hurtbox3D hurtbox) {
+			Vector3 hitDir = hurtbox.transform.position - hitbox.transform.position;
+			hitDir.y = 0;
+			return new Hit3D(bodyDamage, bodyKnockback, hitDir, hurtbox.transform.position);
 		}
 
 		bool playerInRange => (player.transform.position - transform.position).magnitude < detectionRadius;

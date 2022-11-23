@@ -10,6 +10,10 @@ namespace Thuleanx.PortalKnight {
 		// if attack is on cooldown, doesn't do anything
 
 		public class ShadowDeathState : GenericDeadState<ShadowEnemy> {
+			public override void Begin(ShadowEnemy monster) {
+				base.Begin(monster);
+				monster.bodyHitbox.stopCheckingCollision();
+			}
 			public override IEnumerator Coroutine(ShadowEnemy monster) {
 				monster.Drag = monster.deccelerationAlpha;
 				monster.Anim.SetTrigger(monster.deathTrigger);

@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1820519151}
   - component: {fileID: 1820519150}
   - component: {fileID: 1820519149}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 2145100285}
   - component: {fileID: 2145100284}
   - component: {fileID: 2145100283}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Slash Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1681,6 +1681,9 @@ MonoBehaviour:
   manaOrbFiringSource: {fileID: 1559809896}
   Interactible: 1
   OnManaGained:
+    m_PersistentCalls:
+      m_Calls: []
+  OnManaUse:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1339669642

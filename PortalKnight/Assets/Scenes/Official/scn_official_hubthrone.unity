@@ -7739,8 +7739,8 @@ MonoBehaviour:
   KnockbackResistance: 1
   Drag: 0
   detectionRadius: 20
-  cooldown: {x: 3.917439, y: 8.567818}
-  spellDuration: 3
+  cooldown: {x: 0, y: 0.28815472}
+  spellDuration: 0.31
   offset: {x: 0, y: 0, z: 20.06}
   range: 12.71
   maxShadowEnemies: 20

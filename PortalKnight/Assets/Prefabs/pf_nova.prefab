@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4857910178137959501}
   - component: {fileID: 4857910178137959499}
   - component: {fileID: 4857910178137959498}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 9999
-  lifeTime: {x: 0.072667226, y: 2}
+  delayTillHitboxCheck: 0.9
+  hitboxCheckingDuration: 0.3
+  lingerDuration: 1
   healthOrbSpawnOffset: {x: 0, y: 0.25, z: 0}
   healthOrbPool: {fileID: 11400000, guid: ef48b61d23f51c9419c52becd4c9c23c, type: 2}
 --- !u!1 &8684266102476828775
