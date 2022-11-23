@@ -79,6 +79,7 @@ Material:
     - _DisplacementOffset: 0
     - _DisplacementValue: -0.25
     - _Dissolve: 1
+    - _Flash: 0
     - _HandMask: 1
     - _HueOffset: 10
     - _QueueControl: 0
@@ -94,4 +95,5 @@ Material:
     - _BodyTextureOffsetSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _BodyTextureTiling: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 4.237095, g: 0.06655122, b: 0, a: 0}
+    - _Emission: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

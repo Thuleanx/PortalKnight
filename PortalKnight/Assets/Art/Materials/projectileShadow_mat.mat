@@ -79,11 +79,13 @@ Material:
     - _DisplacementOffset: 0.15
     - _DisplacementValue: -1
     - _Dissolve: 1
+    - _Flash: 0
     - _HandMask: 1
     - _HueOffset: 10
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _WholeMask: 1
+    - _RandomDisplacement: 1
+    - _WholeMask: -0.65
     m_Colors:
     - Color_38e84acb48a84c088c0ef04a60eb7dfb: {r: 1, g: 1, b: 1, a: 0}
     - Color_4f5bbd86720e4b5c85b725167a548d82: {r: 1, g: 1, b: 1, a: 0}
@@ -93,5 +95,6 @@ Material:
     - _BodyPingOffsetSpeed: {r: 0, g: 1, b: 0, a: 0}
     - _BodyTextureOffsetSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _BodyTextureTiling: {r: 1, g: 1, b: 0, a: 0}
-    - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 0.6254764, g: 0, b: 0.03602209, a: 0}
+    - _Emission: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -7743,7 +7743,7 @@ MonoBehaviour:
   spellDuration: 0.31
   offset: {x: 0, y: 0, z: 20.06}
   range: 12.71
-  maxShadowEnemies: 1
+  maxShadowEnemies: 20
   shadowEnemeyPool: {fileID: 11400000, guid: a996d39fa1965034d983c43009947057, type: 2}
 --- !u!4 &1525277117
 Transform:

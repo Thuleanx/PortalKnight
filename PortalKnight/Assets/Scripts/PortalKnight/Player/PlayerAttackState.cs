@@ -85,11 +85,6 @@ namespace Thuleanx.PortalKnight {
 				player.StartAnimationWait();
 				while (player.WaitingForTrigger && (!queueAttack || ignoreQueueAttack)) {
 					player.TurnToFace(attackDirection, player.attackTurnSpeed);
-					// move slightly
-					// if (player.Input.movement != Vector2.zero) {
-					// 	Vector3 inputDir = player.Input.MovementToWorldDir(player.Input.movement).normalized;
-					// 	player.Velocity = inputDir * player.Velocity.magnitude;
-					// }
 					yield return null;
 				}
 			}
