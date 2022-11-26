@@ -1,5 +1,7 @@
 using UnityEngine;
 using Thuleanx.Utils;
+using Thuleanx.Audio;
+using FMODUnity;
 
 namespace Thuleanx.PortalKnight {
 	public class HealthOrb : MonoBehaviour {
@@ -10,6 +12,7 @@ namespace Thuleanx.PortalKnight {
 		[SerializeField, Range(0, 5)] float trackingRange = 3;
 		[SerializeField, Range(0,1)] float collectingRange = 0.2f;
 		[SerializeField, Range(0, 30)] float maxSpeed = 10;
+		[SerializeField] EventReference collectSound;
 		Vector3 velocity;
 
 		public void Initialize(Player player) {
@@ -39,6 +42,7 @@ namespace Thuleanx.PortalKnight {
 			// TODO don't do this
 			Player.Status.Health++;
 			gameObject.SetActive(false);
+			AudioManager.instance?.PlayOneShot(collectSound);
 		}
 	}
 }

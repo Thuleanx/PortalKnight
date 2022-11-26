@@ -101,3 +101,10 @@ MonoBehaviour:
   trackingRange: 3
   collectingRange: 0.2
   maxSpeed: 10
+  collectSound:
+    Guid:
+      Data1: 1803836185
+      Data2: 1179895457
+      Data3: -1692010852
+      Data4: -821527931
+    Path: event:/SFX/Fawn/Heal

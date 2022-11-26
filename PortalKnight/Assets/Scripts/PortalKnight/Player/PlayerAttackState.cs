@@ -17,6 +17,7 @@ namespace Thuleanx.PortalKnight {
 			bool queueAttack;
 			bool canQueueAttack;
 			bool canDash;
+			FMOD.Studio.EventInstance hitSFXSound;
 
 			bool OnAttack(Player player) {
 				if (queueAttack || !canQueueAttack) return false;
@@ -31,6 +32,7 @@ namespace Thuleanx.PortalKnight {
 			public override void Begin(Player player) {
 				player.Input.ActionHandler[(int) ActionType.Attack] = OnAttack;
 				player.Input.ActionHandler[(int) ActionType.Dash] = OnDash;
+				hitSFXSound = FMODUnity.RuntimeManager.CreateInstance(player.HitSound);
 
 				canQueueAttack = false;
 				queueAttack = false;
@@ -96,7 +98,9 @@ namespace Thuleanx.PortalKnight {
 				// bad code smell >_<
 				Player player = stateMachine.GetComponent<Player>();
 				player.Mana += player.manaOnHit;
-				player.OnAttackHit?.Invoke(hit.position);
+				// player.OnAttackHit?.Invoke(hit.position);
+				hitSFXSound.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(hit.position));
+				hitSFXSound.start();
 				AudioManager.instance?.PlayOneShot3D(player.HitSound, hit.position);
 			}
 
