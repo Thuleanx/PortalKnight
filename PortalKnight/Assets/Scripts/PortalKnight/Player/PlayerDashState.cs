@@ -20,6 +20,7 @@ namespace Thuleanx.PortalKnight {
 				beforeDashVelocity = player.Velocity;
 				player.TurnToFaceImmediate(dashDirection);
 				player.Puppet.GiveIframes(player.dashIframes);
+				player.OnDash?.Invoke();
 			}
 
 			public override void End(Player player) {

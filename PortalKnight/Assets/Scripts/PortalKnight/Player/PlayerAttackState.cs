@@ -6,6 +6,7 @@ using DG.Tweening;
 using Thuleanx.AI.FSM;
 using Thuleanx.Combat3D;
 using Thuleanx.Utils;
+using Thuleanx.Audio;
 
 namespace Thuleanx.PortalKnight {
 	public partial class Player {
@@ -58,6 +59,7 @@ namespace Thuleanx.PortalKnight {
 			public override IEnumerator Coroutine(Player player) {
 				player.Drag = player.attackDrag;
 				player.Anim.SetTrigger(player.attackTrigger);
+				player.OnAttack1?.Invoke();
 
 				yield return iWaitForAttack(player, true);
 				canQueueAttack = true;
@@ -71,6 +73,7 @@ namespace Thuleanx.PortalKnight {
 					queueAttack = false;
 					canQueueAttack = false;
 					player.Anim.SetTrigger(player.attack2Trigger);
+					player.OnAttack2?.Invoke();
 					yield return iWaitForAttack(player, true);
 					canDash = true;
 					yield return iWaitForAttack(player, true);
@@ -93,6 +96,8 @@ namespace Thuleanx.PortalKnight {
 				// bad code smell >_<
 				Player player = stateMachine.GetComponent<Player>();
 				player.Mana += player.manaOnHit;
+				player.OnAttackHit?.Invoke(hit.position);
+				AudioManager.instance?.PlayOneShot3D(player.HitSound, hit.position);
 			}
 
 			public Hit3D GenerateHit(Hitbox3D hitbox, Hurtbox3D hurtbox) {

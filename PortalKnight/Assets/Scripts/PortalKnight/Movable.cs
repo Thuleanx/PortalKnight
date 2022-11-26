@@ -21,7 +21,6 @@ namespace Thuleanx.PortalKnight {
 
 		protected abstract void Move(Vector3 displacement);
 		public void ApplyKnockback(Vector3 Knockback) {
-			Debug.Log(Knockback);
 			this.Knockback = Knockback;
 		}
 

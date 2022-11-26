@@ -59,20 +59,20 @@ AnimationClip:
     intParameter: 1
     messageOptions: 0
   - time: 0.21666667
-    functionName: _Nudge
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.21666667
     functionName: _TriggerAnimatedEvent
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 2
     messageOptions: 0
-  - time: 0.41666666
+  - time: 0.21666667
+    functionName: _Nudge
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.38333333
     functionName: _TriggerAnimatedEvent
     data: 
     objectReferenceParameter: {fileID: 0}

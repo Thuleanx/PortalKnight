@@ -9,6 +9,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 using Thuleanx.PortalKnight.Dialogue;
 
@@ -64,11 +65,12 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Dash"), Range(0, 100), SerializeField] float dashSpeed = 10;
 		[BoxGroup("Dash"), Range(0, 1), Tooltip("Dash duration in seconds"), SerializeField] float dashDuration = 1;
 		[BoxGroup("Dash"), Range(0, 64), SerializeField] float dashDrag;
+		[BoxGroup("Dash"), SerializeField, Space] UnityEvent OnDash;
 		#endregion
 		
 		#region Combat
 		[HorizontalLine(color:EColor.Red)]
-		[BoxGroup("General Combar"), Range(0, 4), SerializeField] float hitIframes = 1;
+		[BoxGroup("General Combat"), Range(0, 4), SerializeField] float hitIframes = 1;
 
 		[BoxGroup("Attack"), Range(0, 100), SerializeField] float nudgeSpeed = 40;
 		[BoxGroup("Attack"), Range(0, 720), SerializeField] float attackTurnSpeed = 24;
@@ -77,6 +79,10 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Attack"), Range(0, 1), SerializeField] float attackCooldown = 0.5f;
 		[BoxGroup("Attack"), Range(0,64), SerializeField] float attackDrag = 8f;
 		[BoxGroup("Attack"), Required, SerializeField] Hitbox3D attackHitbox;
+		[BoxGroup("Attack"), SerializeField] EventReference HitSound;
+		[BoxGroup("Attack"), SerializeField, Space] UnityEvent OnAttack1;
+		[BoxGroup("Attack"), SerializeField, Space] UnityEvent OnAttack2;
+		[BoxGroup("Attack"), SerializeField, Space] UnityEvent<Vector3> OnAttackHit;
 		#endregion
 
 		#region Spell Casting
