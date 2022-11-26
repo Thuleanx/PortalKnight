@@ -354,6 +354,7 @@ Transform:
   - {fileID: 639311864679565051}
   - {fileID: 2868124650148368171}
   - {fileID: 6754568074999050318}
+  - {fileID: 1611015812414732112}
   m_Father: {fileID: 5192376620757045628}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -715,6 +716,58 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!1 &8439887906770612139
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1611015812414732112}
+  - component: {fileID: 2565338954014302409}
+  m_Layer: 0
+  m_Name: sfx_attack hit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1611015812414732112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439887906770612139}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4448137857656170943}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2565338954014302409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439887906770612139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d928d868ca6219e49b44223bc9840117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCount: 5
+  reference:
+    Guid:
+      Data1: 597533605
+      Data2: 1170301534
+      Data3: 1021021056
+      Data4: 1808055914
+    Path: event:/SFX/Fawn/Attack Hit
 --- !u!1 &8585510285852617039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,8 +1389,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.00002515316, y: 1.0593334, z: -0.11798274}
-    m_Extent: {x: 0.57821655, y: 0.64047885, z: 0.29990375}
+    m_Center: {x: 0.00002515316, y: 1.0593334, z: -0.11801558}
+    m_Extent: {x: 0.57821655, y: 0.64047885, z: 0.2998709}
   m_DirtyAABB: 0
 --- !u!1001 &5540062460417739292
 PrefabInstance:
@@ -2097,6 +2150,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1231087033342965875}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2145100283}
@@ -2173,26 +2238,17 @@ MonoBehaviour:
     Path: event:/SFX/Fawn/Attack Hit
   OnAttack1:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1231087033342965875}
-        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnAttack2:
     m_PersistentCalls:
+      m_Calls: []
+  OnAttackHit:
+    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6262432335791226101}
-        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+      - m_Target: {fileID: 2565338954014302409}
+        m_TargetAssemblyTypeName: Thuleanx.Audio.MultiAudioEventInstances, Assembly-CSharp
         m_MethodName: Play
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2201,9 +2257,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnAttackHit:
-    m_PersistentCalls:
-      m_Calls: []
   spellTurnSpeed: 720
   manaOrbDamage: 1
   manaOrbMouseRange: 3
