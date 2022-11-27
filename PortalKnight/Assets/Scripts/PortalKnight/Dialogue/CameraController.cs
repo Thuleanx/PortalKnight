@@ -13,13 +13,14 @@ namespace Thuleanx.PortalKnight.Dialogue {
 		}
 
 		[YarnCommand("camera_pan")]
-		void yarn_Pan(string cameraName) {
-			int index = cameraNames.IndexOf(cameraName);
+		static void yarn_Pan(string cameraName) {
+			CameraController controller = GameObject.FindObjectOfType<CameraController>();
+			int index = controller.cameraNames.IndexOf(cameraName);
 			if (index == -1) {
 				Debug.LogError($"yarnCommand camera_pan({cameraName}) failed: camera name not recognized.");
 				return;
 			}
-			Anim.SetInteger("state", index);
+			controller.Anim.SetInteger("state", index);
 		}
 	}
 }

@@ -1,11 +1,11 @@
 title: HUB_enter
-position: -29,209
+position: 87,77
 ---
 Distant Voices: Oh weary traveler, what brought you here?
-<<camera_pan StateCamera mural>>
+<<camera_pan mural>>
 Distant Voices: Come, come.
 <<wait 1>>
-<<camera_pan StateCamera follow>>
+<<camera_pan follow>>
 ===
 
 title: HUB_introduction
