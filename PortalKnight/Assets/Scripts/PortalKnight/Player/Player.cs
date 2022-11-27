@@ -194,7 +194,7 @@ namespace Thuleanx.PortalKnight {
 		}
 
 		[YarnCommand("equip_sword")]
-		public static void dSwordEquip() {
+		static void yarn_SwordEquip() {
 			GameObject.FindObjectOfType<Player>().SwordEquipped = true;
 		}
 	}

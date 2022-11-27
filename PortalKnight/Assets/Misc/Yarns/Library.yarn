@@ -2,9 +2,10 @@ title: HUB_enter
 position: -29,209
 ---
 Distant Voices: Oh weary traveler, what brought you here?
-<<camera_pan mural>>
+<<camera_pan StateCamera mural>>
 Distant Voices: Come, come.
 <<wait 1>>
+<<camera_pan StateCamera follow>>
 ===
 
 title: HUB_introduction
@@ -14,7 +15,7 @@ position: -115,66
     Voice 1: Oh weary traveler.
     Voice 2: Come for the promised riches atop the castle, have you?
     Voice 3: However, without light's protection, you are bound to be ravaged by its darkness.
-	-> Light? 
+	-> ...
     Voice 1: You see, our once dazzling castle was consumed by shadows.
     Voice 2: Take Lightbringer, our hope and pride. 
     <<equip_sword>>
