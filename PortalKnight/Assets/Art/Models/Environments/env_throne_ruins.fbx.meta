@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 17b3e1fd7c51f0342a4d7c50025b492c
+guid: 00b53107edaba4b66b8b009bc2a5ca38
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,38 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert1
+      name: M_cloth
+    second: {fileID: 2100000, guid: de39b7ffe3801463484481f62c866176, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_floor
     second: {fileID: 2100000, guid: d65e1d9a5c4c54f3f921db4a576ea0c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_pillars
+    second: {fileID: 2100000, guid: 23bb0fbc21f2e4112ac6ab02da358bf7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_stoneLight
+    second: {fileID: 2100000, guid: 6cbe8248e1f6843dfb3e4c2c34dedbf1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_throne
+    second: {fileID: 2100000, guid: aca4423b793de40798bece60e2e6f47e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_wall
+    second: {fileID: 2100000, guid: 09ea83a662b834073bf8693bc0f3d50b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_windows
+    second: {fileID: 2100000, guid: 0760208fdc1434b5ca523dbb12789331, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
