@@ -17,6 +17,7 @@ namespace Thuleanx.PortalKnight {
 
 			public override void Begin(Player player) {
 				dashDirection = player.Input.MovementToWorldDir(player.Input.lastNonZeroMovement);
+				if (dashDirection == Vector3.zero) dashDirection = Vector3.right;
 				beforeDashVelocity = player.Velocity;
 				player.TurnToFaceImmediate(dashDirection);
 				player.Puppet.GiveIframes(player.dashIframes);
