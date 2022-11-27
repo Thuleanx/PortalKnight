@@ -8248,6 +8248,9 @@ MonoBehaviour:
   Knockback: {x: 0, y: 0, z: 0}
   KnockbackResistance: 1
   Drag: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
   detectionRadius: 20
   cooldown: {x: 0, y: 0.28815472}
   spellDuration: 0.31

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 760552295515602619}
   - component: {fileID: 760552295515602616}
   - component: {fileID: 8702052442010442819}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pf_test_portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,11 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf75a1e4ac3eb447a850ae05e6d96e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Endpoint:
-    Scene: {fileID: 102900000, guid: 92987bd30facf0542ac80befe001f309, type: 3}
-    SceneName: scn_sampleLevel
-    sceneIndex: -1
-    sceneEnabled: 1
+  Link: {fileID: 0}
 --- !u!54 &8702052442010442819
 Rigidbody:
   m_ObjectHideFlags: 0

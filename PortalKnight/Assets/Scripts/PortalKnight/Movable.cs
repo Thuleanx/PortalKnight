@@ -1,7 +1,7 @@
-using UnityEngine;
-using UnityEngine.AI;
 using NaughtyAttributes;
 using Thuleanx.Utils;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Thuleanx.PortalKnight {
 	public abstract class Movable : MonoBehaviour {
@@ -11,6 +11,7 @@ namespace Thuleanx.PortalKnight {
 		[ReadOnly, SerializeField] protected Vector3 Knockback;
 		[Range(1,64), SerializeField] protected float KnockbackResistance = 1;
 		[ReadOnly, SerializeField] protected float Drag = 0;
+		[SerializeField] LayerMask groundMask;
 
 		protected virtual void Update() {
 			Move((Velocity + Knockback) * Time.deltaTime);
@@ -65,14 +66,15 @@ namespace Thuleanx.PortalKnight {
 		}
 
 		protected Vector3 FindClosestNavPoint(Vector3 pos) {
-			if (NavMesh.SamplePosition(pos, out NavMeshHit hit, skinWidth, NavMesh.AllAreas))
+			if (NavMesh.SamplePosition(pos, out NavMeshHit hit, 0.4f, NavMesh.AllAreas))
 				return hit.position;
 			return pos;
 		}
 
 		protected Vector3 StickOnGround(Vector3 pos) {
-			var ray = new Ray(transform.position + Vector3.down* skinWidth, Vector3.down);
-			if (Physics.Raycast(ray, out RaycastHit hit)) {
+			var ray = new Ray(transform.position + Vector3.down * skinWidth, Vector3.down);
+			Debug.DrawRay(ray.origin, ray.direction, Color.blue, 0.2f);
+			if (Physics.Raycast(ray, out RaycastHit hit, 10, groundMask)) {
 				if (hit.distance > skinWidth) return hit.point;
 			}
 			return pos;

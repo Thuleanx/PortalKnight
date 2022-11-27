@@ -2106,6 +2106,9 @@ MonoBehaviour:
   Knockback: {x: 0, y: 0, z: 0}
   KnockbackResistance: 32
   Drag: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
   <Anim>k__BackingField: {fileID: 8569863512189823100}
   animationEvents:
   - m_PersistentCalls:

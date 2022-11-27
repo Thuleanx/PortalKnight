@@ -1,27 +1,32 @@
 title: HUB_enter
 position: 87,77
 ---
-Distant Voices: Oh weary traveler, what brought you here?
-<<camera_pan mural>>
-Distant Voices: Come, come.
-<<wait 1>>
-<<camera_pan follow>>
+<<if $death_count == 0>>
+	Distant Voices: Oh weary traveler, what brought you here?
+	<<camera_pan mural>>
+	<<wait 1>>
+	Distant Voices: Come, come.
+	<<wait 1>>
+	<<camera_pan follow>>
+<<endif>>
 ===
 
 title: HUB_introduction
 position: -115,66
 ---
-<<if not visited("HUB_introduction")>>
-    Voice 1: Oh weary traveler.
-    Voice 2: Come for the promised riches atop the castle, have you?
-    Voice 3: However, without light's protection, you are bound to be ravaged by its darkness.
-	-> ...
-    Voice 1: You see, our once dazzling castle was consumed by shadows.
-    Voice 2: Take Lightbringer, our hope and pride. 
-    <<equip_sword>>
-    Voice 3: It should help in banishing the evils lurking the castle's halls.
+<<if $death_count == 0>>
+	<<if not visited("HUB_introduction")>>
+		Voice 1: Oh weary traveler.
+		Voice 2: Come for the promised riches atop the castle, have you?
+		Voice 3: However, without light's protection, you are bound to be ravaged by its darkness.
+		-> ...
+		Voice 1: You see, our once dazzling castle was consumed by shadows.
+		Voice 2: Take Lightbringer, our hope and pride. 
+		<<equip_sword>>
+		Voice 3: It should help in banishing the evils lurking the castle's halls.
+	<<endif>>
+	Voice 1: We have opened up portals to the throne room, where the source of darkness resides.
+	Voice 2: Go forth, traveler.
+	Voice 3: May the Light's grace guard your heart.
 <<endif>>
-Voice 1: We have opened up portals to the throne room, where the source of darkness resides.
-Voice 2: Go forth, traveler.
-Voice 3: May the Light's grace guard your heart.
 ===
