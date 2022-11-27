@@ -11,6 +11,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using FMODUnity;
 
+using Yarn.Unity;
 using Thuleanx.PortalKnight.Dialogue;
 
 namespace Thuleanx.PortalKnight {
@@ -83,6 +84,8 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Attack"), SerializeField, Space] UnityEvent OnAttack1;
 		[BoxGroup("Attack"), SerializeField, Space] UnityEvent OnAttack2;
 		[BoxGroup("Attack"), SerializeField, Space] UnityEvent<Vector3> OnAttackHit;
+		[BoxGroup("Attack"), SerializeField, Required] GameObject Sword;
+		[BoxGroup("Attack"), SerializeField] bool swordEquippedDefault = false;
 		#endregion
 
 		#region Spell Casting
@@ -108,6 +111,10 @@ namespace Thuleanx.PortalKnight {
 			if (manaGained) OnManaGained?.Invoke();
 			if (manaUsed) OnManaUse?.Invoke();
 		}}
+		public bool SwordEquipped {
+			get => Sword.activeInHierarchy;
+			private set => Sword.SetActive(value);
+		}
 		#endregion
 
 		#region Events
@@ -120,6 +127,7 @@ namespace Thuleanx.PortalKnight {
 			StateMachine = GetComponent<StateMachine<Player>>();
 			Controller = GetComponent<CharacterController>();
 			Input = GetComponent<PlayerInputChain>();
+			SwordEquipped = swordEquippedDefault;
 			StateMachine.Construct();
 		}
 
@@ -183,6 +191,11 @@ namespace Thuleanx.PortalKnight {
 		public void _Nudge() {
 			Vector3 nudge = transform.forward * nudgeSpeed;
 			Velocity += nudge;
+		}
+
+		[YarnCommand("equip_sword")]
+		public static void dSwordEquip() {
+			GameObject.FindObjectOfType<Player>().SwordEquipped = true;
 		}
 	}
 }

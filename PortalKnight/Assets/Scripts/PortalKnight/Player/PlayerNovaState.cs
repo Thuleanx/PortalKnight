@@ -15,7 +15,7 @@ namespace Thuleanx.PortalKnight {
 			bool canDash;
 			bool OnDash(Player player) { return canDash && player.StateMachine.TrySetState((int) Player.State.Dash); }
 			
-			public override bool CanEnter(Player player) => player.Mana >= 1;
+			public override bool CanEnter(Player player) => player.Mana >= 1 && player.SwordEquipped;
 
 			public override void Begin(Player player) {
 				player.Drag = player.deccelerationAlpha;

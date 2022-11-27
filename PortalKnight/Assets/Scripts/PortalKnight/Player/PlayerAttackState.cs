@@ -27,7 +27,7 @@ namespace Thuleanx.PortalKnight {
 
 			bool OnDash(Player player) { return canDash && player.StateMachine.TrySetState((int) Player.State.Dash); }
 
-			public override bool CanEnter(Player player) => !onCooldown;
+			public override bool CanEnter(Player player) => !onCooldown && player.SwordEquipped;
 
 			public override void Begin(Player player) {
 				player.Input.ActionHandler[(int) ActionType.Attack] = OnAttack;

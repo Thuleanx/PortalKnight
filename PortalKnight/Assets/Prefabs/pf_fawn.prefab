@@ -1407,17 +1407,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.74887085
+      value: 0.7488712
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.112937
+      value: 1.1129367
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.026916504
+      value: -0.026917903
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
@@ -2257,6 +2257,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Sword: {fileID: 4621582333602969421}
+  swordEquippedDefault: 0
   spellTurnSpeed: 720
   manaOrbDamage: 1
   manaOrbMouseRange: 3
