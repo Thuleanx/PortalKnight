@@ -1,32 +1,52 @@
 title: HUB_enter
-position: 87,77
+position: -277,217
 ---
-<<if $death_count == 0>>
-	Distant Voices: Oh weary traveler, what brought you here?
-	<<camera_pan mural>>
-	<<wait 1>>
-	Distant Voices: Come, come.
-	<<wait 1>>
-	<<camera_pan follow>>
-<<endif>>
+Distant Voices: Oh weary traveler, what brought you here?
+<<camera_pan mural>>
+<<wait 1>>
+Distant Voices: Come, come.
+<<wait 1>>
+<<camera_pan follow>>
 ===
 
 title: HUB_introduction
-position: -115,66
+position: -277,109
 ---
-<<if $death_count == 0>>
-	<<if not visited("HUB_introduction")>>
-		Voice 1: Oh weary traveler.
-		Voice 2: Come for the promised riches atop the castle, have you?
-		Voice 3: However, without light's protection, you are bound to be ravaged by its darkness.
-		-> ...
-		Voice 1: You see, our once dazzling castle was consumed by shadows.
-		Voice 2: Take Lightbringer, our hope and pride. 
-		<<equip_sword>>
-		Voice 3: It should help in banishing the evils lurking the castle's halls.
-	<<endif>>
-	Voice 1: We have opened up portals to the throne room, where the source of darkness resides.
+<<if not visited("HUB_introduction")>>
+	Voice 1: Oh weary traveler.
+	Voice 2: Come for the promised riches atop the castle, have you?
+	Voice 3: However, without light's protection, you are bound to be by its darkness.
+	-> ...
+	Voice 1: You see, our once dazzling castle was consumed by shadows.
+	Voice 2: Take Lightbringer, our hope and pride. 
+	<<equip_sword>>
+	Voice 3: It should help in banishing the evils lurking the castle's halls.
+	<<jump HUB_inquire>>
+<<endif>>
+===
+title: Lore_CastleHistory
+position: 28,31
+---
+Voice 1: Quite the inquisitive one, aren't you.
+Voice 1: Long long ago, this land was home to a prosperous kingdom.
+Voice 2: And surprisingly enough, on top of this now decrepit ruin stood a mighty castle.
+Voice 3: 
+<<jump HUB_inquire>>
+===
+title: HUB_inquire
+position: 17,126
+---
+-> The castle's history <<if not visited("Lore_CastleHistory")>>
+	<<jump Lore_CastleHistory>>
+-> The three knights <<if not visited("Lore_ThreeKnights") and visited("Lore_CastleHistory")>>
+	<<jump Lore_ThreeKnights>>
+-> Continue
+	Voice 1: These portals will take you to King Satur's throne, where the source of darkness resides.
 	Voice 2: Go forth, traveler.
 	Voice 3: May the Light's grace guard your heart.
-<<endif>>
+===
+title: Lore_ThreeKnights
+position: 5,224
+---
+<<jump HUB_inquire>>
 ===
