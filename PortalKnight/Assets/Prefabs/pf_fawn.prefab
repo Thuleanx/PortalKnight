@@ -2193,6 +2193,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  <Meshes>k__BackingField: []
   speedVariable: Speed
   attackTrigger: Attack
   attack2Trigger: AttackC
@@ -2209,6 +2210,7 @@ MonoBehaviour:
   dashSpeed: 30
   dashDuration: 0.1
   dashDrag: 18
+  dashMaterial: {fileID: 2100000, guid: 2eab62e3a08ccec4fa2a5a3434ce30fa, type: 2}
   OnDash:
     m_PersistentCalls:
       m_Calls:

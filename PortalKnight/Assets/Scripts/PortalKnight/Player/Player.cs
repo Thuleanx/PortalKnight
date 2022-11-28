@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using NaughtyAttributes;
 using Thuleanx.AI.FSM;
 using Thuleanx.Combat3D;
@@ -40,6 +41,7 @@ namespace Thuleanx.PortalKnight {
 		public CharacterController Controller {get; private set; }
 		public PlayerInputChain Input {get; private set; }
 		public Status Status => Puppet.Status;
+		[field:SerializeField] public List<Renderer> Renderers {get; private set;}
 		#endregion
 
 		#region Animations
@@ -66,6 +68,7 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Dash"), Range(0, 100), SerializeField] float dashSpeed = 10;
 		[BoxGroup("Dash"), Range(0, 1), Tooltip("Dash duration in seconds"), SerializeField] float dashDuration = 1;
 		[BoxGroup("Dash"), Range(0, 64), SerializeField] float dashDrag;
+		[BoxGroup("Dash"), SerializeField] Material dashMaterial;
 		[BoxGroup("Dash"), SerializeField, Space] UnityEvent OnDash;
 		#endregion
 		
