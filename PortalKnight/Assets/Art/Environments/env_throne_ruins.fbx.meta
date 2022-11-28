@@ -17,6 +17,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: M_gem
+    second: {fileID: 2100000, guid: 9791f9e9dc39240bfa801aacd2daaae0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: M_pillars
     second: {fileID: 2100000, guid: 23bb0fbc21f2e4112ac6ab02da358bf7, type: 2}
   - first:
