@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_shadowGlobSphere
-    second: {fileID: 2100000, guid: b11421a2a695f4a67a5cc73f67dd532e, type: 2}
+    second: {fileID: 2100000, guid: 02592f2dd351c014283a1a40998fd07b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

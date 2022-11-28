@@ -1,12 +1,14 @@
 title: HUB_enter
 position: -277,217
 ---
-Distant Voices: Oh weary traveler, what brought you here?
-<<camera_pan mural>>
-<<wait 1>>
-Distant Voices: Come, come.
-<<wait 1>>
-<<camera_pan follow>>
+<<if not visited("HUB_enter")>>
+	Distant Voices: Oh weary traveler, what brought you here?
+	<<camera_pan mural>>
+	<<wait 1>>
+	Distant Voices: Come, come.
+	<<wait 1>>
+	<<camera_pan follow>>
+<<endif>>
 ===
 
 title: HUB_introduction
@@ -17,10 +19,9 @@ position: -277,109
 	Voice 2: Come for the promised riches atop the castle, have you?
 	Voice 3: However, without light's protection, you are bound to be by its darkness.
 	-> ...
-	Voice 1: You see, our once dazzling castle was consumed by shadows.
 	Voice 2: Take Lightbringer, our hope and pride. 
 	<<equip_sword>>
-	Voice 3: It should help in banishing the evils lurking the castle's halls.
+	Voice 3: Should you encounter the evils lurking the castle's halls, it should be of great help.
 	<<jump HUB_inquire>>
 <<endif>>
 ===
@@ -30,19 +31,26 @@ position: 28,31
 Voice 1: Quite the inquisitive one, aren't you.
 Voice 1: Long long ago, this land was home to a prosperous kingdom.
 Voice 2: And surprisingly enough, on top of this now decrepit ruin stood a mighty castle.
-Voice 3: 
 <<jump HUB_inquire>>
 ===
 title: HUB_inquire
 position: 17,126
 ---
+<<if visited("HUB_inquire") and not visited("Lore_ThreeKnights")>>
+	Voices: What else do you want to know?
+<<elseif visited("Lore_ThreeKnights")>>
+	The Knights: 
+<<else>>
+	Voices: Before you go, are there anything you wish to know?
+<<endif>>
 -> The castle's history <<if not visited("Lore_CastleHistory")>>
 	<<jump Lore_CastleHistory>>
+-> Who are you? <<if not visited("Lore_ThreeKnights")>>
 -> The three knights <<if not visited("Lore_ThreeKnights") and visited("Lore_CastleHistory")>>
 	<<jump Lore_ThreeKnights>>
--> Continue
+-> [Embark]
 	Voice 1: These portals will take you to King Satur's throne, where the source of darkness resides.
-	Voice 2: Go forth, traveler.
+	Voice 2: Go forth, traveler. Reclaim our castle.
 	Voice 3: May the Light's grace guard your heart.
 ===
 title: Lore_ThreeKnights
