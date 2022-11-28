@@ -16,13 +16,13 @@ MonoBehaviour:
   renderPassEvent: 300
   outlinesLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   outlinesOccluderLayerMask:
     serializedVersion: 2
     m_Bits: 0
   outlineSettings:
-    outlineColor: {r: 1, g: 1, b: 1, a: 1}
-    outlineScale: 1
+    outlineColor: {r: 0.09433961, g: 0, b: 0.042728968, a: 0.78039217}
+    outlineScale: 1.74
     depthThreshold: 1.5
     robertsCrossMultiplier: 100
     normalThreshold: 0.4
@@ -75,20 +75,6 @@ MonoBehaviour:
       restoreCamera: 1
       offset: {x: 0, y: 0, z: 0, w: 0}
       cameraFieldOfView: 60
---- !u!114 &-5597114434818108740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e32e72b6a3f58a24c9033e2b9275eea0, type: 3}
-  m_Name: ScreenSpaceShadows
-  m_EditorClassIdentifier: 
-  m_Active: 0
-  m_Shader: {fileID: 4800000, guid: 0f854b35a0cf61a429bd5dcfea30eddd, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,8 +94,7 @@ MonoBehaviour:
   - {fileID: 7361721362734337071}
   - {fileID: -6137687639600060117}
   - {fileID: -7057219733840625580}
-  - {fileID: -5597114434818108740}
-  m_RendererFeatureMap: 2f4c2f4993162a662b2955539c8dd2aa54808df60ab80f9ebc927489130e53b2
+  m_RendererFeatureMap: 2f4c2f4993162a662b2955539c8dd2aa54808df60ab80f9e
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
