@@ -117,25 +117,13 @@ MonoBehaviour:
     - model: {fileID: 8926484042661616734}
       id: 0
       isStickyNote: 0
-    - model: {fileID: 8926484042661616736}
-      id: 0
-      isStickyNote: 0
     - model: {fileID: 8926484042661616739}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661616754}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661616756}
       id: 0
       isStickyNote: 0
-    - model: {fileID: 8926484042661616758}
-      id: 0
-      isStickyNote: 0
     - model: {fileID: 8926484042661616763}
-      id: 0
-      isStickyNote: 0
-    - model: {fileID: 8926484042661616783}
       id: 0
       isStickyNote: 0
     - model: {fileID: 8926484042661616785}
@@ -170,9 +158,9 @@ MonoBehaviour:
   uiBounds:
     serializedVersion: 2
     x: 378
-    y: 197
+    y: 196
     width: 3803
-    height: 2092
+    height: 2094
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2362,7 +2350,7 @@ MonoBehaviour:
   particlePerStripCount: 16
   needsComputeBounds: 0
   boundsMode: 0
-  m_Space: 0
+  m_Space: 1
 --- !u!114 &8926484042661615649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9530,7 +9518,7 @@ MonoBehaviour:
   particlePerStripCount: 16
   needsComputeBounds: 0
   boundsMode: 0
-  m_Space: 0
+  m_Space: 1
 --- !u!114 &8926484042661616667
 MonoBehaviour:
   m_ObjectHideFlags: 0

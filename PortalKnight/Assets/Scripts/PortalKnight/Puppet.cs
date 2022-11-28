@@ -19,6 +19,7 @@ namespace Thuleanx.PortalKnight {
 		[Space]
 		public UnityEvent<Puppet> OnDeath;
 		public UnityEvent<Puppet> OnHit;
+		public UnityEvent<Puppet> OnHeal;
 
 		public int InitialMaxHealth;
 
@@ -73,6 +74,11 @@ namespace Thuleanx.PortalKnight {
 				if (Status.Health == 0) 	onDeath();
 				else 						OnHit?.Invoke(this);
 			}
+		}
+
+		public void Heal(int value) {
+			OnHeal?.Invoke(this);
+			Status.Health += value;
 		}
 	}
 }

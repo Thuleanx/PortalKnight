@@ -39,8 +39,7 @@ namespace Thuleanx.PortalKnight {
 		}
 
 		void Collect() {
-			// TODO don't do this
-			Player.Status.Health++;
+			Player.Puppet.Heal(1);
 			gameObject.SetActive(false);
 			AudioManager.instance?.PlayOneShot(collectSound);
 		}

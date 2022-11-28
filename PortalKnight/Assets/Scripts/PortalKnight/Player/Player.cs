@@ -11,6 +11,9 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using FMODUnity;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 using Yarn.Unity;
 using Thuleanx.PortalKnight.Dialogue;
@@ -196,6 +199,9 @@ namespace Thuleanx.PortalKnight {
 			Velocity += nudge;
 		}
 
+		#if UNITY_EDITOR
+		[MenuItem("Thuleanx/Player/EquipSword")]
+		#endif
 		[YarnCommand("equip_sword")]
 		static void yarn_SwordEquip() {
 			GameObject.FindObjectOfType<Player>().SwordEquipped = true;

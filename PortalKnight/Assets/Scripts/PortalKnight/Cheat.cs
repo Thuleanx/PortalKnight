@@ -11,6 +11,7 @@ namespace Thuleanx.PortalKnight {
 			Player player = GameObject.FindObjectOfType<Player>();
 			player.Status.Health = player.Status.MaxHealth;
 		}
+
 	}
 }
 #endif
