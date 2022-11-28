@@ -29,6 +29,7 @@ namespace Thuleanx.PortalKnight {
 			};
 			Entity = GetComponent<Alive>();
 			hurtboxes = new List<Hurtbox3D>(GetComponentsInChildren<Hurtbox3D>());
+			Debug.Log(hurtboxes.Count);
 		}
 
 		void OnEnable() {

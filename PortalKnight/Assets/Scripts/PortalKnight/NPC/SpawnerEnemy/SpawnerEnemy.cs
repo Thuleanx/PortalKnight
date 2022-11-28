@@ -39,9 +39,9 @@ namespace Thuleanx.PortalKnight {
 
 		public override void Awake() {
 			base.Awake();
+			player = FindObjectOfType<Player>();
 			StateMachine = GetComponent<StateMachine<SpawnerEnemy>>();
 			StateMachine.Construct();
-			player = FindObjectOfType<Player>();
 		}
 
 		public override void Start(){
