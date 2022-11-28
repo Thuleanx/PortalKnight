@@ -8,7 +8,11 @@ namespace Thuleanx.PortalKnight {
 		public class PlayerNeutralState : State<Player> {
 			bool OnDash(Player player) => player.StateMachine.TrySetState((int) Player.State.Dash);
 			bool OnAttack(Player player) => player.StateMachine.TrySetState((int) Player.State.Attack);
-			bool OnSpecial(Player player) => player.StateMachine.TrySetState((int) Player.State.Special);
+			bool OnSpecial(Player player) { 
+				bool trySpecial = player.StateMachine.TrySetState((int) Player.State.Special);
+				if (!trySpecial) player.OnManaInsufficient?.Invoke();
+				return true; // always consume this buffered input
+			}
 
 			public override void Begin(Player agent) {
 				agent.Input.ActionHandler[(int) ActionType.Dash] = OnDash;

@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using Thuleanx.Utils;
 using NaughtyAttributes;
+using DG.Tweening;
 
 namespace Thuleanx.PortalKnight.UI {
 	[RequireComponent(typeof(RectTransform))]
@@ -12,6 +13,7 @@ namespace Thuleanx.PortalKnight.UI {
 
 		public Slider Slider {get; private set; }
 		public Player Player {get; private set; }
+		public RectTransform rectTransform {get; private set;}
 
 		[field:SerializeField]
 		public Image Image {get; private set;}
@@ -34,11 +36,13 @@ namespace Thuleanx.PortalKnight.UI {
 		void Awake() {
 			Player = FindObjectOfType<Player>(); // permitted on awake
 			Slider = GetComponent<Slider>();
+			rectTransform = GetComponent<RectTransform>();
 		}
 
 		void Start() {
 			Player.OnManaGained.AddListener(OnManaGained);
 			Player.OnManaUse.AddListener(OnManaUse);
+			Player.OnManaInsufficient.AddListener(OnInsufficientMana);
 		}
 
 		void Update() {
@@ -55,6 +59,7 @@ namespace Thuleanx.PortalKnight.UI {
 			TurnOffEmission();
 			Player.OnManaGained.RemoveListener(OnManaGained);
 			Player.OnManaUse.RemoveListener(OnManaUse);
+			Player.OnManaInsufficient.RemoveListener(OnInsufficientMana);
 		}
 
 		[Button]
@@ -71,7 +76,21 @@ namespace Thuleanx.PortalKnight.UI {
 			Material.SetColor(EMISSION_SHADER_NAME, normalColor);
 		}
 
-
+		[Header("Insufficient Mana Effect")]
+		[SerializeField, Range(0,1)] float shakeDuration = 0.2f;
+		[SerializeField, Range(0,100)] float shakeStrength = 25f;
+		[SerializeField, Range(0,100)] int shakeVibrato = 10;
+		[SerializeField] RectTransform shakeTarget;
+		Vector3 shakeOriginalPos;
+		Tween shakeTween;
+		[Button("Start shake")]
+		void OnInsufficientMana() {
+			shakeTween?.Kill();
+			shakeOriginalPos = shakeTarget.anchoredPosition3D;
+			shakeTween = shakeTarget.DOShakeAnchorPos(shakeDuration, shakeStrength, shakeVibrato).OnKill(() => {
+				shakeTarget.anchoredPosition3D = shakeOriginalPos;
+			});
+		}
 		void OnManaGained() => StartFlash();
 		void OnManaUse() => OnUse?.Invoke();
 

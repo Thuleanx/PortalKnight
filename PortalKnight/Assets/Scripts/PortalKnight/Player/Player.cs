@@ -126,6 +126,7 @@ namespace Thuleanx.PortalKnight {
 		#region Events
 		public UnityEvent OnManaGained;
 		public UnityEvent OnManaUse;
+		public UnityEvent OnManaInsufficient;
 		#endregion
 
 		public override void Awake() {
