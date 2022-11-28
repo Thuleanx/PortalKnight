@@ -1,16 +1,3 @@
-title: HUB_enter
-position: -277,217
----
-<<if not visited("HUB_enter")>>
-	Distant Voices: Oh brave traveler, what brought you here to these ruins?
-	<<camera_pan mural>>
-	<<wait 1>>
-	Distant Voices: Come. 
-	<<wait 1>>
-	<<camera_pan follow>>
-<<endif>>
-===
-
 title: HUB_introduction
 position: -277,109
 ---
@@ -25,6 +12,18 @@ position: -277,109
 	<<jump HUB_inquire>>
 <<endif>>
 ===
+title: HUB_enter
+position: -277,217
+---
+<<if not visited("HUB_enter")>>
+	Distant Voices: Oh brave traveler, what brought you here to these ruins?
+	<<camera_pan mural>>
+	<<wait 1>>
+	Distant Voices: Come. 
+	<<wait 1>>
+	<<camera_pan follow>>
+<<endif>>
+===
 title: HUB_inquire
 position: 17,126
 ---
@@ -37,17 +36,13 @@ position: 17,126
 <<endif>>
 -> The castle's history <<if not visited("Lore_CastleHistory")>>
 	<<jump Lore_CastleHistory>>
-	<<jump HUB_inquire>>
 -> Voices' identity <<if not visited("Lore_ThreeKnights") and visited("Lore_CastleHistory")>>
 	Voice 1: Never thought you would ask.
 	<<jump Lore_ThreeKnights>>
-	<<jump HUB_inquire>>
 -> The three knights <<if not visited("Lore_ThreeKnights") and visited("Lore_CastleHistory")>>
 	<<jump Lore_ThreeKnights>>
-	<<jump HUB_inquire>>
 -> The knights' fate <<if not visited("Lore_Invasion") and visited("Lore_ThreeKnights")>>
 	<<jump Lore_Invasion>>
-	<<jump HUB_inquire>>
 -> Embark
 	<<if not visited("Lore_ThreeKnights")>>
 		Voice 1: These passages leads to the throne room, where the source of darkness resides.
@@ -71,12 +66,14 @@ Voice 1: Vega the Mighty.
 Voice 2: Altair the Swift.
 Voice 3: Deneb the Wise.
 Vega the Mighty: Those are our titles before death. Now we are but wandering souls, trapped waiting for travelers like yourself to rid the castle of its monsters.
+<<jump HUB_inquire>>
 ===
 title: Lore_CastleHistory
 position: -43,-67
 ---
 Voice 1: Quite the inquisitive one, hmmm? If you wish to lend your ears, then pardon our reminiscing of the past.
 Voice 1: Long ago, this land was home to the mighty kingdom of Constellia, and above us stood a dazzling castle. Constellia was known for its knight's prowest, and three in particular were crowned lords.
+<<jump HUB_inquire>>
 ===
 title: Lore_Invasion
 position: 257,33
@@ -84,5 +81,6 @@ position: 257,33
 Deneb the Wise: We met our ends by a terrible curse that darkened the sun. Monsters emerged from the shadows left behind by the disappeared sun, whose etheral form no physical weapon can scratch.
 Vega the Mighty: Oh brave traveller, we put up great resistance against the creatures of the curse. But our hands eventually grew feeble with thirst and hunger.
 Vega the Mighty: Deneb here had the wise idea of combining our powers to create Lightbringer, a weapon imbued with the Light's blessings.
-Altair the Swift: We reached the throne room where the souce of the curse resides, but were too weak to finish the battle.
+Altair the Swift: We reached the throne room where the source of the curse resides, but were too weak to finish the battle.
+<<jump HUB_inquire>>
 ===
