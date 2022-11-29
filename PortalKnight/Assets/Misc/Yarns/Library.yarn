@@ -10,6 +10,8 @@ position: -277,109
 	<<equip_sword>>
 	Voice 3: May it aid you in banishing the evils that lurk the castle's halls.
 	<<jump HUB_inquire>>
+<<else>>
+	<<equip_sword>>
 <<endif>>
 ===
 title: HUB_enter
