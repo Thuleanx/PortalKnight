@@ -8,10 +8,12 @@ position: -277,109
 	-> ...
 	Voice 3: If you insists on going forward, take Lightbringer. 
 	<<equip_sword>>
+	<<enable PlayerUICanvas>>
 	Voice 3: May it aid you in banishing the evils that lurk the castle's halls.
 	<<jump HUB_inquire>>
 <<else>>
 	<<equip_sword>>
+	<<enable PlayerUICanvas>>
 <<endif>>
 ===
 title: HUB_enter

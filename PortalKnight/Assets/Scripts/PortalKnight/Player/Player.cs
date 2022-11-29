@@ -141,7 +141,7 @@ namespace Thuleanx.PortalKnight {
 		public override void Start() {
 			base.Start();
 			StateMachine.Init();
-			Mana = MaxMana;
+			// Mana = MaxMana;
 
 			var storage = App.instance.GetComponentInChildren<VariableStorage>();
 			if (storage && storage.GetDeathCount() > 0) 
