@@ -15888,6 +15888,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1417503492204261114}
   - component: {fileID: 1417503492204261115}
+  - component: {fileID: 1417503492204261117}
+  - component: {fileID: 1417503492204261116}
   m_Layer: 0
   m_Name: UI Hub
   m_TagString: Untagged
@@ -15943,6 +15945,32 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1417503492204261116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417503492204260613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e5d9e341c28244eaf68b9fe3bfdb7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 4
+  ease: 2
+--- !u!225 &1417503492204261117
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417503492204260613}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &2210912352136031792
 MonoBehaviour:
   m_ObjectHideFlags: 0
