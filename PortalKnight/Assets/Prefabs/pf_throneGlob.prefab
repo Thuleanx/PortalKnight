@@ -244,6 +244,9 @@ MonoBehaviour:
   range: 12.71
   maxShadowEnemies: 20
   shadowEnemeyPool: {fileID: 11400000, guid: a996d39fa1965034d983c43009947057, type: 2}
+  OnPermaDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1925231437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +295,7 @@ MonoBehaviour:
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
-  InitialMaxHealth: 40
+  InitialMaxHealth: 20
 --- !u!114 &1925231439
 MonoBehaviour:
   m_ObjectHideFlags: 0

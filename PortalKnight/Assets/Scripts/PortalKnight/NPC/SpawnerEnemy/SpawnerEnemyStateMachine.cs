@@ -12,7 +12,7 @@ namespace Thuleanx.PortalKnight {
 
 			AssignState((int) SpawnerEnemy.State.Neutral, new SpawnerEnemy.SpawnerNeutralState());
 			AssignState((int) SpawnerEnemy.State.Spell, new SpawnerEnemy.SpawnerSpellState());
-			AssignState((int) SpawnerEnemy.State.Dead, new GenericDeadState<SpawnerEnemy>());
+			AssignState((int) SpawnerEnemy.State.Dead, new SpawnerEnemy.SpawnerDeadState());
 		}
 
 	}

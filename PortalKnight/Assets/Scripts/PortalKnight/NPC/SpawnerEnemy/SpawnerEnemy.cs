@@ -6,11 +6,11 @@ using Thuleanx.Combat3D;
 using Thuleanx.PrettyPatterns;
 using Thuleanx.Utils;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.AI;
 
 namespace Thuleanx.PortalKnight {
 	public partial class SpawnerEnemy {
-
 		public enum State {
 			Neutral,
 			Spell,
@@ -31,6 +31,7 @@ namespace Thuleanx.PortalKnight {
 		[SerializeField, BoxGroup("Spawning"), Range(0, 20)] float range = 3;
 		[SerializeField, BoxGroup("Spawning"), Range(0, 20)] int maxShadowEnemies;
 		[SerializeField, BoxGroup("Spawning"), Required] BubblePool shadowEnemeyPool;
+		[SerializeField, Space] UnityEvent OnPermaDeath;
 
 		Player player;
 		#endregion
