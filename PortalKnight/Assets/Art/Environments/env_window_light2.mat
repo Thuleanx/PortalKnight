@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2602806661134045374
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: env_window_light2
+  m_Shader: {fileID: -6465566751694194690, guid: 53342d8bcd6ec430a9d5b20c7ab85b75,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_58991c1e5f8142c2a71c5915277f5389:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_c7f2546d23e84107a3680ce404b03fc9:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BodyPingMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HandTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - Vector1_4cd03d7b2efb4915bacc546c5fbccab2: 0.1
+    - Vector1_60ece6e4d9e144d89b3e1a4ca1675c16: 100
+    - Vector1_8db20cea9b8646bfb0b7281d9b2195ed: 5
+    - Vector1_9119a77f898e4831a3769ebd713ed317: 5
+    - Vector1_a35d67df9ae24346a519be4567dde0ff: 1
+    - Vector1_a733b1ccabb44d358fb023bf798c478b: 2
+    - Vector1_c32dc17fc31d4f359c8d82947abee73b: 0.17
+    - Vector1_ce4dce001248402e9fcc5e120b1ecd5a: 5
+    - Vector1_fd329a19a65045aab86810b961674e99: 30
+    - _Alpha: 0.1
+    - _CorruptionValue: 0.151
+    - _DisplacementMask: 1
+    - _DisplacementOffset: 0.7
+    - _DisplacementValue: 0.1
+    - _Dissolve: 2
+    - _Flash: 0
+    - _HandMask: -0.7
+    - _HueOffset: 10
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RandomDisplacement: 0
+    - _WholeMask: 0.4
+    m_Colors:
+    - Color_38e84acb48a84c088c0ef04a60eb7dfb: {r: 0, g: 0, b: 0, a: 0}
+    - Color_4f5bbd86720e4b5c85b725167a548d82: {r: 1, g: 1, b: 1, a: 0}
+    - Vector2_54edcfd1f42746a183557df8c4e50b5c: {r: 0.01, g: 0.3, b: 0, a: 0}
+    - Vector2_8d111400d2794971b7521e1a2dc74b78: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_b45a7a65a4ae4f9fa6f41a26f8c6a13a: {r: 1, g: 1, b: 0, a: 0}
+    - _BodyPingOffsetSpeed: {r: 0, g: 1, b: 0, a: 0}
+    - _BodyTextureOffsetSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _BodyTextureTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Color: {r: 1.9144524, g: 1.1055284, b: 0.4063697, a: 1}
+  m_BuildTextureStacks: []
