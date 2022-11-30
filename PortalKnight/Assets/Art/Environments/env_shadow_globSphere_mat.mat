@@ -79,6 +79,11 @@ Material:
     - _DisplacementOffset: 0.7
     - _DisplacementValue: 2
     - _Dissolve: 2
+    - _DissolveAmount: 0
+    - _DissolveEnable: 0
+    - _DissolveGlowEdge: 0.02
+    - _Dissolve_Scale: 59
+    - _DissolveeAmount: 0
     - _Flash: 0
     - _HandMask: -0.7
     - _HueOffset: 10
@@ -96,4 +101,5 @@ Material:
     - _BodyTextureOffsetSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _BodyTextureTiling: {r: 1, g: 1, b: 0, a: 0}
     - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Dissolve_Edge_Color: {r: 8, g: 0.1254902, b: 0.09411765, a: 1}
   m_BuildTextureStacks: []
