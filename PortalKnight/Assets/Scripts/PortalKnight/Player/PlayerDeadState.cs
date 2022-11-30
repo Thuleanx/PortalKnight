@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 using Thuleanx.AI.FSM;
 using Thuleanx.Utils;
@@ -10,6 +11,7 @@ namespace Thuleanx.PortalKnight {
 	public partial class Player {
 		public class PlayerDeadState : GenericDeadState<Player> {
 			public override void Begin(Player player) {
+				player.Anim.SetTrigger(player.deathTrigger);
 				base.Begin(player);
 				FindObjectOfType<VariableStorage>()?.IncrementDeath();
 			}
@@ -21,7 +23,6 @@ namespace Thuleanx.PortalKnight {
 				FindObjectOfType<DeathTransitioner>().Transition(App.instance.GetActiveScene());
 				yield return null;
 			}
-
 		}
 	}
 }

@@ -66,7 +66,7 @@ Material:
     - _Smoothness: 0
     m_Colors:
     - _Color: {r: 1, g: 0.10909091, b: 0, a: 1}
-    - _Emission: {r: 2, g: 0.15686275, b: 0, a: 0}
+    - _Emission: {r: 4, g: 0, b: 0, a: 0}
     - _PrevPosition: {r: 1, g: 0, b: 0, a: 0}
     - _Velocity: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -30,5 +30,6 @@ namespace Thuleanx.PortalKnight {
 			if (animEvent.animatorClipInfo.weight > 0.8f) 
 				animationEvents[animEvent.intParameter]?.Invoke();
 		}
+		public void _TriggerAnimatedEventUnweighted(int eventIndex) => animationEvents[eventIndex]?.Invoke();
 	}
 }

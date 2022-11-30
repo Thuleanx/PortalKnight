@@ -45,6 +45,7 @@ namespace Thuleanx.PortalKnight {
 		public CharacterController Controller {get; private set; }
 		public PlayerInputChain Input {get; private set; }
 		public Status Status => Puppet.Status;
+		public List<Renderer> renderers {get; private set; }
 		#endregion
 
 		#region Animations

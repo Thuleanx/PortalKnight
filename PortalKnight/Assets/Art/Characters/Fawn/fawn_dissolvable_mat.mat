@@ -47,7 +47,7 @@ Material:
     - _Cull: 0
     - _Dissolve_Amount: 0
     - _Dissolve_Glow_Edge: 0.1
-    - _Dissolve_Scale: 30
+    - _Dissolve_Scale: 50
     - _DstBlend: 0
     - _Metallic: 0
     - _QueueControl: 0
@@ -62,7 +62,7 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _AlbedoColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Dissolve_Edge_Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Dissolve_Edge_Color: {r: 8, g: 8, b: 8, a: 1}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1361747859835353442
