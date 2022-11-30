@@ -148,6 +148,9 @@ MonoBehaviour:
   Knockback: {x: 0, y: 0, z: 0}
   KnockbackResistance: 1
   Drag: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
   gravityMultiplier: 1
   blobPool: {fileID: 11400000, guid: 1102b8811f75542418447a8bd16fdb68, type: 2}
 --- !u!54 &348607821288189370

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
 
@@ -13,6 +14,7 @@ namespace Thuleanx.PortalKnight.Mapping {
 		[SerializeField] float enterOffset = 1;
 		[SerializeField] float exitOffset = 1;
 		[SerializeField] float transitionDuration = 0.5f;
+		[SerializeField] UnityEvent OnTransition;
 		bool transitioning = false;
 
 		public bool Transition(Interactible Triggerer) {
@@ -39,6 +41,7 @@ namespace Thuleanx.PortalKnight.Mapping {
 			// we need to teleport the player ==> disable controller
 			Vector3 deltaPos = destination.transform.position - player.transform.position;
 			player.SetPosition(destination.transform.position);
+			OnTransition?.Invoke();
 			FindObjectOfType<Cinemachine.CinemachineVirtualCamera>().OnTargetObjectWarped(player.transform, deltaPos);
 
 			yield return iWalkToPos(-destination.transform.forward * enterOffset + destination.transform.position);

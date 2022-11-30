@@ -472,6 +472,7 @@ Transform:
   - {fileID: 2868124650148368171}
   - {fileID: 6754568074999050318}
   - {fileID: 1611015812414732112}
+  - {fileID: 5043617858488881538}
   m_Father: {fileID: 5192376620757045628}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -767,6 +768,68 @@ MonoBehaviour:
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 1
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!1 &5754540069808420136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5043617858488881538}
+  - component: {fileID: 4185558865677907853}
+  m_Layer: 0
+  m_Name: sfx_hurt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5043617858488881538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754540069808420136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4448137857656170943}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4185558865677907853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754540069808420136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1758935309
+      Data2: 1303864842
+      Data3: 1277296310
+      Data4: 1844462570
+    Path: event:/SFX/Fawn/Hurt
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
   Params: []
   OverrideAttenuation: 0
   OverrideMinDistance: 1
@@ -1579,7 +1642,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: 17.5, y: 0, z: -60}
+      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -1674,7 +1737,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.74887085
+      value: 0.7488712
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
@@ -1684,7 +1747,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.026916504
+      value: -0.026917875
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
@@ -2335,7 +2398,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: 17.5, y: 0, z: -60}
+      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -2516,7 +2579,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: 17.5, y: 0, z: -60}
+      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -2712,7 +2775,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: 17.5, y: 0, z: -60}
+      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -2856,7 +2919,19 @@ MonoBehaviour:
       m_Calls: []
   OnHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4185558865677907853}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHeal:
     m_PersistentCalls:
       m_Calls:
@@ -3476,7 +3551,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: 17.5, y: 0, z: -60}
+      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -3670,7 +3745,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: 17.5, y: 0, z: -60}
+      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
