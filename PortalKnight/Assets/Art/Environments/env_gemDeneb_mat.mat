@@ -99,6 +99,6 @@ Material:
     - _BodyPingOffsetSpeed: {r: 0, g: 1, b: 0, a: 0}
     - _BodyTextureOffsetSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _BodyTextureTiling: {r: 1, g: 1, b: 0, a: 0}
-    - _Color: {r: 3.6930478, g: 2.7147079, b: 2.7001057, a: 0}
+    - _Color: {r: 3.8141675, g: 2.7947254, b: 2.4648156, a: 0}
     - _Dissolve_Edge_Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
