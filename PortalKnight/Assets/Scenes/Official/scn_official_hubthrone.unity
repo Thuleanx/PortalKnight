@@ -2906,6 +2906,7 @@ GameObject:
   - component: {fileID: 1072480307}
   - component: {fileID: 1072480308}
   - component: {fileID: 1072480309}
+  - component: {fileID: 1072480310}
   m_Layer: 0
   m_Name: Ending Timeline
   m_TagString: Untagged
@@ -3048,6 +3049,7 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 3158b76059ccc42498120b00ec2b91fa, type: 2}
+    - {fileID: 11400000, guid: 169f67e99de6b1e4a93c0b704da72381, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -3064,6 +3066,32 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1072480310}
+          m_TargetAssemblyTypeName: Thuleanx.PortalKnight.PKDirector, Assembly-CSharp
+          m_MethodName: Wrap
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1072480310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072480303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0546d3dd119dcb5478d315a14288def9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1117459247
 GameObject:
   m_ObjectHideFlags: 0
@@ -3324,7 +3352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227254818}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.75, y: 1.5, z: -30.5}
+  m_LocalPosition: {x: 17, y: 1, z: -18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16591,10 +16619,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
       propertyPath: OnPermaDeath.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
       propertyPath: OnPermaDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
+      propertyPath: OnPermaDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
@@ -16602,7 +16634,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1072480305}
     - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
+      propertyPath: OnPermaDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1072480310}
+    - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
       propertyPath: OnPermaDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
+      propertyPath: OnPermaDeath.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
@@ -16610,11 +16650,23 @@ PrefabInstance:
       value: Play
       objectReference: {fileID: 0}
     - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
+      propertyPath: OnPermaDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: BeginWrap
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
       propertyPath: OnPermaDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.Playables.PlayableDirector, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
+      propertyPath: OnPermaDeath.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Thuleanx.PortalKnight.PKDirector, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
       propertyPath: OnPermaDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1925231436, guid: e017cdb4a2d61554eb9fd16d4253ba71, type: 3}
+      propertyPath: OnPermaDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3670118476158949281, guid: e017cdb4a2d61554eb9fd16d4253ba71,

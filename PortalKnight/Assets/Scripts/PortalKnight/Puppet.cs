@@ -77,6 +77,13 @@ namespace Thuleanx.PortalKnight {
 			}
 		}
 
+		public void SpontaneousCombustion() {
+			if (!Status.IsDead) {
+				Status.Health = 0;
+				onDeath();
+			}
+		}
+
 		public void Heal(int value) {
 			OnHeal?.Invoke(this);
 			Status.Health += value;

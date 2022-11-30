@@ -46,6 +46,8 @@ namespace Thuleanx.PortalKnight {
 				gameObject.SetActive(false);
 			});
 		}
+		
+		public void CauseExpire() => alive.Stop();
 
 		void OnHit(Hit3D hit) {
 			gameObject.SetActive(false);
