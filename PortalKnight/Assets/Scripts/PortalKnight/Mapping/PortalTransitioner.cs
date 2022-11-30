@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 using Thuleanx.PrettyPatterns.ResChain;
 using Thuleanx.Utils;
@@ -42,7 +43,8 @@ namespace Thuleanx.PortalKnight.Mapping {
 
 			yield return iWalkToPos(-destination.transform.forward * enterOffset + destination.transform.position);
 			// TODO: animate the portal out
-			destination.GetComponent<Collider>().enabled = true;
+			// destination.GetComponent<Collider>().enabled = true;
+			destination.transform.parent?.GetComponentInChildren<VisualEffect>()?.Stop();
 
 			player.Interactible = true;
 			transitioning = false;

@@ -16,8 +16,10 @@ namespace Thuleanx.PortalKnight.Mapping {
 			FindObjectOfType<PortalTransitioner>().Transition(this);
 		}
 
-
-		[YarnCommand("enable")]
-		void yarn_enable() => onEnable?.Invoke();
+		[YarnCommand("enable2")]
+		void yarn_enable() {
+			Debug.Log("HI");
+			onEnable?.Invoke();
+		} 
 	}
 }
