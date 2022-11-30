@@ -11,6 +11,7 @@ using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using FMODUnity;
+using DG.Tweening;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -80,6 +81,7 @@ namespace Thuleanx.PortalKnight {
 		#region Combat
 		[HorizontalLine(color:EColor.Red)]
 		[BoxGroup("General Combat"), Range(0, 4), SerializeField] float hitIframes = 1;
+		[BoxGroup("General Combat"), Range(0, 2), SerializeField] float hurtSFXMuteDuration = 1;
 		[BoxGroup("General Combat"), Range(0, 1), SerializeField] float damageFlashDuration = 0.2f;
 		[BoxGroup("General Combat"), SerializeField] Material damageFlashMaterial;
 
@@ -150,10 +152,8 @@ namespace Thuleanx.PortalKnight {
 			var storage = App.instance.GetComponentInChildren<VariableStorage>();
 			if (storage && storage.GetDeathCount() > 0) 
 				SetPosition(GameObject.FindWithTag("Death Anchor").transform.position);
-			Puppet.OnHit.AddListener((p) => {
-				p.GiveIframes(hitIframes);
-				flashEffect.Flash(damageFlashMaterial, damageFlashDuration);
-			});
+			Puppet.OnHit.AddListener(onHit);
+			Debug.Log(Thuleanx.Audio.AudioManager.instance.gameObject);
 		}
 
 		protected override void Update() {
@@ -170,6 +170,18 @@ namespace Thuleanx.PortalKnight {
 
 		void FixedUpdate() {
 			StateMachine.RunFixUpdate();
+		}
+
+		Tween hitLowpass;
+		void onHit(Puppet p) {
+			p.GiveIframes(hitIframes);
+			flashEffect.Flash(damageFlashMaterial, damageFlashDuration);
+			hitLowpass?.Kill();
+			hitLowpass = DOVirtual.Float(1, 0, hurtSFXMuteDuration, (x) => {
+				FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Hurt", x);
+			}).OnKill(() => {
+				FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Hurt", 0);
+			});
 		}
 
 		protected override void Move(Vector3 displacement) {
