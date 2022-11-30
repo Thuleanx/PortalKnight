@@ -17,6 +17,7 @@ using UnityEditor;
 
 using Yarn.Unity;
 using Thuleanx.PortalKnight.Dialogue;
+using Thuleanx.PortalKnight.Effects;
 
 namespace Thuleanx.PortalKnight {
 	public partial class Player {
@@ -44,7 +45,6 @@ namespace Thuleanx.PortalKnight {
 		public CharacterController Controller {get; private set; }
 		public PlayerInputChain Input {get; private set; }
 		public Status Status => Puppet.Status;
-		[field:SerializeField] public List<Renderer> Renderers {get; private set;}
 		#endregion
 
 		#region Animations
@@ -72,12 +72,15 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("Dash"), Range(0, 1), Tooltip("Dash duration in seconds"), SerializeField] float dashDuration = 1;
 		[BoxGroup("Dash"), Range(0, 64), SerializeField] float dashDrag;
 		[BoxGroup("Dash"), SerializeField] Material dashMaterial;
+		[BoxGroup("Dash"), SerializeField] FlashMaterialEffect flashEffect;
 		[BoxGroup("Dash"), SerializeField, Space] UnityEvent OnDash;
 		#endregion
 		
 		#region Combat
 		[HorizontalLine(color:EColor.Red)]
 		[BoxGroup("General Combat"), Range(0, 4), SerializeField] float hitIframes = 1;
+		[BoxGroup("General Combat"), Range(0, 1), SerializeField] float damageFlashDuration = 0.2f;
+		[BoxGroup("General Combat"), SerializeField] Material damageFlashMaterial;
 
 		[BoxGroup("Attack"), Range(0, 100), SerializeField] float nudgeSpeed = 40;
 		[BoxGroup("Attack"), Range(0, 720), SerializeField] float attackTurnSpeed = 24;
@@ -146,7 +149,10 @@ namespace Thuleanx.PortalKnight {
 			var storage = App.instance.GetComponentInChildren<VariableStorage>();
 			if (storage && storage.GetDeathCount() > 0) 
 				SetPosition(GameObject.FindWithTag("Death Anchor").transform.position);
-			Puppet.OnHit.AddListener((p) => {p.GiveIframes(hitIframes);});
+			Puppet.OnHit.AddListener((p) => {
+				p.GiveIframes(hitIframes);
+				flashEffect.Flash(damageFlashMaterial, damageFlashDuration);
+			});
 		}
 
 		protected override void Update() {

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Smear
+  m_Name: damaged_mat
   m_Shader: {fileID: -6465566751694194690, guid: 959ffd0dda1b77b4cb7cb0ef8e8dd5f8,
     type: 3}
   m_ValidKeywords: []
@@ -54,6 +54,7 @@ Material:
     m_Floats:
     - Vector1_eb77d23b0ef146c4a7d5220834e6ba68: 0.7
     - _Enabled: 1
+    - _Metallic: 1
     - _NoiseHeight: 0.25
     - _NoiseMultiplier: 59
     - _QueueControl: 0
@@ -62,7 +63,10 @@ Material:
     - _SmearNoiseScale: 27
     - _SmearNoiseSpeed: 0.57
     - _SmearScale: 0.1
+    - _Smoothness: 0
     m_Colors:
+    - _Color: {r: 1, g: 0.10909091, b: 0, a: 1}
+    - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _PrevPosition: {r: 1, g: 0, b: 0, a: 0}
     - _Velocity: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -1539,7 +1539,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.7488712
+      value: 0.74887085
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
@@ -1549,7 +1549,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.026917903
+      value: -0.026916504
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de9908f3306c70f4c99db58d1559039a,
         type: 3}
@@ -2188,6 +2188,31 @@ MonoBehaviour:
   VelocityPropertyName: _Velocity
   Write: 1
   smearLagTime: 0.003
+--- !u!1 &2503436334048865582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7870111193412721593, guid: fa38c8f8d9ba8d6458f7a01af0d32ab0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5730195539794409111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9114169299971403657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2503436334048865582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84ed63a900ca51e4b8f3313f38e213b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Renderers>k__BackingField:
+  - {fileID: 7150669057666890910}
+  - {fileID: 1935692388808664940}
+  - {fileID: 1486946368781572703}
+  - {fileID: 8083152365106634209}
+  - {fileID: 7423555656986611285}
+  - {fileID: 2216990386205369079}
 --- !u!1 &2862435860721674815 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1712260369443021656, guid: fa38c8f8d9ba8d6458f7a01af0d32ab0,
@@ -2415,13 +2440,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  <Renderers>k__BackingField:
-  - {fileID: 7150669057666890910}
-  - {fileID: 1935692388808664940}
-  - {fileID: 1486946368781572703}
-  - {fileID: 8083152365106634209}
-  - {fileID: 7423555656986611285}
-  - {fileID: 2216990386205369079}
   speedVariable: Speed
   attackTrigger: Attack
   attack2Trigger: AttackC
@@ -2439,6 +2457,7 @@ MonoBehaviour:
   dashDuration: 0.1
   dashDrag: 18
   dashMaterial: {fileID: 2100000, guid: 2eab62e3a08ccec4fa2a5a3434ce30fa, type: 2}
+  flashEffect: {fileID: 9114169299971403657}
   OnDash:
     m_PersistentCalls:
       m_Calls:
@@ -2455,6 +2474,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   hitIframes: 1
+  damageFlashDuration: 0.2
+  damageFlashMaterial: {fileID: 2100000, guid: 46c2b81961bea104db7ccefee9dffbae, type: 2}
   nudgeSpeed: 15
   attackTurnSpeed: 720
   attackDamage: 1
@@ -2506,6 +2527,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnManaUse:
+    m_PersistentCalls:
+      m_Calls: []
+  OnManaInsufficient:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1339669642
