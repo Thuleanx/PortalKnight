@@ -9,9 +9,5 @@ namespace Thuleanx.Audio {
 			=> FMODUnity.RuntimeManager.PlayOneShot(reference);
 		public void PlayOneShot3D(EventReference reference, Vector3 position) 
 			=> FMODUnity.RuntimeManager.PlayOneShot(reference, position);
-
-		[YarnCommand("playsound")]
-		public void PlayOneShotString(string reference) 
-			=> FMODUnity.RuntimeManager.PlayOneShot(reference);
 	}
 }

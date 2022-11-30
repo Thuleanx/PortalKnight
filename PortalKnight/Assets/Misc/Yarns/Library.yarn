@@ -7,13 +7,11 @@ position: -277,109
 	Voice 3: Unfortunately, you came unprepared. Without the Light's protection, you are powerless against the monstrousities that dwells within.
 	-> ...
 	Voice 3: If you insists on going forward, take Lightbringer. 
-	<<playsound Thuleanx.Audio.AudioManager "SFX/Fawn/Hurt">>
 	<<equip_sword>>
 	<<enable PlayerUICanvas>>
 	Voice 3: May it aid you in banishing the evils that lurk the castle's halls.
 	<<jump HUB_inquire>>
 <<else>>
-	<<playsound Thuleanx.Audio.AudioManager "SFX/Fawn/Hurt">>
 	<<equip_sword>>
 	<<enable PlayerUICanvas>>
 	<<enable2 MainPortal>>

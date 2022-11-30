@@ -19,6 +19,7 @@ using UnityEditor;
 using Yarn.Unity;
 using Thuleanx.PortalKnight.Dialogue;
 using Thuleanx.PortalKnight.Effects;
+using Thuleanx.Audio;
 
 namespace Thuleanx.PortalKnight {
 	public partial class Player {
@@ -84,6 +85,7 @@ namespace Thuleanx.PortalKnight {
 		[BoxGroup("General Combat"), Range(0, 2), SerializeField] float hurtSFXMuteDuration = 1;
 		[BoxGroup("General Combat"), Range(0, 1), SerializeField] float damageFlashDuration = 0.2f;
 		[BoxGroup("General Combat"), SerializeField] Material damageFlashMaterial;
+		[BoxGroup("General Combat"), SerializeField] EventReference swordEquipSfx;
 
 		[BoxGroup("Attack"), Range(0, 100), SerializeField] float nudgeSpeed = 40;
 		[BoxGroup("Attack"), Range(0, 720), SerializeField] float attackTurnSpeed = 24;
@@ -224,7 +226,9 @@ namespace Thuleanx.PortalKnight {
 		#endif
 		[YarnCommand("equip_sword")]
 		static void yarn_SwordEquip() {
-			GameObject.FindObjectOfType<Player>().SwordEquipped = true;
+			Player player = GameObject.FindObjectOfType<Player>();
+			player.SwordEquipped = true;
+			AudioManager.instance?.PlayOneShot(player.swordEquipSfx);
 		}
 	}
 }
