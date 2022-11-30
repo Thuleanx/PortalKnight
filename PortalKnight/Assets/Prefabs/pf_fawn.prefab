@@ -1579,7 +1579,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -35.75, y: 0, z: -37.75}
+      - m_Value: {x: 17.5, y: 0, z: -60}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -2335,7 +2335,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -35.75, y: 0, z: -37.75}
+      - m_Value: {x: 17.5, y: 0, z: -60}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -2516,7 +2516,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -35.75, y: 0, z: -37.75}
+      - m_Value: {x: 17.5, y: 0, z: -60}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -2712,7 +2712,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -35.75, y: 0, z: -37.75}
+      - m_Value: {x: 17.5, y: 0, z: -60}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -3476,7 +3476,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -35.75, y: 0, z: -37.75}
+      - m_Value: {x: 17.5, y: 0, z: -60}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -3670,7 +3670,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -35.75, y: 0, z: -37.75}
+      - m_Value: {x: 17.5, y: 0, z: -60}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}

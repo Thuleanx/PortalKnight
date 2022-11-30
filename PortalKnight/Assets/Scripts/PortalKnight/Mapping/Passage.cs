@@ -18,7 +18,6 @@ namespace Thuleanx.PortalKnight.Mapping {
 
 		[YarnCommand("enable2")]
 		void yarn_enable() {
-			Debug.Log("HI");
 			onEnable?.Invoke();
 		} 
 	}
