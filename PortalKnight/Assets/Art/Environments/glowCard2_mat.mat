@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: glowCard2_mat
-  m_Shader: {fileID: -6465566751694194690, guid: 53342d8bcd6ec430a9d5b20c7ab85b75,
+  m_Shader: {fileID: -6465566751694194690, guid: 34cfd95bd6c2eda4b860d596b00ffde2,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
