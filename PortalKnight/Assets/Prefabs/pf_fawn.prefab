@@ -1476,7 +1476,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0ff3970cc4ea7404e9c25a4be9cf7cb0, type: 2}
+  - {fileID: 2100000, guid: 9151b81306f8a9d49901cf96cbb25d04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1982,6 +1982,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 75.58362
       objectReference: {fileID: 0}
+    - target: {fileID: 2918467738806417602, guid: fa38c8f8d9ba8d6458f7a01af0d32ab0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9151b81306f8a9d49901cf96cbb25d04, type: 2}
+    - target: {fileID: 3222881768330070537, guid: fa38c8f8d9ba8d6458f7a01af0d32ab0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9151b81306f8a9d49901cf96cbb25d04, type: 2}
     - target: {fileID: 4071406129491225529, guid: fa38c8f8d9ba8d6458f7a01af0d32ab0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2012,6 +2022,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 17.062902
       objectReference: {fileID: 0}
+    - target: {fileID: 4587090235933010806, guid: fa38c8f8d9ba8d6458f7a01af0d32ab0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9151b81306f8a9d49901cf96cbb25d04, type: 2}
     - target: {fileID: 4888342851986497376, guid: fa38c8f8d9ba8d6458f7a01af0d32ab0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2087,6 +2102,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 11.876206
       objectReference: {fileID: 0}
+    - target: {fileID: 6150029792292311547, guid: fa38c8f8d9ba8d6458f7a01af0d32ab0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9151b81306f8a9d49901cf96cbb25d04, type: 2}
+    - target: {fileID: 6568235777882418376, guid: fa38c8f8d9ba8d6458f7a01af0d32ab0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9151b81306f8a9d49901cf96cbb25d04, type: 2}
     - target: {fileID: 6782153048602818727, guid: fa38c8f8d9ba8d6458f7a01af0d32ab0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
