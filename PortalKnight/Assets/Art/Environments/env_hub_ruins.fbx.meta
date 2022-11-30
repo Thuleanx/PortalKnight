@@ -3,7 +3,52 @@ guid: f2cca9d3c54e1164591bd08edfe8c068
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_altair
+    second: {fileID: 2100000, guid: fbdb4e8c88cfb46faa05f61130449bf5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_deneb
+    second: {fileID: 2100000, guid: d94b608c3a6384d2bba276a6ef505efb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_floor
+    second: {fileID: 2100000, guid: 59d84516c49274e15891fa893fdbc83f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_gem
+    second: {fileID: 2100000, guid: a1568cef7c9a44a1d84998ad180a0434, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_pillars
+    second: {fileID: 2100000, guid: 1bca3c6a41a8c424eb6fcda5d0bc96e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_portal
+    second: {fileID: 2100000, guid: 21cc3e9face7345eebb10fc4f59d0a31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_stoneLightHub
+    second: {fileID: 2100000, guid: 2a92b74adf2294a388e2219ad5540595, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_vega
+    second: {fileID: 2100000, guid: 6c1033438f0be4e238aea9660764fe71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_wall
+    second: {fileID: 2100000, guid: 4aa59d846f9de41b6afda026db7cd02e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
