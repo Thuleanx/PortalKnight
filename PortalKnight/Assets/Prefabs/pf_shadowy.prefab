@@ -197,7 +197,7 @@ MonoBehaviour:
     Path: event:/SFX/Shadow/Spawn
   Event: 
   PlayEvent: 0
-  StopEvent: 0
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
     Path: event:/SFX/Shadow/Attack
   Event: 
   PlayEvent: 0
-  StopEvent: 0
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -498,7 +498,7 @@ MonoBehaviour:
     Path: event:/SFX/Shadow/Special
   Event: 
   PlayEvent: 0
-  StopEvent: 0
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -721,7 +721,7 @@ MonoBehaviour:
     Path: event:/SFX/Shadow/Attack Prepare
   Event: 
   PlayEvent: 0
-  StopEvent: 0
+  StopEvent: 12
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
