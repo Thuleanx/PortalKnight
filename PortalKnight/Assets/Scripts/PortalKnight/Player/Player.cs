@@ -168,6 +168,7 @@ namespace Thuleanx.PortalKnight {
 		void LateUpdate() {
 			Shader.SetGlobalVector("_Player_Position", transform.position + Vector3.up * Controller.height / 2);
 			Anim?.SetFloat(speedVariable, Velocity.magnitude);
+			FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Health", Puppet.Status.Health);
 		}
 
 		void FixedUpdate() {
