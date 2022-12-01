@@ -1705,7 +1705,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
+      - m_Value: {x: 0.26000214, y: 0, z: -0.9599991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -2461,7 +2461,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
+      - m_Value: {x: 0.26000214, y: 0, z: -0.9599991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -2642,7 +2642,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
+      - m_Value: {x: 0.26000214, y: 0, z: -0.9599991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -2838,7 +2838,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
+      - m_Value: {x: 0.26000214, y: 0, z: -0.9599991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -3359,7 +3359,7 @@ MonoBehaviour:
   manaOrbMouseRange: 3
   novaTrackingRange: 3
   maxMana: 1
-  manaOnHit: 0.25
+  manaOnHit: 0.125
   manaOrbPool: {fileID: 11400000, guid: 9181b321947d40f4dbb49242214c8d1d, type: 2}
   novaPool: {fileID: 11400000, guid: c6a655b3223ce2146852ffc7238f77a2, type: 2}
   manaOrbFiringSource: {fileID: 1559809896}
@@ -3634,7 +3634,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
+      - m_Value: {x: 0.26000214, y: 0, z: -0.9599991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
@@ -3828,7 +3828,7 @@ VisualEffect:
       - m_Value: {x: -0, y: 0, z: 270}
         m_Name: transform_angles
         m_Overridden: 1
-      - m_Value: {x: -0.23999786, y: 0, z: -0.7099991}
+      - m_Value: {x: 0.26000214, y: 0, z: -0.9599991}
         m_Name: transform_position
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}

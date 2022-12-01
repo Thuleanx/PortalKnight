@@ -1396,7 +1396,7 @@ MonoBehaviour:
   OnHeal:
     m_PersistentCalls:
       m_Calls: []
-  InitialMaxHealth: 4
+  InitialMaxHealth: 6
 --- !u!114 &460150655
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6157800787348457352}
   - component: {fileID: 6504023728842502812}
   - component: {fileID: 6911570621376742847}
+  - component: {fileID: 8643166511397660511}
   m_Layer: 0
   m_Name: pf_pickup_HP
   m_TagString: Untagged
@@ -109,6 +110,19 @@ MonoBehaviour:
       Data3: -1692010852
       Data4: -821527931
     Path: event:/SFX/Fawn/Heal
+--- !u!114 &8643166511397660511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77382448848609812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19dd5c104072f543981d19cc00a6e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetimeSeconds: 3
 --- !u!1 &8616740179790636351
 GameObject:
   m_ObjectHideFlags: 0
