@@ -15,6 +15,7 @@ namespace Thuleanx.PortalKnight {
 		[SerializeField] float exitDuration = 1;
 		[SerializeField, MinMaxSlider(0.5f, 2)] Vector2 sizeVariation;
 		[SerializeField] Ease OutEase = Ease.InCirc;
+		[SerializeField] Hurtbox3D hurtbox;
 
 		Timer alive;
 		bool wasAlive = false;
@@ -29,10 +30,13 @@ namespace Thuleanx.PortalKnight {
 			Hitbox.OnHit.AddListener(OnHit);
 			alive = lifetime;
 			wasAlive = true;
+			hurtbox?.SetState(true);
+			hurtbox?.OnHit.AddListener(OnHitReceived);
 		}
 
 		void OnDisable() {
 			Hitbox.OnHit.RemoveListener(OnHit);
+			hurtbox?.OnHit.RemoveListener(OnHitReceived);
 		}
 
 
@@ -48,6 +52,11 @@ namespace Thuleanx.PortalKnight {
 		}
 		
 		public void CauseExpire() => alive.Stop();
+
+		void OnHitReceived(Hit3D hit) {
+			Debug.Log(hit);
+			if (hit.damage > 100) gameObject.SetActive(false);
+		}
 
 		void OnHit(Hit3D hit) {
 			gameObject.SetActive(false);

@@ -58,9 +58,9 @@ namespace Thuleanx.PortalKnight {
 		}
 
 		public Hit3D GenerateHit(Hitbox3D hitbox, Hurtbox3D hurtbox) {
-			if (hurtbox.GetComponentInParent<ShadowEnemy>()) 
-				return new Hit3D(damage, 0, Vector3.zero, hurtbox.transform.position);
-			return new Hit3D(1, 0, Vector3.zero, hurtbox.transform.position);
+			if (hurtbox.GetComponentInParent<SpawnerEnemy>()) 
+				return new Hit3D(1, 0, Vector3.zero, hurtbox.transform.position);
+			return new Hit3D(damage, 0, Vector3.zero, hurtbox.transform.position);
 		}
 	}
 }

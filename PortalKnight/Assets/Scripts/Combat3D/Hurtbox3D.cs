@@ -13,7 +13,7 @@ namespace Thuleanx.Combat3D {
 		[ReadOnly] public long ID;
 
 		public Collider Collider {get; private set;}
-		bool active;
+		[SerializeField] bool active;
 
 		[Range(0,1), Tooltip("Hitbox of the same faction as a hurtbox won't try to hit it")] 
 		public int faction = 0;
