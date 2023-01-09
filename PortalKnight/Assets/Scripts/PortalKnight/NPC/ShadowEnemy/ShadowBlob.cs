@@ -54,7 +54,6 @@ namespace Thuleanx.PortalKnight {
 		public void CauseExpire() => alive.Stop();
 
 		void OnHitReceived(Hit3D hit) {
-			Debug.Log(hit);
 			if (hit.damage > 100) gameObject.SetActive(false);
 		}
 

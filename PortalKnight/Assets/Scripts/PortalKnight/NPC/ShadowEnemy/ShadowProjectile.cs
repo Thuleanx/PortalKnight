@@ -1,4 +1,5 @@
 using UnityEngine;
+using Thuleanx.Combat3D;
 
 using Thuleanx.PrettyPatterns;
 
@@ -9,9 +10,18 @@ namespace Thuleanx.PortalKnight {
 		[Header("Shadow Projectile")]
 		[SerializeField] float gravityMultiplier = 0.1f;
 		[SerializeField] BubblePool blobPool;
+		[SerializeField] Hurtbox3D hurtbox;
 
 		void Awake() {
 			Body = GetComponent<Rigidbody>();
+		}
+
+		private void OnEnable() {
+			hurtbox?.OnHit.AddListener(OnHitReceived);
+		}
+
+		private void OnDisable() {
+			hurtbox?.OnHit.RemoveListener(OnHitReceived);
 		}
 
 		void OnCollisionEnter(Collision collision) {
@@ -33,5 +43,10 @@ namespace Thuleanx.PortalKnight {
 			// so no errors
 			if (Time.deltaTime > 0) Body.velocity = displacement / Time.deltaTime;
 		}
+
+		void OnHitReceived(Hit3D hit) {
+			if (hit.damage > 100) gameObject.SetActive(false);
+		}
+
 	}
 }
