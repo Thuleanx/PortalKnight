@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 1.6627451, g: 0.9411765, b: 0.6431373, a: 1}
+  m_AmbientSkyColor: {r: 0.3018868, g: 0.2683582, b: 0.249199, a: 0}
   m_AmbientEquatorColor: {r: 0.41568628, g: 0.23399138, b: 0.16078433, a: 1}
   m_AmbientGroundColor: {r: 0.6698113, g: 0.21963233, b: 0, a: 1}
   m_AmbientIntensity: 1
@@ -2552,17 +2552,17 @@ PrefabInstance:
     - target: {fileID: 5596198004797137965, guid: 6283c4acaf73e89448e8e076f740f354,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: -3.0316488e-13
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 5596198004797137965, guid: 6283c4acaf73e89448e8e076f740f354,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: -6.3424417e-28
+      value: 5.252e-42
       objectReference: {fileID: 0}
     - target: {fileID: 5596198004797137965, guid: 6283c4acaf73e89448e8e076f740f354,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 6.344131e-17
+      value: 1.02e-43
       objectReference: {fileID: 0}
     - target: {fileID: 5803610143851859111, guid: 6283c4acaf73e89448e8e076f740f354,
         type: 3}
@@ -6019,12 +6019,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072480303}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96b0ded3cb4a9574aa41be2f3f4393f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightColor: {r: 0.49803922, g: 0.4431948, b: 0.4117647, a: 0}
+  lightColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &1072480307
 Animator:
   serializedVersion: 4
@@ -12345,6 +12345,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1072480306}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!4 &1428684201
 Transform:
